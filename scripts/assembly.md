@@ -100,20 +100,14 @@ mkdir /scratch/sogin/tmp.$JOB_ID -p;
 rsync -a /opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/$lib/stats/ /scratch/sogin/tmp.$JOB_ID; 
 cd /scratch/sogin/tmp.$JOB_ID/
 
-#fix fasta headers for down stream analysis
+#Fix fasta headers for down stream analysis of assemblies
 reformat.sh in=$assembly out=contigs.fixed.fasta addunderscore
+#
 # Map reads back to assembly
 #
 bbmap.sh ref=contigs.fixed.fasta in=$in in2=$in2 minid=0.98 fast=t covstats=${lib}_COV_STATS statsfile=${lib}_STATS outm=${lib}_mapped.bam
 samtools sort -o ${lib}_mapped_sorted.bam ${lib}_mapped.bam
 samtools index ${lib}_mapped_sorted.bam
-#
-# Map reads back to coassembly
-bbmap.sh ref=$coassembly in=$in in2=$in2 minid=0.98 fast=t covstats=${lib}_COV_STATS_coassembly statsfile=${lib}_STATS_coassembly outm=${lib}_mapped_coassembly.bam
-
-bbmap.sh ref=$ref in=$in1 in2=$in2 minid=0.98 fast=t covstats=COV_STATS statsfile=STATS outm=mapped.bam
-samtools sort -o ${lib}_mapped_coassembly_sorted.bam ${lib}_mapped_coassembly.bam
-samtools index ${lib}_mapped_coassembly_sorted.bam
 #
 rsync -a /scratch/sogin/tmp.$JOB_ID/ /opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/$lib/stats;
 rm /scratch/sogin/tmp.$JOB_ID -R;
