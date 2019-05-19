@@ -118,7 +118,7 @@ multiBinPlot(d, bins=bl[[l]], binNames=names(bl[[l]]),slice=c(5,9),cutoff=10000,
 #Edge Slice 6
 multiBinPlot(d, bins=bl[[l]], binNames=names(bl[[l]]),slice=c(6,7),cutoff=10000,legend=F)
 multiBinPlot(d, bins=bl[[l]], binNames=names(bl[[l]]),slice=c(6,8),cutoff=10000,legend=F)
-multiBinPlot(d, bins=bl[[l]], binNames=names(bl[[l]]),slice=c(6,9),cutoff=10000,legend=F)
+multiBinPlot(d, bins=bl[[l]], binNames=names(bl[[l]]),slice=c(6,9),cutoff=10000,legend=T)
 dev.off()
 }
 
