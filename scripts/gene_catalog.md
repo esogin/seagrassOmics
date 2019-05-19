@@ -96,11 +96,12 @@ echo "job finished: "
 date
 ```
 ## 3. Use R helper script to combine results
-
+prep scaff stats files for R import
 ```bash
 cd /opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/gene_catalog2/maps/
 for i in $scafstats; do sed "s/ # /_/g" $i > fixed_"$i"; done
 ```
+run commands in R
 ```r
 ## Combine read counts into single file for profiles
 files<-list.files(pattern="fixed.*.txt")
@@ -144,7 +145,7 @@ count.abund$DomainID<-annotations[match(count.abund$name2,annotations$query_name
 write.csv(count.abund,'gene_counts_cazyAnnot_May52019.csv')
 ```
 
-## END
+## end
 
 
 
