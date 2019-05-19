@@ -21,7 +21,6 @@ anvi-run-hmms -c contigs.db --num-threads 48
 #anvi-setup-ncbi-cogs #do only once
 #Annotate assembly with cog categories, may be useful later on
 anvi-run-ncbi-cogs -c contigs.db --num-threads 48
-
 #Initialize BAM files
 bams=$(echo 3847_{A..I}_sorted.bam)
 for sample in $bams; do anvi-init-bam bam/$sample -o $sample; done

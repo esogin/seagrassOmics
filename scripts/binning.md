@@ -247,7 +247,6 @@ echo "shell: $SHELL"
 mkdir /scratch/sogin/tmp.$JOB_ID/ -p; 
 rsync -a /opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/coassembly/binning_v2/dastool/result/checkm/ /scratch/sogin/tmp.$JOB_ID/; 
 cd /scratch/sogin/tmp.$JOB_ID/
-
 #
 checkm tree ./bins ./checkm_tree -t 24
 checkm tree qa ./checkm_tree -o 2 -f 
