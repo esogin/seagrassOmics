@@ -71,7 +71,7 @@ rm /scratch/sogin/tmp.$JOB_ID -R;
 echo "job finished: "
 date
 ```
-##2. Check assembly stats
+## 2. Check assembly stats
 Map reads back to individual library assemblies 
 ```bash
 #!/bin/bash
@@ -118,7 +118,7 @@ date
 ```
 ### Run metaquost for stats on assemblies
 First move all assemblies to same folder to facilitate analysis
-Results stored in html file in same folder
+results stored in html file in same folder
 ```bash
 #!/bin/bash
 #
