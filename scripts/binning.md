@@ -1,7 +1,7 @@
-# Binning Workflow
-# Esogin
-# May 4 2019
-# Updated: May 15, 2019
+# Binning Scripts
+## EM Sogin
+## May 4 2019
+## Updated: May 15, 2019
 
 Binning sediment metagenome coassembly using 3 different tools and combining results with DAS tool. 
 
@@ -214,20 +214,53 @@ hostname
 echo "shell: $SHELL"
 
 mkdir /scratch/sogin/tmp.$JOB_ID/ -p; 
-rsync -a /opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/coassembly/bins/drep/drep_bins/dereplicated_genomes/ /scratch/sogin/tmp.$JOB_ID/; 
+rsync -a /opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/coassembly/binning_v2/dastool/result/ /scratch/sogin/tmp.$JOB_ID/; 
 cd /scratch/sogin/tmp.$JOB_ID/
 #
 checkm lineage_wf -t 48 -x fa ./bins checkm_result -f ./checkm.txt
-#checkm qa
 gtdbtk classify_wf --genome_dir ./bins --cpus 48 --out_dir gtdbtk_out -x fa
 #
-rsync -a /scratch/sogin/tmp.$JOB_ID/ /opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/coassembly/bins/drep/drep_bins/dereplicated_genomes/
+rsync -a /scratch/sogin/tmp.$JOB_ID/ /opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/coassembly/binning_v2/dastool/result/
+rm /scratch/sogin/tmp.$JOB_ID -R;
+echo "job finished: "
+date
+```
+
+This script runs checkm using more info to get better quality data for the qa pipeline
+```bash
+#!/bin/bash
+#
+#$ -cwd
+#$ -j y
+#$ -S /bin/bash
+#$ -pe smp 24
+#$ -V
+#$ -q main.q
+#
+# run checkm
+echo "job started: " 
+echo "job ID: $JOB_ID"
+date
+hostname
+echo "shell: $SHELL"
+
+mkdir /scratch/sogin/tmp.$JOB_ID/ -p; 
+rsync -a /opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/coassembly/binning_v2/dastool/result/checkm/ /scratch/sogin/tmp.$JOB_ID/; 
+cd /scratch/sogin/tmp.$JOB_ID/
+
+#
+checkm tree ./bins ./checkm_tree -t 24
+checkm tree qa ./checkm_tree -o 2 -f 
+checkm lineage_set ./checkm_tree markers
+checkm analyze markers ./bins checkm_analyze -t 24 -x .fa
+checkm qa markers ./checkm_qa -o 2
+#
+rsync -a /scratch/sogin/tmp.$JOB_ID/ /opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/coassembly/dastool/result/checkm/
 rm /scratch/sogin/tmp.$JOB_ID -R;
 echo "job finished: "
 date
 ```
 Split bins into bac/ and arc/ directories according to taxonomic assignment 
-
 ```bash
 #!/bin/bash
 #
@@ -246,7 +279,7 @@ hostname
 echo "shell: $SHELL"
 
 mkdir /scratch/sogin/tmp.$JOB_ID/ -p; 
-rsync -a /opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/coassembly/bins/combined_result/bins/ /scratch/sogin/tmp.$JOB_ID/; 
+rsync -a /opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/coassembly/binning_v2/dastool/result/barnap/ /scratch/sogin/tmp.$JOB_ID/; 
 cd /scratch/sogin/tmp.$JOB_ID/
 #
 for i in arc/*.fa; do 
@@ -257,10 +290,9 @@ for i in *.fa; do
 	barrnap $i --threads 48 --kingdom bac --outseq ${i%.fa}_rrna.fa;
 done;
 #
-rsync -a /scratch/sogin/tmp.$JOB_ID/ /opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/coassembly/bins/combined_result/bins/
+rsync -a /scratch/sogin/tmp.$JOB_ID/ /opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/coassembly/binning_v2/dastool/result/barnap/
 rm /scratch/sogin/tmp.$JOB_ID -R;
 echo "job finished: "
 date
 ```
-
 ## END
