@@ -1,7 +1,7 @@
-#Binning Workflow
-#Esogin
-#May 4 2019
-#Updated: May 15, 2019
+# Binning Workflow
+# Esogin
+# May 4 2019
+# Updated: May 15, 2019
 
 Binning sediment metagenome coassembly using 3 different tools and combining results with DAS tool. 
 

@@ -116,7 +116,7 @@ rm /scratch/sogin/tmp.$JOB_ID -R;
 echo "job finished: "
 date
 ```
-### Run metaquost for stats on assemblies
+### Run metaquast for stats on assemblies
 First move all assemblies to same folder to facilitate analysis
 results stored in html file in same folder
 ```bash
@@ -151,4 +151,4 @@ echo "job finished: "
 date
 ```
 
-##END
+## END
