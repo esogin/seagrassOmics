@@ -6,6 +6,7 @@
 Sediment assembly script
 Description: this script seeks to assembly sediment metagenomic libraries using both servers in Cologne and in house at the MPI. The coassembly error correction needs to be done using at 2 TB memory server at the MPI. Megahit was used to assemnbly the libraries. For single library assemblies, the high mem servers in Cologne were sufficient and metaspades assembled the libraries in approximately 1 day/ library. 
 
+## 1. Assembly libries
 ### Coassembly
 Forward and reverse reads were concatinated across all 9 libraries. Preform error correction on 2 TB server and run megahit to coassembly all libraries.
 ```bash
@@ -70,8 +71,8 @@ rm /scratch/sogin/tmp.$JOB_ID -R;
 echo "job finished: "
 date
 ```
-
-Map reads back to assemblies (both coassembly and individual library assembly)
+##2. Check assembly stats
+Map reads back to individual library assemblies 
 ```bash
 #!/bin/bash
 #
@@ -115,9 +116,8 @@ rm /scratch/sogin/tmp.$JOB_ID -R;
 echo "job finished: "
 date
 ```
-
-run metaquost for stats on assemblies
-Firs move all assemblies to same folder to facilitate analysis
+### Run metaquost for stats on assemblies
+First move all assemblies to same folder to facilitate analysis
 Results stored in html file in same folder
 ```bash
 #!/bin/bash
