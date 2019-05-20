@@ -89,6 +89,7 @@ cd /scratch/sogin/tmp.$JOB_ID/
 #
 #Annotate with HMM scan & cazy database 
 hmmscan --cpu 24 --domtblout result.orfs.out.dm cazy/dbCAN-fam-HMMs.txt orfs.faa > result.orfs.out;
+./hmmscan-parser.sh proteins_annotated.out.dm  > annotated_parsed.txt
 #
 rsync -a /scratch/sogin/tmp.$JOB_ID/ /opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/gene_catalog2/annotate_me/;
 rm /scratch/sogin/tmp.$JOB_ID -R;
