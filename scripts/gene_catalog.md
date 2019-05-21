@@ -84,18 +84,52 @@ date
 hostname
 echo "shell: $SHELL"
 mkdir /scratch/sogin/tmp.$JOB_ID -p; 
-rsync -a /opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/gene_catalog2/annotate_me/ /scratch/sogin/tmp.$JOB_ID/
+rsync -a /opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/gene_catalog2/annotate_me/forCazy/ /scratch/sogin/tmp.$JOB_ID/
 cd /scratch/sogin/tmp.$JOB_ID/
 #
 #Annotate with HMM scan & cazy database 
-hmmscan --cpu 24 --domtblout result.orfs.out.dm cazy/dbCAN-fam-HMMs.txt orfs.faa > result.orfs.out;
-./hmmscan-parser.sh proteins_annotated.out.dm  > annotated_parsed.txt
+#hmmscan -o result.orfs.out --tblout result.orfs.tblout --pfamtblout result.orfs.pfamblout --cpu 24 --domtblout result.orfs.out.dm cazy/dbCAN-fam-HMMs.txt orfs.faa;
+#./hmmscan-parser.sh proteins_annotated.out.dm  > annotated_parsed.txt
 #
-rsync -a /scratch/sogin/tmp.$JOB_ID/ /opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/gene_catalog2/annotate_me/;
+python ~/tools/run_dbcan/run_dbcan.py orfs.faa protein --out_dir cazy_results --db_dir ~/tools/run_dbcan/db/
+#
+rsync -a /scratch/sogin/tmp.$JOB_ID/ /opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/gene_catalog2/annotate_me/forCazy/;
 rm /scratch/sogin/tmp.$JOB_ID -R;
 echo "job finished: "
 date
 ```
+
+Annotate using prokka
+
+```bash
+#!/bin/bash
+#
+#$ -cwd
+#$ -j y
+#$ -S /bin/bash
+#$ -pe smp 48
+#$ -V
+#$ -q main.q@@himem
+#
+echo "job started: " 
+echo "job ID: $JOB_ID"
+date
+hostname
+echo "shell: $SHELL"
+#
+mkdir /scratch/sogin/tmp.$JOB_ID/ -p; 
+rsync -a /opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/gene_catalog2/forProkka/ /scratch/sogin/tmp.$JOB_ID/
+cd /scratch/sogin/tmp.$JOB_ID/
+#
+prokka clusters_rep_seq.fasta --outdir result --metagenome --cpus 48 --mincontiglen 500
+#
+rsync -a /scratch/sogin/tmp.$JOB_ID/ /opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/gene_catalog2/forProkka/;
+rm /scratch/sogin/tmp.$JOB_ID -R;
+echo "job finished: "
+date
+```
+
+
 ## 3. Use R helper script to combine results
 prep scaff stats files for R import
 ```bash

@@ -107,17 +107,17 @@ for (l in 1:length(bl)){
 pdf(file=paste("diff_cov_plot_",lists[l],sep='',".pdf"),width=15, height=15)
 par(mfrow=c(3,3))
 #Edge slice 4
-multiBinPlot(d, bins=bl[[l]], binNames=names(bl[[l]]),slice=c(4,7),cutoff=10000,legend=F, ylim=c(1E-01, 1E03))
-multiBinPlot(d, bins=bl[[l]], binNames=names(bl[[l]]),slice=c(4,8),cutoff=10000,legend=F,ylim=c(1E-01, 1E03))
-multiBinPlot(d, bins=bl[[l]], binNames=names(bl[[l]]),slice=c(4,9),cutoff=10000,legend=F,ylim=c(1E-01, 1E03))
+multiBinPlot(d, bins=bl[[l]], binNames=names(bl[[l]]),slice=c(4,7),cutoff=10000,legend=F, ylim=c(0.0001, 1E03),xlim=c(0.0001, 1E03))
+multiBinPlot(d, bins=bl[[l]], binNames=names(bl[[l]]),slice=c(4,8),cutoff=10000,legend=F,ylim=c(0.0001, 1E03),xlim=c(0.0001, 1E03))
+multiBinPlot(d, bins=bl[[l]], binNames=names(bl[[l]]),slice=c(4,9),cutoff=10000,legend=F,ylim=c(0.0001, 1E03),xlim=c(0.0001, 1E03))
 #Edge slice 5
-multiBinPlot(d, bins=bl[[l]], binNames=names(bl[[l]]),slice=c(5,7),cutoff=10000,legend=F,ylim=c(1E-01, 1E03))
-multiBinPlot(d, bins=bl[[l]], binNames=names(bl[[l]]),slice=c(5,8),cutoff=10000,legend=F,ylim=c(1E-01, 1E03))
-multiBinPlot,ylim=c(1E-01, 1E03))
+multiBinPlot(d, bins=bl[[l]], binNames=names(bl[[l]]),slice=c(5,7),cutoff=10000,legend=F,ylim=c(0.0001, 1E03),xlim=c(0.0001, 1E03))
+multiBinPlot(d, bins=bl[[l]], binNames=names(bl[[l]]),slice=c(5,8),cutoff=10000,legend=F,ylim=c(0.0001, 1E03),xlim=c(0.0001, 1E03))
+multiBinPlot(d, bins=bl[[l]], binNames=names(bl[[l]]),slice=c(5,9),cutoff=10000,legend=F,ylim=c(0.0001, 1E03),xlim=c(0.0001, 1E03))
 #Edge Slice 6
-multiBinPlot(d, bins=bl[[l]], binNames=names(bl[[l]]),slice=c(6,7),cutoff=10000,legend=F,ylim=c(1E-01, 1E03))
-multiBinPlot(d, bins=bl[[l]], binNames=names(bl[[l]]),slice=c(6,8),cutoff=10000,legend=F,ylim=c(1E-01, 1E03))
-multiBinPlot(d, bins=bl[[l]], binNames=names(bl[[l]]),slice=c(6,9),cutoff=10000,legend=T,ylim=c(1E-01, 1E03))
+multiBinPlot(d, bins=bl[[l]], binNames=names(bl[[l]]),slice=c(6,7),cutoff=10000,legend=F,ylim=c(0.0001, 1E03),xlim=c(0.0001, 1E03))
+multiBinPlot(d, bins=bl[[l]], binNames=names(bl[[l]]),slice=c(6,8),cutoff=10000,legend=F,ylim=c(0.0001, 1E03),xlim=c(0.0001, 1E03))
+multiBinPlot(d, bins=bl[[l]], binNames=names(bl[[l]]),slice=c(6,9),cutoff=10000,legend=T,ylim=c(0.0001, 1E03),xlim=c(0.0001, 1E03))
 dev.off()
 }
 
