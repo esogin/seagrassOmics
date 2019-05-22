@@ -66,7 +66,9 @@ echo "job finished: "
 date
 ```
 ## 2. Annotate Sequeces with CAZYmes (using hmmscan) and Prokka 
-Prokka failed --> took extensive amount of time to do annotation. Consider re-trying prokka annotation long term analysis. 
+Prokka annotation will  likely take a long time to complete. Keep running in background
+
+hmmr way 
 
 ```bash
 #!/bin/bash
@@ -84,23 +86,60 @@ date
 hostname
 echo "shell: $SHELL"
 mkdir /scratch/sogin/tmp.$JOB_ID -p; 
-rsync -a /opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/gene_catalog2/annotate_me/forCazy/ /scratch/sogin/tmp.$JOB_ID/
+rsync -a /opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/gene_catalog2/hmmr_annotation/ /scratch/sogin/tmp.$JOB_ID/
 cd /scratch/sogin/tmp.$JOB_ID/
 #
-#Annotate with HMM scan & cazy database 
-#hmmscan -o result.orfs.out --tblout result.orfs.tblout --pfamtblout result.orfs.pfamblout --cpu 24 --domtblout result.orfs.out.dm cazy/dbCAN-fam-HMMs.txt orfs.faa;
-#./hmmscan-parser.sh proteins_annotated.out.dm  > annotated_parsed.txt
+#hmmr way
+hmmscan -o cazy.orfs.out --tblout cazy.orfs.tblout --pfamtblout cazy.orfs.pfamblout --cpu 24 --domtblout cazy.orfs.out.dm caZy/dbCAN-fam-HMMs.txt orfs.faa;
+hmmscan -o pfam.orfs.out --tblout pfam.orfs.tblout --pfamtblout pfam.orfs.pfamblout --cpu 24 --domtblout pfam.orfs.out.dm pfam/Pfam-A.hmm orfs.faa;
+#./hmmscan-parser.sh cazy.orfs.out.dm > cazy_annotated_parsed.txt
+#./hmmscan-parser.sh pfam.orfs.out.dm > pfam_annotated_parsed.txt
+rsync -a /scratch/sogin/tmp.$JOB_ID/ /opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/gene_catalog2/hmmr_annotation/;
+rm /scratch/sogin/tmp.$JOB_ID -R;
+echo "job finished: "
+date
+```
+
+This might be a good perl script to get hmmscan data out to a gff file
+https://github.com/tomdeman-bio/HMMer-scripts-
+https://mgkit.readthedocs.io/en/0.3.4/scripts/hmmer2gff.html
+
+
+run dbcan way 
+```bash
+#!/bin/bash
 #
-python ~/tools/run_dbcan/run_dbcan.py orfs.faa protein --out_dir cazy_results --db_dir ~/tools/run_dbcan/db/
+#$ -cwd
+#$ -j y
+#$ -S /bin/bash
+#$ -pe smp 24
+#$ -V
+#$ -q main.q
+## Annotate with CAZYs
+echo "job started: " 
+echo "job ID: $JOB_ID"
+date
+hostname
+echo "shell: $SHELL"
+mkdir /scratch/sogin/tmp.$JOB_ID -p; 
+rsync -a /opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/gene_catalog2/forCazy/ /scratch/sogin/tmp.$JOB_ID/
+cd /scratch/sogin/tmp.$JOB_ID/
 #
-rsync -a /scratch/sogin/tmp.$JOB_ID/ /opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/gene_catalog2/annotate_me/forCazy/;
+#run_dbcan way 
+#remove sequences with less then 100 AA residues and let program predict genes
+#reformat.sh in=clusters_rep_seq.fasta out=clusters_rep_set_300bp.fa minlength=300
+#Split remaining file into 200K sequence batches
+#run dbcan tool
+python ~/tools/run_dbcan/run_dbcan.py clusters_rep_set_300bp.fa meta --out_dir cazy_results --db_dir ~/tools/run_dbcan/db/ --hmm_cpu 24 --hotpep_cpu 24 --tf_cpu 24 -T hmmer
+python run_dbcan.py clusters_rep_set_300bp.fa meta --out_dir cazy_results --db_dir ./db --hmm_cpu 24 --tools hmmer
+#
+rsync -a /scratch/sogin/tmp.$JOB_ID/ /opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/gene_catalog2/forCazy/;
 rm /scratch/sogin/tmp.$JOB_ID -R;
 echo "job finished: "
 date
 ```
 
 Annotate using prokka
-
 ```bash
 #!/bin/bash
 #
@@ -128,6 +167,9 @@ rm /scratch/sogin/tmp.$JOB_ID -R;
 echo "job finished: "
 date
 ```
+
+## 3. Generate featureCounts hit stats for BAM files
+
 
 
 ## 3. Use R helper script to combine results

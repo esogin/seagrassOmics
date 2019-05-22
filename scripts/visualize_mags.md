@@ -95,7 +95,7 @@ for (l in 1:length(bl)){
 pdf(file=paste("gc_cov_plot_",lists[l],sep='',".pdf"),width=15, height=15)
 par(mfrow=c(3,3))
 	for(i in 1:9){
-		multiBinPlot(d, bins=bl[[l]], binNames=names(bl[[l]]),slice=i,cutoff=10000, main=libs[i],legend=T)
+		multiBinPlot(d, bins=bl[[l]], binNames=names(bl[[l]]),slice=i,cutoff=10000, main=libs[i],legend=T, ylim=c(0.0001,1E3))
 	}
 	dev.off()
 }
