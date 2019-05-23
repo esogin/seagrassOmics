@@ -9,7 +9,7 @@ Create a new gene catalog from all assembled sequences
 
 
 ## 1. Dereplicate sequences, cluster sequences, call genes, map sequences back to catalog
-```bash
+
 ```bash
 #!/bin/bash
 #
@@ -66,10 +66,109 @@ echo "job finished: "
 date
 ```
 ## 2. Annotate Sequeces with CAZYmes (using hmmscan) and Prokka 
-Prokka annotation will  likely take a long time to complete. Keep running in background
+Prokka annotation will  likely take a long time to complete. Keep running in background.
 
-hmmr way 
+Annotate using prokka
+```bash
+#!/bin/bash
+#
+#$ -cwd
+#$ -j y
+#$ -S /bin/bash
+#$ -pe smp 48
+#$ -V
+#$ -q main.q@@himem
+#
+echo "job started: " 
+echo "job ID: $JOB_ID"
+date
+hostname
+echo "shell: $SHELL"
+#
+mkdir /scratch/sogin/tmp.$JOB_ID/ -p; 
+rsync -a /opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/gene_catalog2/forProkka/ /scratch/sogin/tmp.$JOB_ID/
+cd /scratch/sogin/tmp.$JOB_ID/
+#
+prokka clusters_rep_seq.fasta --outdir result --metagenome --cpus 48 --mincontiglen 500
+#
+rsync -a /scratch/sogin/tmp.$JOB_ID/ /opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/gene_catalog2/forProkka/;
+rm /scratch/sogin/tmp.$JOB_ID -R;
+echo "job finished: "
+date
+```
 
+Annotate using hmmer
+```bash
+#!/bin/bash
+#
+#$ -cwd
+#$ -j y
+#$ -S /bin/bash
+#$ -pe smp 24
+#$ -V
+#$ -q main.q
+## Annotate with CAZYs
+echo "job started: " 
+echo "job ID: $JOB_ID"
+date
+hostname
+echo "shell: $SHELL"
+mkdir /scratch/sogin/tmp.$JOB_ID -p; 
+rsync -a /opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/gene_catalog2/cazymes/ /scratch/sogin/tmp.$JOB_ID/
+cd /scratch/sogin/tmp.$JOB_ID/
+#
+hmmscan --domtblout cazy.out.dm --cpus 24 db/dbCAN-fam-HMMs.txt orfs.faa > cazy.out 
+#
+rsync -a /scratch/sogin/tmp.$JOB_ID/ /opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/gene_catalog2/cazymes/;
+rm /scratch/sogin/tmp.$JOB_ID -R;
+echo "job finished: "
+date
+```
+
+
+
+
+Annotation using hmmer tools and run db can is more challening then initally considered. 
+
+For a new appraoch, take gene catalog and first preform a translated blast search against cazymes database using diamond blastX. 
+Contigs positive for cazyme hits, retain in dataset and use DB can (stand along on workstation) or on web interface to confirm diamond blastX hits. Diamond cut off use: e-value 10^-6 with 50% identity of AA sequences. 
+
+```bash
+#!/bin/bash
+#
+#$ -cwd
+#$ -j y
+#$ -S /bin/bash
+#$ -pe smp 24
+#$ -V
+#$ -q main.q
+## Annotate with CAZYs
+echo "job started: " 
+echo "job ID: $JOB_ID"
+date
+hostname
+echo "shell: $SHELL"
+mkdir /scratch/sogin/tmp.$JOB_ID -p; 
+rsync -a /opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/gene_catalog2/diamond/ /scratch/sogin/tmp.$JOB_ID/
+cd /scratch/sogin/tmp.$JOB_ID/
+#
+diamond blastp --threads 24 -d ./db/CAZy.dmnd -q orfs.faa --evalue 0.000001 --id 50 --max-hsps 1 
+#
+rsync -a /scratch/sogin/tmp.$JOB_ID/ /opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/gene_catalog2/diamond/;
+rm /scratch/sogin/tmp.$JOB_ID -R;
+echo "job finished: "
+date
+```
+
+Check output -> evalues and % ID's correct? 
+Take contigs with positive hits and subset orfs, run with DBcan
+
+
+http://bcb.unl.edu/dbCAN2/download/
+
+
+
+hmmr way --> old code
 ```bash
 #!/bin/bash
 #
@@ -105,68 +204,8 @@ https://github.com/tomdeman-bio/HMMer-scripts-
 https://mgkit.readthedocs.io/en/0.3.4/scripts/hmmer2gff.html
 
 
-run dbcan way 
-```bash
-#!/bin/bash
-#
-#$ -cwd
-#$ -j y
-#$ -S /bin/bash
-#$ -pe smp 24
-#$ -V
-#$ -q main.q
-## Annotate with CAZYs
-echo "job started: " 
-echo "job ID: $JOB_ID"
-date
-hostname
-echo "shell: $SHELL"
-mkdir /scratch/sogin/tmp.$JOB_ID -p; 
-rsync -a /opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/gene_catalog2/forCazy/ /scratch/sogin/tmp.$JOB_ID/
-cd /scratch/sogin/tmp.$JOB_ID/
-#
-#run_dbcan way 
-#remove sequences with less then 100 AA residues and let program predict genes
-#reformat.sh in=clusters_rep_seq.fasta out=clusters_rep_set_300bp.fa minlength=300
-#Split remaining file into 200K sequence batches
-#run dbcan tool
-python ~/tools/run_dbcan/run_dbcan.py clusters_rep_set_300bp.fa meta --out_dir cazy_results --db_dir ~/tools/run_dbcan/db/ --hmm_cpu 24 --hotpep_cpu 24 --tf_cpu 24 -T hmmer
-python run_dbcan.py clusters_rep_set_300bp.fa meta --out_dir cazy_results --db_dir ./db --hmm_cpu 24 --tools hmmer
-#
-rsync -a /scratch/sogin/tmp.$JOB_ID/ /opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/gene_catalog2/forCazy/;
-rm /scratch/sogin/tmp.$JOB_ID -R;
-echo "job finished: "
-date
-```
 
-Annotate using prokka
-```bash
-#!/bin/bash
-#
-#$ -cwd
-#$ -j y
-#$ -S /bin/bash
-#$ -pe smp 48
-#$ -V
-#$ -q main.q@@himem
-#
-echo "job started: " 
-echo "job ID: $JOB_ID"
-date
-hostname
-echo "shell: $SHELL"
-#
-mkdir /scratch/sogin/tmp.$JOB_ID/ -p; 
-rsync -a /opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/gene_catalog2/forProkka/ /scratch/sogin/tmp.$JOB_ID/
-cd /scratch/sogin/tmp.$JOB_ID/
-#
-prokka clusters_rep_seq.fasta --outdir result --metagenome --cpus 48 --mincontiglen 500
-#
-rsync -a /scratch/sogin/tmp.$JOB_ID/ /opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/gene_catalog2/forProkka/;
-rm /scratch/sogin/tmp.$JOB_ID -R;
-echo "job finished: "
-date
-```
+
 
 ## 3. Generate featureCounts hit stats for BAM files
 
