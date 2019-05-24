@@ -1,0 +1,68 @@
+job started: 
+job ID: 377969
+Mon Apr  1 14:46:41 CEST 2019
+gc-node-17
+shell: /bin/bash
+/var/spool/gridengine/execd/gc-node-17/job_scripts/377969: line 23: cd: too many arguments
+Command line: /opt/share/software/packages/SPAdes-3.12.0/bin/spades.py	-o	/opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/scripts/assembly/spades_v	--12	/opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/scripts/assembly/3847_F_highfreq_kmers.fq.gz	-t	48	-m	850	--phred-offset	33	
+
+System information:
+  SPAdes version: 3.12.0
+  Python version: 3.7.1
+  OS: Linux-4.9.0-8-amd64-x86_64-with-debian-9.6
+
+Output dir: /opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/scripts/assembly/spades_v
+Mode: read error correction and assembling
+Debug mode is turned OFF
+
+Dataset parameters:
+  Multi-cell mode (you should set '--sc' flag if input data was obtained with MDA (single-cell) technology or --meta flag if processing metagenomic dataset)
+  Reads:
+    Library number: 1, library type: paired-end
+      orientation: fr
+      left reads: not specified
+      right reads: not specified
+      interlaced reads: ['/opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/scripts/assembly/3847_F_highfreq_kmers.fq.gz']
+      single reads: not specified
+      merged reads: not specified
+Read error correction parameters:
+  Iterations: 1
+  PHRED offset: 33
+  Corrected reads will be compressed
+Assembly parameters:
+  k: automatic selection based on read length
+  Repeat resolution is enabled
+  Mismatch careful mode is turned OFF
+  MismatchCorrector will be SKIPPED
+  Coverage cutoff is turned OFF
+Other parameters:
+  Dir for temp files: /opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/scripts/assembly/spades_v/tmp
+  Threads: 48
+  Memory limit (in Gb): 850
+
+
+======= SPAdes pipeline started. Log can be found here: /opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/scripts/assembly/spades_v/spades.log
+
+== Splitting /opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/scripts/assembly/3847_F_highfreq_kmers.fq.gz into left and right reads (in /opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/scripts/assembly/spades_v/split_input directory)
+
+===== Read error correction started. 
+
+
+== Running read error correction tool: /opt/share/software/packages/SPAdes-3.12.0/bin/spades-hammer /opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/scripts/assembly/spades_v/corrected/configs/config.info
+
+  0:00:00.000     4M / 4M    INFO    General                 (main.cpp                  :  75)   Starting BayesHammer, built from N/A, git revision N/A
+  0:00:00.000     4M / 4M    INFO    General                 (main.cpp                  :  76)   Loading config from /opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/scripts/assembly/spades_v/corrected/configs/config.info
+  0:00:00.034     4M / 4M    INFO    General                 (main.cpp                  :  78)   Maximum # of threads to use (adjusted due to OMP capabilities): 48
+  0:00:00.034     4M / 4M    INFO    General                 (memory_limit.cpp          :  49)   Memory limit set to 850 Gb
+  0:00:00.035     4M / 4M    INFO    General                 (hammer_tools.cpp          :  36)   Hamming graph threshold tau=1, k=21, subkmer positions = [ 0 10 ]
+  0:00:00.035     4M / 4M    INFO    General                 (main.cpp                  : 113)   Size of aux. kmer data 24 bytes
+     === ITERATION 0 begins ===
+  0:00:00.409     4M / 4M    INFO   K-mer Index Building     (kmer_index_builder.hpp    : 301)   Building kmer index
+  0:00:00.409     4M / 4M    INFO    General                 (kmer_index_builder.hpp    : 117)   Splitting kmer instances into 768 files using 48 threads. This might take a while.
+  0:00:00.451     4M / 4M    INFO    General                 (file_limit.hpp            :  32)   Open file limit set to 589824
+  0:00:00.451     4M / 4M    INFO    General                 (kmer_splitters.hpp        :  89)   Memory available for splitting buffers: 5.90275 Gb
+  0:00:00.451     4M / 4M    INFO    General                 (kmer_splitters.hpp        :  97)   Using cell size of 87381
+  0:00:00.720    26G / 26G   INFO   K-mer Splitting          (kmer_data.cpp             :  97)   Processing /opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/scripts/assembly/spades_v/split_input/3847_F_highfreq_kmers_1.fastq
+  0:09:59.102    26G / 28G   INFO   K-mer Splitting          (kmer_data.cpp             : 107)   Processed 11854011 reads
+  0:18:22.967    26G / 28G   INFO   K-mer Splitting          (kmer_data.cpp             : 107)   Processed 23769948 reads
+  0:27:17.269    26G / 28G   INFO   K-mer Splitting          (kmer_data.cpp             : 107)   Processed 35688388 reads

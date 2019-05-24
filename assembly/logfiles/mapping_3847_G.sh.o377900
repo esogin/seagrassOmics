@@ -1,0 +1,92 @@
+job started: 
+job ID: 377900
+Mon Apr  1 10:17:18 CEST 2019
+gc-node-21
+shell: /bin/bash
+java -ea -Xmx200m -cp /opt/share/software/packages/BBMap_38.34/bin/current/ jgi.ReformatReads in=/opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/3847_G/assembly/spades/contigs.fasta out=contigs.fixed.fasta addunderscore
+Executing jgi.ReformatReads [in=/opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/3847_G/assembly/spades/contigs.fasta, out=contigs.fixed.fasta, addunderscore]
+
+Input is being processed as unpaired
+Input:                  	5236771 reads          	1934007807 bases
+Output:                 	5236771 reads (100.00%) 	1934007807 bases (100.00%)
+
+Time:                         	63.585 seconds.
+Reads Processed:       5236k 	82.36k reads/sec
+Bases Processed:       1934m 	30.42m bases/sec
+java -ea -Xmx817941m -cp /opt/share/software/packages/BBMap_38.34/bin/current/ align2.BBMap build=1 overwrite=true fastareadlen=500 ref=contigs.fixed.fasta in=/opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/3847_G/assembly/spades/corrected/3847_G_highfreq_kmers_1.00.0_0.cor.fastq.gz in2=/opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/3847_G/assembly/spades/corrected/3847_G_highfreq_kmers_2.00.0_0.cor.fastq.gz minid=0.98 fast=t covstats=3847_G_COV_STATS statsfile=3847_G_STATS outm=3847_G_mapped.bam
+Executing align2.BBMap [tipsearch=20, maxindel=80, minhits=2, bwr=0.18, bw=40, minratio=0.65, midpad=150, minscaf=50, quickmatch=t, rescuemismatches=15, rescuedist=800, maxsites=3, maxsites2=100, build=1, overwrite=true, fastareadlen=500, ref=contigs.fixed.fasta, in=/opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/3847_G/assembly/spades/corrected/3847_G_highfreq_kmers_1.00.0_0.cor.fastq.gz, in2=/opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/3847_G/assembly/spades/corrected/3847_G_highfreq_kmers_2.00.0_0.cor.fastq.gz, minid=0.98, covstats=3847_G_COV_STATS, statsfile=3847_G_STATS, outm=3847_G_mapped.bam]
+Version 38.34
+
+Set MINIMUM_ALIGNMENT_SCORE_RATIO to 0.650
+Retaining first best site only for ambiguous mappings.
+Set MINIMUM_ALIGNMENT_SCORE_RATIO to 0.963
+Writing reference.
+Executing dna.FastaToChromArrays2 [contigs.fixed.fasta, 1, writeinthread=false, genscaffoldinfo=true, retain, waitforwriting=false, gz=true, maxlen=536670912, writechroms=true, minscaf=50, midpad=150, startpad=8000, stoppad=8000, nodisk=false]
+
+Set genScaffoldInfo=true
+Writing chunk 1
+Writing chunk 2
+Writing chunk 3
+Writing chunk 4
+Writing chunk 5
+Writing chunk 6
+Set genome to 1
+
+Loaded Reference:	7.720 seconds.
+Loading index for chunk 1-6, build 1
+No index available; generating from reference genome: /scratch/sogin/tmp.377900/ref/index/1/chr1-3_index_k13_c2_b1.block
+No index available; generating from reference genome: /scratch/sogin/tmp.377900/ref/index/1/chr4-6_index_k13_c2_b1.block
+Indexing threads started for block 0-3
+Indexing threads started for block 4-6
+Indexing threads finished for block 4-6
+Indexing threads finished for block 0-3
+Generated Index:	211.905 seconds.
+Finished Writing:	3.088 seconds.
+Analyzed Index:   	24.243 seconds.
+Found samtools 1.9
+Started output stream:	1.608 seconds.
+Cleared Memory:    	7.491 seconds.
+Processing reads in paired-ended mode.
+Started read stream.
+Started 80 mapping threads.
+Detecting finished threads: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79
+
+   ------------------   Results   ------------------   
+
+Genome:                	1
+Key Length:            	13
+Max Indel:             	10
+Minimum Score Ratio:  	0.96324
+Mapping Mode:         	normal
+
+Reads:                               	80954656
+Mapped reads:                        	29323090
+Mapped bases:                        	4412991802
+Ref scaffolds:                       	5236771
+Ref bases:                           	1934007807
+
+Percent mapped:                      	36.222
+Percent proper pairs:                	24.219
+Average coverage:                    	2.282
+Standard deviation:                    	2.361
+Percent scaffolds with any coverage: 	95.89
+Percent of reference bases covered:  	87.87
+
+Total time:     	1204.736 seconds.
+[bam_sort_core] merging from 17 files and 1 in-memory blocks...
+java -ea -Xmx845648m -cp /opt/share/software/packages/BBMap_38.34/bin/current/ align2.BBMap build=1 overwrite=true fastareadlen=500 bbmap.sh ref=/opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/coassembly/megahit/coassembly.contigs.fixed.fa in=/opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/3847_G/assembly/spades/corrected/3847_G_highfreq_kmers_1.00.0_0.cor.fastq.gz in2=/opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/3847_G/assembly/spades/corrected/3847_G_highfreq_kmers_2.00.0_0.cor.fastq.gz minid=0.98 fast=t covstats=3847_G_COV_STATS_coassembly statsfile=3847_G_STATS_coassembly outm=3847_G_mapped_coassembly.bam
+Executing align2.BBMap [tipsearch=20, maxindel=80, minhits=2, bwr=0.18, bw=40, minratio=0.65, midpad=150, minscaf=50, quickmatch=t, rescuemismatches=15, rescuedist=800, maxsites=3, maxsites2=100, build=1, overwrite=true, fastareadlen=500, bbmap.sh, ref=/opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/coassembly/megahit/coassembly.contigs.fixed.fa, in=/opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/3847_G/assembly/spades/corrected/3847_G_highfreq_kmers_1.00.0_0.cor.fastq.gz, in2=/opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/3847_G/assembly/spades/corrected/3847_G_highfreq_kmers_2.00.0_0.cor.fastq.gz, minid=0.98, covstats=3847_G_COV_STATS_coassembly, statsfile=3847_G_STATS_coassembly, outm=3847_G_mapped_coassembly.bam]
+Version 38.34
+
+Set MINIMUM_ALIGNMENT_SCORE_RATIO to 0.650
+Exception in thread "main" java.lang.RuntimeException: Unknown parameter: bbmap.sh
+	at align2.AbstractMapper.parse(AbstractMapper.java:653)
+	at align2.AbstractMapper.<init>(AbstractMapper.java:55)
+	at align2.BBMap.<init>(BBMap.java:43)
+	at align2.BBMap.main(BBMap.java:31)
+[E::hts_open_format] Failed to open file 3847_G_mapped_coassembly.bam
+samtools sort: can't open "3847_G_mapped_coassembly.bam": No such file or directory
+[E::hts_open_format] Failed to open file 3847_G_mapped_coassembly_sorted.bam
+samtools index: failed to open "3847_G_mapped_coassembly_sorted.bam": No such file or directory
+job finished: 
+Mon Apr  1 11:05:18 CEST 2019

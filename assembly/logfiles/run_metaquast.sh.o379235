@@ -1,0 +1,1630 @@
+job ID: 379235
+Fri Apr  5 10:10:15 CEST 2019
+gc-node-21
+shell: /bin/bash
+/home/sogin/tools/quast-5.0.2/metaquast.py 3847_A.contigs.fasta 3847_B.contigs.fasta 3847_C.contigs.fasta 3847_D.contigs.fasta 3847_E.contigs.fasta 3847_G.contigs.fasta 3847_H.contigs.fasta 3847_I.contigs.fasta coassembly.contigs.fa -o combined_report
+
+Version: 5.0.2
+
+System information:
+  OS: Linux-4.9.0-8-amd64-x86_64-with-debian-9.6 (linux_64)
+  Python version: 3.7.1
+  CPUs number: 80
+
+Started: 2019-04-05 10:14:44
+
+Logging to /scratch/sogin/tmp.379235/combined_report/metaquast.log
+NOTICE: Maximum number of threads is set to 20 (use --threads option to set it manually)
+
+WARNING: Can't draw plots: python-matplotlib is missing or corrupted.
+
+Contigs:
+  Pre-processing...
+/home/sogin/tools/quast-5.0.2/metaquast.py:136: DeprecationWarning: the imp module is deprecated in favour of importlib; see the module's documentation for alternative uses
+  import imp
+  1  3847_A.contigs.fasta ==> 3847_A.contigs
+  2  3847_B.contigs.fasta ==> 3847_B.contigs
+  3  3847_C.contigs.fasta ==> 3847_C.contigs
+  4  3847_D.contigs.fasta ==> 3847_D.contigs
+  5  3847_E.contigs.fasta ==> 3847_E.contigs
+  6  3847_G.contigs.fasta ==> 3847_G.contigs
+  7  3847_H.contigs.fasta ==> 3847_H.contigs
+  8  3847_I.contigs.fasta ==> 3847_I.contigs
+  9  coassembly.contigs.fa ==> coassembly.contigs
+
+No references are provided, starting to search for reference genomes in SILVA 16S rRNA database and to download them from NCBI...
+
+2019-04-05 10:22:27
+Running BlastN..
+  processing 3847_A.contigs
+  processing 3847_B.contigs
+  processing 3847_C.contigs
+  processing 3847_D.contigs
+  processing 3847_E.contigs
+  processing 3847_G.contigs
+  processing 3847_H.contigs
+  processing 3847_I.contigs
+  processing coassembly.contigs
+  BLAST results for 3847_B.contigs are saved to /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/blast.res_3847_B-contigs...
+  BLAST results for 3847_A.contigs are saved to /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/blast.res_3847_A-contigs...
+  BLAST results for 3847_I.contigs are saved to /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/blast.res_3847_I-contigs...
+  BLAST results for 3847_G.contigs are saved to /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/blast.res_3847_G-contigs...
+  BLAST results for 3847_C.contigs are saved to /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/blast.res_3847_C-contigs...
+  BLAST results for 3847_D.contigs are saved to /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/blast.res_3847_D-contigs...
+  BLAST results for 3847_E.contigs are saved to /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/blast.res_3847_E-contigs...
+  BLAST results for 3847_H.contigs are saved to /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/blast.res_3847_H-contigs...
+  BLAST results for coassembly.contigs are saved to /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/blast.res_coassembly-contigs...
+
+
+2019-04-05 16:08:59
+Trying to download found references from NCBI. Totally 260 organisms to try.
+wastewater metagenome has too fragmented reference genome! It will not be downloaded.
+  wastewater_metagenome                                                     | not found in the NCBI database
+  wastewater_metagenome was not found in NCBI database, trying to download the next best match
+  Anaerolineae_bacterium_SW7                                                | not found in the NCBI database
+  unidentified_planctomycete                                                | not found in the NCBI database
+  unidentified_planctomycete was not found in NCBI database, trying to download the next best match
+  Citrobacter_youngae_ATCC_29220                                            | successfully downloaded (total 1, 258 more to go)
+  unidentified_marine_eubacterium                                           | not found in the NCBI database
+  unidentified_marine_bacterioplankton                                      | not found in the NCBI database
+  unidentified_marine_bacterioplankton was not found in NCBI database, trying to download the next best match
+  planctomycete_str._529                                                    | not found in the NCBI database
+  planctomycete_str._529 was not found in NCBI database, trying to download the next best match
+  Rhodopirellula_sp._SM52                                                   | not found in the NCBI database
+  unidentified_green_non-sulfur_bacterium_OPB12                             | not found in the NCBI database
+  unidentified_green_non-sulfur_bacterium_OPB12 was not found in NCBI database, trying to download the next best match
+  Dehalococcoides_sp._BHI80-15                                              | not found in the NCBI database
+  unidentified_eubacterium_clone_BSV85                                      | not found in the NCBI database
+  unidentified_eubacterium_clone_BSV85 was not found in NCBI database, trying to download the next best match
+  bacterium_PB90-2                                                          | not found in the NCBI database
+  bacterium_PB90-2 was not found in NCBI database, trying to download the next best match
+  Mangrovibacterium_diazotrophicum                                          | successfully downloaded (total 2, 254 more to go)
+  unidentified_eubacterium_clone_BSV40                                      | not found in the NCBI database
+  unidentified_eubacterium_clone_BSV40 was not found in NCBI database, trying to download the next best match
+  Ignavibacterium_album_JCM_16511                                           | successfully downloaded (total 3, 253 more to go)
+  unidentified_delta_proteobacterium_OPB55                                  | not found in the NCBI database
+  unidentified_delta_proteobacterium_OPB55 was not found in NCBI database, trying to download the next best match
+  Chondromyces_apiculatus_DSM_436                                           | successfully downloaded (total 4, 252 more to go)
+  unidentified_bacterium_wb1_N15                                            | not found in the NCBI database
+  unidentified_bacterium_wb1_N15 was not found in NCBI database, trying to download the next best match
+  Geobacter_sp._OR-1                                                        | successfully downloaded (total 5, 251 more to go)
+  unidentified_bacterium_wb1_D18                                            | not found in the NCBI database
+  unidentified_bacterium_wb1_D18 was not found in NCBI database, trying to download the next best match
+  Gemmata_sp._Br1-1                                                         | not found in the NCBI database
+  unidentified_bacterium_wb1_A15                                            | not found in the NCBI database
+  unidentified_bacterium_wb1_A15 was not found in NCBI database, trying to download the next best match
+  Geoalkalibacter_ferrihydriticus_DSM_17813                                 | successfully downloaded (total 6, 249 more to go)
+  unidentified_archaeon                                                     | not found in the NCBI database
+  unidentified_Planctomycetales_OPB6                                        | not found in the NCBI database
+  unidentified_Planctomycetales_OPB6 was not found in NCBI database, trying to download the next best match
+  Planctomycetia_bacterium_WSF3-27                                          | not found in the NCBI database
+  Planctomycetia_bacterium_WSF3-27 was not found in NCBI database, trying to download the next best match
+  Alkalispirillum_sp._ACO3                                                  | not found in the NCBI database
+  Alkalispirillum_sp._ACO3 was not found in NCBI database, trying to download the next best match
+  planctomycete_str._337                                                    | not found in the NCBI database
+  unidentified_Nitrospira_group_OPB67A                                      | not found in the NCBI database
+  unidentified_Nitrospira_group_OPB67A was not found in NCBI database, trying to download the next best match
+  bacterium_enrichment_culture_clone_EBa8                                   | not found in the NCBI database
+  bacterium_enrichment_culture_clone_EBa8 was not found in NCBI database, trying to download the next best match
+  Thermodesulfovibrio_hydrogeniphilus                                       | not found in the NCBI database
+  Thermodesulfovibrio_hydrogeniphilus was not found in NCBI database, trying to download the next best match
+  Thermodesulfovibrio_yellowstonii_DSM_11347                                | successfully downloaded (total 7, 246 more to go)
+  unidentified_Actinomycete_OPB41                                           | not found in the NCBI database
+  unidentified_Actinomycete_OPB41 was not found in NCBI database, trying to download the next best match
+  Rhodococcus_sp                                                            | successfully downloaded (total 8, 245 more to go)
+  unclassified_Pseudomonadales_(miscellaneous)                              | not found in the NCBI database
+  unclassified_Pseudomonadales_(miscellaneous) was not found in NCBI database, trying to download the next best match
+  Teredinibacter_turnerae_T7902                                             | successfully downloaded (total 9, 244 more to go)
+  toluene-degrading_methanogenic_consortium_bacterium                       | not found in the NCBI database
+  toluene-degrading_methanogenic_consortium_bacterium was not found in NCBI database, trying to download the next best match
+Litorilinea aerophila has too fragmented reference genome! It will not be downloaded.
+  Litorilinea_aerophila                                                     | not found in the NCBI database
+  sulfur-oxidizing_bacterium_OBII5                                          | not found in the NCBI database
+  sulfur-oxidizing_bacterium_OBII5 was not found in NCBI database, trying to download the next best match
+  bacterium_enrichment_culture_clone_DSR_18                                 | not found in the NCBI database
+  bacterium_enrichment_culture_clone_DSR_18 was not found in NCBI database, trying to download the next best match
+  Marichromatium_purpuratum_984                                             | successfully downloaded (total 10, 242 more to go)
+  sulfate-reducing_bacterium_mXyS1                                          | not found in the NCBI database
+  sulfate-reducing_bacterium_mXyS1 was not found in NCBI database, trying to download the next best match
+  bacterium_enrichment_culture_clone_Oil_45                                 | not found in the NCBI database
+  bacterium_enrichment_culture_clone_Oil_45 was not found in NCBI database, trying to download the next best match
+  Desulfococcus_oleovorans_Hxd3                                             | successfully downloaded (total 11, 241 more to go)
+  sulfate-reducing_bacterium_SFA3                                           | not found in the NCBI database
+  sulfate-reducing_bacterium_SFA3 was not found in NCBI database, trying to download the next best match
+  Olavius_algarvensis_associated_proteobacterium_Delta_6                    | not found in the NCBI database
+  Olavius_algarvensis_associated_proteobacterium_Delta_6 was not found in NCBI database, trying to download the next best match
+  Desulfopila_inferna                                                       | not found in the NCBI database
+  sediment_bacterium_22-39                                                  | not found in the NCBI database
+  sediment_bacterium_22-39 was not found in NCBI database, trying to download the next best match
+  Methylopila_sp._M107                                                      | successfully downloaded (total 12, 239 more to go)
+  secondary_endosymbiont_of_Bemisia_tabaci                                  | not found in the NCBI database
+  saltmarsh_clone_LCP-89                                                    | not found in the NCBI database
+  saltmarsh_clone_LCP-80                                                    | not found in the NCBI database
+  saltmarsh_clone_LCP-80 was not found in NCBI database, trying to download the next best match
+  alpha_proteobacterium_LM-1                                                | not found in the NCBI database
+  alpha_proteobacterium_LM-1 was not found in NCBI database, trying to download the next best match
+  alpha_proteobacterium_UT-2                                                | not found in the NCBI database
+  alpha_proteobacterium_UT-2 was not found in NCBI database, trying to download the next best match
+  Magnetospirillum_sp._enrichment_culture_clone_Van25                       | not found in the NCBI database
+  saltmarsh_clone_LCP-6                                                     | not found in the NCBI database
+  saltmarsh_clone_LCP-6 was not found in NCBI database, trying to download the next best match
+  Nitrospira_sp._SRI-9                                                      | not found in the NCBI database
+  Nitrospira_sp._SRI-9 was not found in NCBI database, trying to download the next best match
+  bacterium_enrichment_culture_clone_C11                                    | not found in the NCBI database
+  bacterium_enrichment_culture_clone_C11 was not found in NCBI database, trying to download the next best match
+  Nitrospira_sp._SRI-237                                                    | not found in the NCBI database
+  proteobacterium_Dex80-27                                                  | not found in the NCBI database
+  planctomycete_str._608                                                    | not found in the NCBI database
+  planctomycete_str._608 was not found in NCBI database, trying to download the next best match
+  Rhodopirellula_baltica                                                    | successfully downloaded (total 13, 233 more to go)
+  planctomycete_str._116                                                    | not found in the NCBI database
+  planctomycete_str._116 was not found in NCBI database, trying to download the next best match
+  Blastopirellula_marina_DSM_3645                                           | successfully downloaded (total 14, 232 more to go)
+  planctomycete_MS30D8                                                      | not found in the NCBI database
+  planctomycete_MS30D8 was not found in NCBI database, trying to download the next best match
+  planctomycete_DDSe3004                                                    | not found in the NCBI database
+  planctomycete_DDSe3004 was not found in NCBI database, trying to download the next best match
+  planctomycete_MS30D1                                                      | not found in the NCBI database
+  planctomycete_MS1316                                                      | not found in the NCBI database
+  planctomycete_GMD15D02                                                    | not found in the NCBI database
+  planctomycete_DWL102                                                      | not found in the NCBI database
+  planctomycete_DSM1A9                                                      | not found in the NCBI database
+  planctomycete_DSM1A9 was not found in NCBI database, trying to download the next best match
+  planctomycete_str._337                                                    | not found in the NCBI database
+  planctomycete_DDSe3017                                                    | not found in the NCBI database
+  planctomycete_DDSe3017 was not found in NCBI database, trying to download the next best match
+  bacterium_enrichment_culture_clone_B55(2011)                              | not found in the NCBI database
+  bacterium_enrichment_culture_clone_B55(2011) was not found in NCBI database, trying to download the next best match
+  bacterium_enrichment_culture_clone_B161(2011)                             | not found in the NCBI database
+  planctomycete_DDSW3008                                                    | not found in the NCBI database
+  planctomycete_DDSW3008 was not found in NCBI database, trying to download the next best match
+  bacterium_enrichment_culture_clone_B176(2011)                             | not found in the NCBI database
+  planctomycete_DDSW1318                                                    | not found in the NCBI database
+  planctomycete_DDSW1318 was not found in NCBI database, trying to download the next best match
+  Gimesia_maris                                                             | successfully downloaded (total 15, 224 more to go)
+  planctomycete_DDD3G8                                                      | not found in the NCBI database
+  planctomycete_A-2                                                         | not found in the NCBI database
+  planctomycete_A-2 was not found in NCBI database, trying to download the next best match
+  planctomycete_str._337                                                    | not found in the NCBI database
+  planctomycete_str._337 was not found in NCBI database, trying to download the next best match
+  Planctomycetes_bacterium_R1                                               | successfully downloaded (total 16, 222 more to go)
+  myxobacterium_SMH-27-4                                                    | not found in the NCBI database
+  myxobacterium_SMH-27-4 was not found in NCBI database, trying to download the next best match
+  Pseudenhygromyxa_salsuginis                                               | not found in the NCBI database
+  Pseudenhygromyxa_salsuginis was not found in NCBI database, trying to download the next best match
+  Enhygromyxa_salina                                                        | successfully downloaded (total 17, 221 more to go)
+  myxobacterium_KC                                                          | not found in the NCBI database
+  myxobacterium_KC was not found in NCBI database, trying to download the next best match
+  Anaeromyxobacter_sp._K                                                    | successfully downloaded (total 18, 220 more to go)
+  mucus_bacterium_66                                                        | not found in the NCBI database
+  mucus_bacterium_66 was not found in NCBI database, trying to download the next best match
+  alpha_proteobacterium_SOGA29                                              | not found in the NCBI database
+  alpha_proteobacterium_SOGA29 was not found in NCBI database, trying to download the next best match
+Inquilinus limosus MP06 has too fragmented reference genome! It will not be downloaded.
+  Inquilinus_limosus_MP06                                                   | not found in the NCBI database
+  mixed_culture_isolate_koll6                                               | not found in the NCBI database
+  mixed_culture_isolate_koll6 was not found in NCBI database, trying to download the next best match
+  bacterium_WH3-1                                                           | not found in the NCBI database
+  bacterium_WH3-1 was not found in NCBI database, trying to download the next best match
+  Umezawaea_tangerina                                                       | successfully downloaded (total 19, 218 more to go)
+  mine_drainage_metagenome                                                  | successfully downloaded (total 20, 217 more to go)
+microbial mat metagenome has too fragmented reference genome! It will not be downloaded.
+  microbial_mat_metagenome                                                  | not found in the NCBI database
+  microbial_mat_metagenome was not found in NCBI database, trying to download the next best match
+  Cytophaga_sp                                                              | not found in the NCBI database
+  Cytophaga_sp was not found in NCBI database, trying to download the next best match
+  Arcticibacter_svalbardensis_MN12-7                                        | successfully downloaded (total 21, 216 more to go)
+  metal-contaminated_soil_clone_K20-27                                      | not found in the NCBI database
+  metal-contaminated_soil_clone_K20-27 was not found in NCBI database, trying to download the next best match
+  Kaistia_sp._LWQ2                                                          | not found in the NCBI database
+  Kaistia_sp._LWQ2 was not found in NCBI database, trying to download the next best match
+  metal-contaminated_soil_clone_K20-12                                      | not found in the NCBI database
+  metal-contaminated_soil_clone_K20-12 was not found in NCBI database, trying to download the next best match
+  soil_bacterium_WF55                                                       | not found in the NCBI database
+  marine_snow_associated_bacterium_Adriatic76                               | not found in the NCBI database
+  marine_snow_associated_bacterium_Adriatic76 was not found in NCBI database, trying to download the next best match
+  bacterium_ROME95Asa                                                       | not found in the NCBI database
+  bacterium_ROME95Asa was not found in NCBI database, trying to download the next best match
+  delta_proteobacterium_LacK10                                              | not found in the NCBI database
+  delta_proteobacterium_LacK10 was not found in NCBI database, trying to download the next best match
+  Desulfocapsa_sp._Cad626                                                   | not found in the NCBI database
+  marine_snow_associated_bacterium_Adriatic74                               | not found in the NCBI database
+  marine_snow_associated_bacterium_Adriatic7                                | not found in the NCBI database
+  marine_snow_associated_bacterium_Adriatic7 was not found in NCBI database, trying to download the next best match
+  Hyphomonas_chukchiensis                                                   | successfully downloaded (total 22, 212 more to go)
+marine sediment metagenome has too fragmented reference genome! It will not be downloaded.
+  marine_sediment_metagenome                                                | not found in the NCBI database
+  marine_sediment_metagenome was not found in NCBI database, trying to download the next best match
+  Dehalogenimonas_sp._enrichment_culture_clone_06-1235251-24                | not found in the NCBI database
+  Dehalogenimonas_sp._enrichment_culture_clone_06-1235251-24 was not found in NCBI database, trying to download the next best match
+  Dehalogenimonas_lykanthroporepellens_BL-DC-9                              | successfully downloaded (total 23, 211 more to go)
+marine metagenome has too fragmented reference genome! It will not be downloaded.
+  marine_metagenome                                                         | not found in the NCBI database
+  marine_metagenome was not found in NCBI database, trying to download the next best match
+  Nocardioides_albus                                                        | not found in the NCBI database
+  Nocardioides_albus was not found in NCBI database, trying to download the next best match
+  Pimelobacter_simplex                                                      | successfully downloaded (total 24, 210 more to go)
+  marine_magnetic_spirillum_QH-2                                            | not found in the NCBI database
+  marine_magnetic_spirillum_QH-2 was not found in NCBI database, trying to download the next best match
+  mucus_bacterium_38                                                        | not found in the NCBI database
+  mucus_bacterium_38 was not found in NCBI database, trying to download the next best match
+  Kordiimonas_sp._ZJ6309                                                    | not found in the NCBI database
+  marine_gamma_proteobacterium_HTCC2188                                     | not found in the NCBI database
+  marine_gamma_proteobacterium_HTCC2188 was not found in NCBI database, trying to download the next best match
+  Marinobacter_sp._149BE                                                    | not found in the NCBI database
+  Marinobacter_sp._149BE was not found in NCBI database, trying to download the next best match
+  Marinomonas_mediterranea_MMB-1                                            | successfully downloaded (total 25, 208 more to go)
+  marine_gamma_proteobacterium_HTCC2143                                     | successfully downloaded (total 26, 207 more to go)
+  marine_gamma_proteobacterium_HTCC2080                                     | successfully downloaded (total 27, 206 more to go)
+  marine_bacterium_KS-9-10-4                                                | not found in the NCBI database
+  marine_bacterium_KS-9-10-4 was not found in NCBI database, trying to download the next best match
+  bacterium_daSW.31                                                         | not found in the NCBI database
+  bacterium_daSW.31 was not found in NCBI database, trying to download the next best match
+  bacterium_L200B.335                                                       | not found in the NCBI database
+  bacterium_L200B.335 was not found in NCBI database, trying to download the next best match
+  Sphingomonas_sp._B6.09-105                                                | not found in the NCBI database
+  magnetic_proteobacterium_strain_rj58                                      | not found in the NCBI database
+  magnetic_proteobacterium_strain_rj58 was not found in NCBI database, trying to download the next best match
+  Erythrobacter_sp._SMB2                                                    | not found in the NCBI database
+  Erythrobacter_sp._SMB2 was not found in NCBI database, trying to download the next best match
+  Porphyrobacter_sanguineus                                                 | successfully downloaded (total 28, 204 more to go)
+  magnetic_coccus_MP17                                                      | not found in the NCBI database
+  magnetic_coccus_MP17 was not found in NCBI database, trying to download the next best match
+  Lutispora_thermophila                                                     | successfully downloaded (total 29, 203 more to go)
+  iron-reducing_bacterium_enrichment_culture_clone_HN-HFO40                 | not found in the NCBI database
+  iron-reducing_bacterium_enrichment_culture_clone_HN-HFO40 was not found in NCBI database, trying to download the next best match
+  Geobacter_luticola                                                        | not found in the NCBI database
+  iron-reducing_bacterium_enrichment_culture_clone_HN-HFO18                 | not found in the NCBI database
+  iron-reducing_bacterium_enrichment_culture_clone_HN-HFO16                 | not found in the NCBI database
+  iron-reducing_bacterium_enrichment_culture_clone_HN-HFO16 was not found in NCBI database, trying to download the next best match
+  Geobacter_sp._M18                                                         | successfully downloaded (total 30, 200 more to go)
+  iron-reducing_bacterium_enrichment_culture_clone_HN-HFO140                | not found in the NCBI database
+  iron-reducing_bacterium_enrichment_culture_clone_HN-HFO140 was not found in NCBI database, trying to download the next best match
+  iron-reducing_bacterium_enrichment_culture_clone_HN-HFO2                  | not found in the NCBI database
+  iron-reducing_bacterium_enrichment_culture_clone_HN-HFO2 was not found in NCBI database, trying to download the next best match
+  Geobacter_luticola                                                        | not found in the NCBI database
+  iodide-oxidizing_bacterium_Ka-4                                           | not found in the NCBI database
+  iodide-oxidizing_bacterium_Ka-4 was not found in NCBI database, trying to download the next best match
+  Roseovarius_sp._AMV6                                                      | not found in the NCBI database
+  Roseovarius_sp._AMV6 was not found in NCBI database, trying to download the next best match
+  Rhodobacteraceae_bacterium_DG1297                                         | not found in the NCBI database
+  Rhodobacteraceae_bacterium_DG1297 was not found in NCBI database, trying to download the next best match
+  Marivita_sp._SSW136                                                       | successfully downloaded (total 31, 198 more to go)
+  hydrothermal_vent_eubacterium_PVB_OTU_2                                   | not found in the NCBI database
+  hydrothermal_vent_eubacterium_PVB_OTU_2 was not found in NCBI database, trying to download the next best match
+  Sulfurimonas_paralvinellae                                                | not found in the NCBI database
+  Sulfurimonas_paralvinellae was not found in NCBI database, trying to download the next best match
+  Alviniconcha_sp._gill_symbiont                                            | not found in the NCBI database
+human gut metagenome has too fragmented reference genome! It will not be downloaded.
+  human_gut_metagenome                                                      | not found in the NCBI database
+  human_gut_metagenome was not found in NCBI database, trying to download the next best match
+  Rathayibacter_iranicus                                                    | successfully downloaded (total 32, 196 more to go)
+  hot_springs_metagenome                                                    | successfully downloaded (total 33, 195 more to go)
+  heterotrophic_extracellular_symbiont_BG-C2_of_Benthomodiolus_geikotsucola | not found in the NCBI database
+  heterotrophic_extracellular_symbiont_BG-C2_of_Benthomodiolus_geikotsucola was not found in NCBI database, trying to download the next best match
+  Methylomicrobium_album                                                    | successfully downloaded (total 34, 194 more to go)
+  gamma_proteobacterium_S-1(2010)                                           | not found in the NCBI database
+  gamma_proteobacterium_S-1(2010) was not found in NCBI database, trying to download the next best match
+  Ectothiorhodospiraceae_bacterium_LYG13                                    | not found in the NCBI database
+  Ectothiorhodospiraceae_bacterium_LYG13 was not found in NCBI database, trying to download the next best match
+  Alcanivorax_sp._TE-9                                                      | not found in the NCBI database
+  Alcanivorax_sp._TE-9 was not found in NCBI database, trying to download the next best match
+  Alcanivorax_dieselolei_B5                                                 | successfully downloaded (total 35, 193 more to go)
+  gamma_proteobacterium_NEP68                                               | not found in the NCBI database
+  gamma_proteobacterium_NEP68 was not found in NCBI database, trying to download the next best match
+  marine_gamma_proteobacterium_HTCC2246                                     | not found in the NCBI database
+  marine_gamma_proteobacterium_HTCC2246 was not found in NCBI database, trying to download the next best match
+  Arctic_sea_ice_bacterium_ARK10038                                         | not found in the NCBI database
+  freshwater_sediment_metagenome                                            | not found in the NCBI database
+  freshwater_sediment_metagenome was not found in NCBI database, trying to download the next best match
+  Geobacter_bemidjiensis_Bem                                                | successfully downloaded (total 36, 191 more to go)
+  endosymbiont_of_Oligobrachia_haakonmosbiensis                             | not found in the NCBI database
+  endosymbiont_of_Oligobrachia_haakonmosbiensis was not found in NCBI database, trying to download the next best match
+  Methylococcaceae_bacterium_ET-HIRO                                        | not found in the NCBI database
+  Methylococcaceae_bacterium_ET-HIRO was not found in NCBI database, trying to download the next best match
+  Methylomarinum_vadi                                                       | successfully downloaded (total 37, 190 more to go)
+  endosymbiont_'Pakistan'_of_Acharax_johnsoni                               | not found in the NCBI database
+  endosymbiont_'Pakistan'_of_Acharax_johnsoni was not found in NCBI database, trying to download the next best match
+  Solemya_velum_gill_symbiont                                               | successfully downloaded (total 38, 189 more to go)
+  ectosymbiont_of_Robbea_sp._3_SB-2008                                      | not found in the NCBI database
+  ectosymbiont_of_Robbea_sp._3_SB-2008 was not found in NCBI database, trying to download the next best match
+  gamma_proteobacterium_endosymbiont_1_of_Inanidrilus_makropetalos          | not found in the NCBI database
+  gamma_proteobacterium_endosymbiont_1_of_Inanidrilus_makropetalos was not found in NCBI database, trying to download the next best match
+  Laxus_cosmopolitus_associated_bacterium                                   | not found in the NCBI database
+  Laxus_cosmopolitus_associated_bacterium was not found in NCBI database, trying to download the next best match
+  ectosymbiont_of_Robbea_sp._1_SB-2008                                      | not found in the NCBI database
+  dibenzofuran-degrading_bacterium_DBF-MAK                                  | not found in the NCBI database
+  dibenzofuran-degrading_bacterium_DBF-MAK was not found in NCBI database, trying to download the next best match
+  Bathymodiolus_heckerae_gill_symbiont                                      | not found in the NCBI database
+  denitrifying_bacterium_enrichment_culture_clone_NOB_2_C9                  | not found in the NCBI database
+  denitrifying_bacterium_enrichment_culture_clone_NOB_2_C9 was not found in NCBI database, trying to download the next best match
+  Megasphaera_paucivorans                                                   | successfully downloaded (total 39, 186 more to go)
+  denitrifying_bacterium_enrichment_culture_clone_NOB_2_C10                 | not found in the NCBI database
+  denitrifying_bacterium_enrichment_culture_clone_NOB_2_C10 was not found in NCBI database, trying to download the next best match
+  denitrifying_bacterium_enrichment_culture_clone_NOA_1_B11                 | not found in the NCBI database
+  denitrifying_bacterium_enrichment_culture_clone_NOA_1_B11 was not found in NCBI database, trying to download the next best match
+  denitrifying_bacterium_enrichment_culture_clone_NOB_2_E12                 | not found in the NCBI database
+  denitrifying_bacterium_enrichment_culture_clone_NOB_2_E12 was not found in NCBI database, trying to download the next best match
+  bacterium_K-4b6                                                           | not found in the NCBI database
+  delta_proteobacterium_PP31                                                | not found in the NCBI database
+  delta_proteobacterium_PP31 was not found in NCBI database, trying to download the next best match
+  Olavius_algarvensis_associated_proteobacterium_Delta_3                    | not found in the NCBI database
+  Olavius_algarvensis_associated_proteobacterium_Delta_3 was not found in NCBI database, trying to download the next best match
+  Algidimarina_propionica                                                   | not found in the NCBI database
+  Algidimarina_propionica was not found in NCBI database, trying to download the next best match
+  bacterium_enrichment_culture_clone_AOM-SR-B34                             | not found in the NCBI database
+  delta_proteobacterium_PL12                                                | not found in the NCBI database
+  delta_proteobacterium_PL12 was not found in NCBI database, trying to download the next best match
+  Desulfosarcina_variabilis                                                 | not found in the NCBI database
+  Desulfosarcina_variabilis was not found in NCBI database, trying to download the next best match
+  Algidimarina_propionica                                                   | not found in the NCBI database
+  delta_proteobacterium_O29                                                 | not found in the NCBI database
+  delta_proteobacterium_O29 was not found in NCBI database, trying to download the next best match
+  myxobacterium_SIBN-17                                                     | not found in the NCBI database
+  myxobacterium_SIBN-17 was not found in NCBI database, trying to download the next best match
+  Kofleria_flava                                                            | not found in the NCBI database
+delta proteobacterium MLMS-1 has too fragmented reference genome! It will not be downloaded.
+  delta_proteobacterium_MLMS-1                                              | not found in the NCBI database
+  delta_proteobacterium_MLMS-1 was not found in NCBI database, trying to download the next best match
+  delta_proteobacterium_ectosymbiont_of_Rimicaris_exoculata                 | not found in the NCBI database
+  delta_proteobacterium_ectosymbiont_of_Rimicaris_exoculata was not found in NCBI database, trying to download the next best match
+  Desulfobulbus_sp._Tol-SR                                                  | successfully downloaded (total 40, 181 more to go)
+  delta_proteobacterium_LacK9                                               | not found in the NCBI database
+  delta_proteobacterium_LacK9 was not found in NCBI database, trying to download the next best match
+  Syntrophomonas_curvata                                                    | not found in the NCBI database
+  Syntrophomonas_curvata was not found in NCBI database, trying to download the next best match
+  Desulfovibrio_termitidis_HI1                                              | successfully downloaded (total 41, 180 more to go)
+  delta_proteobacterium_LWH25                                               | not found in the NCBI database
+  cyanobiont_of_Cymbastela_stipitata                                        | not found in the NCBI database
+  cyanobiont_of_Cymbastela_stipitata was not found in NCBI database, trying to download the next best match
+  Synechocystis_sp._SAG_37.92                                               | not found in the NCBI database
+  Synechocystis_sp._SAG_37.92 was not found in NCBI database, trying to download the next best match
+  Cyanobacterium_sp._CLg1                                                   | not found in the NCBI database
+  Cyanobacterium_sp._CLg1 was not found in NCBI database, trying to download the next best match
+  Cyanobacterium_aponinum_PCC_10605                                         | successfully downloaded (total 42, 178 more to go)
+  compost_metagenome                                                        | not found in the NCBI database
+  compost_metagenome was not found in NCBI database, trying to download the next best match
+  Thermobispora_bispora_DSM_43833                                           | successfully downloaded (total 43, 177 more to go)
+  carbazole-degrading_bacterium_OC13S                                       | not found in the NCBI database
+  carbazole-degrading_bacterium_OC13S was not found in NCBI database, trying to download the next best match
+  carbazole-degrading_bacterium_OC6S                                        | not found in the NCBI database
+  carbazole-degrading_bacterium_OC6S was not found in NCBI database, trying to download the next best match
+  carbazole-degrading_bacterium_OC9                                         | not found in the NCBI database
+  carbazole-degrading_bacterium_OC9 was not found in NCBI database, trying to download the next best match
+  Rhodospirillum_sp._KYW360                                                 | not found in the NCBI database
+  candidate_division_TM7_single-cell_isolate_TM7a                           | not found in the NCBI database
+  candidate_division_TM7_single-cell_isolate_TM7a was not found in NCBI database, trying to download the next best match
+  candidate_division_TM7_genomosp._GTL1                                     | successfully downloaded (total 44, 175 more to go)
+bioreactor metagenome has too fragmented reference genome! It will not be downloaded.
+  bioreactor_metagenome                                                     | not found in the NCBI database
+  bioreactor_metagenome was not found in NCBI database, trying to download the next best match
+  Fluviicola_sp._THG-D9                                                     | not found in the NCBI database
+  Fluviicola_sp._THG-D9 was not found in NCBI database, trying to download the next best match
+  Bacteroidetes_bacterium_MWH-CFBk5                                         | not found in the NCBI database
+  Bacteroidetes_bacterium_MWH-CFBk5 was not found in NCBI database, trying to download the next best match
+  Solitalea_canadensis                                                      | successfully downloaded (total 45, 174 more to go)
+  benzene_mineralizing_consortium_clone_SB-5                                | not found in the NCBI database
+  benzene_mineralizing_consortium_clone_SB-34                               | not found in the NCBI database
+  benzene_mineralizing_consortium_clone_SB-34 was not found in NCBI database, trying to download the next best match
+  Anaerolineae_bacterium_SW7                                                | not found in the NCBI database
+  Anaerolineae_bacterium_SW7 was not found in NCBI database, trying to download the next best match
+  Levilinea_saccharolytica                                                  | successfully downloaded (total 46, 172 more to go)
+  bacterium_sp._OF1                                                         | not found in the NCBI database
+  bacterium_sp._OF1 was not found in NCBI database, trying to download the next best match
+  Anaerophaga_thermohalophila                                               | successfully downloaded (total 47, 171 more to go)
+  bacterium_episymbiont_of_Kiwa_sp                                          | not found in the NCBI database
+  bacterium_episymbiont_of_Kiwa_sp was not found in NCBI database, trying to download the next best match
+  Lewinella_nigricans                                                       | successfully downloaded (total 48, 170 more to go)
+  bacterium_enrichment_culture_clone_R1492-8                                | not found in the NCBI database
+  bacterium_enrichment_culture_clone_R1492-8 was not found in NCBI database, trying to download the next best match
+  Candidatus_Nitrosoarchaeum_limnia_SFB1                                    | successfully downloaded (total 49, 169 more to go)
+  bacterium_enrichment_culture_clone_AOM-SR-B7                              | not found in the NCBI database
+  bacterium_enrichment_culture_clone_AOM-SR-B7 was not found in NCBI database, trying to download the next best match
+  delta_proteobacterium_S2551                                               | not found in the NCBI database
+  bacterium_enrichment_culture_clone_33(2013)                               | not found in the NCBI database
+  bacterium_enrichment_culture_clone_33(2013) was not found in NCBI database, trying to download the next best match
+  Chondromyces_apiculatus_DSM_436                                           | was downloaded previously (total 50, 167 more to go)
+  bacterium_enrichment_culture_clone_16S-6                                  | not found in the NCBI database
+  bacterium_enrichment_culture_clone_16S-6 was not found in NCBI database, trying to download the next best match
+  bacterium_enrichment_culture_clone_16S-3                                  | not found in the NCBI database
+  bacterium_enrichment_culture_clone_16S-3 was not found in NCBI database, trying to download the next best match
+  Alkalispirillum_sp._ACO3                                                  | not found in the NCBI database
+  bacterium_ZSGR24                                                          | not found in the NCBI database
+  bacterium_ZSGR24 was not found in NCBI database, trying to download the next best match
+  alpha_proteobacterium_047                                                 | not found in the NCBI database
+  alpha_proteobacterium_047 was not found in NCBI database, trying to download the next best match
+  Roseomonas_cervicalis                                                     | successfully downloaded (total 51, 165 more to go)
+  bacterium_WX65                                                            | not found in the NCBI database
+  bacterium_WX65 was not found in NCBI database, trying to download the next best match
+  Gemmata_sp._Io6-1                                                         | not found in the NCBI database
+  Gemmata_sp._Io6-1 was not found in NCBI database, trying to download the next best match
+  Gemmata_sp._Ha1-1                                                         | not found in the NCBI database
+  Gemmata_sp._Ha1-1 was not found in NCBI database, trying to download the next best match
+  Gemmata_sp._Ha1-4                                                         | not found in the NCBI database
+  bacterium_WHC5-12                                                         | not found in the NCBI database
+  bacterium_WHC5-12 was not found in NCBI database, trying to download the next best match
+  gamma_proteobacterium_HIMB30                                              | successfully downloaded (total 52, 163 more to go)
+  bacterium_WH5-6                                                           | not found in the NCBI database
+  bacterium_WH1-4                                                           | not found in the NCBI database
+  bacterium_WH1-4 was not found in NCBI database, trying to download the next best match
+  Eudoraea_sp._CAU1296                                                      | not found in the NCBI database
+  Eudoraea_sp._CAU1296 was not found in NCBI database, trying to download the next best match
+  Mangrovimonas_yunxiaonensis                                               | successfully downloaded (total 53, 161 more to go)
+  bacterium_UASB14                                                          | successfully downloaded (total 54, 160 more to go)
+  bacterium_SH4-10                                                          | not found in the NCBI database
+  bacterium_SH4-10 was not found in NCBI database, trying to download the next best match
+  Parcubacteria_bacterium_RAAC4_OD1_1                                       | successfully downloaded (total 55, 159 more to go)
+  bacterium_SH1-10                                                          | not found in the NCBI database
+  bacterium_SH1-10 was not found in NCBI database, trying to download the next best match
+  Blastopirellula_marina                                                    | successfully downloaded (total 56, 158 more to go)
+  bacterium_SFB93                                                           | not found in the NCBI database
+  bacterium_SFB93 was not found in NCBI database, trying to download the next best match
+  bacterium_enrichment_culture_clone_ecb6                                   | not found in the NCBI database
+  bacterium_enrichment_culture_clone_ecb6 was not found in NCBI database, trying to download the next best match
+  Desulfoglaeba_sp._Lake                                                    | not found in the NCBI database
+  bacterium_N2yML4                                                          | not found in the NCBI database
+  bacterium_N2yML4 was not found in NCBI database, trying to download the next best match
+  Acidobacteria_bacterium_DG1540                                            | not found in the NCBI database
+  Acidobacteria_bacterium_DG1540 was not found in NCBI database, trying to download the next best match
+  Pseudomonas_sp._CT42                                                      | not found in the NCBI database
+  Pseudomonas_sp._CT42 was not found in NCBI database, trying to download the next best match
+  Pseudomonas_sp._W1.09-144                                                 | not found in the NCBI database
+  bacterium_LWQ8                                                            | not found in the NCBI database
+  bacterium_LWQ8 was not found in NCBI database, trying to download the next best match
+  TM7_phylum_sp._canine_oral_taxon_308                                      | not found in the NCBI database
+  TM7_phylum_sp._canine_oral_taxon_308 was not found in NCBI database, trying to download the next best match
+  metal-contaminated_soil_clone_K20-12                                      | not found in the NCBI database
+  metal-contaminated_soil_clone_K20-12 was not found in NCBI database, trying to download the next best match
+  TM7_phylum_sp._canine_oral_taxon_305                                      | not found in the NCBI database
+  bacterium_Ellin6543                                                       | not found in the NCBI database
+  bacterium_Ellin6543 was not found in NCBI database, trying to download the next best match
+  bacterium_Ellin6519                                                       | not found in the NCBI database
+  bacterium_Ellin6529                                                       | not found in the NCBI database
+  bacterium_Ellin6526                                                       | not found in the NCBI database
+  bacterium_Ellin5273                                                       | not found in the NCBI database
+  bacterium_Ellin5273 was not found in NCBI database, trying to download the next best match
+  bacterium_enrichment_culture_clone_auto222_4W                             | not found in the NCBI database
+  bacterium_enrichment_culture_clone_auto222_4W was not found in NCBI database, trying to download the next best match
+  bacterium_Ellin5247                                                       | not found in the NCBI database
+  bacterium_Ellin511                                                        | not found in the NCBI database
+  bacterium_Ellin511 was not found in NCBI database, trying to download the next best match
+  Rubritalea_halochordaticola                                               | not found in the NCBI database
+  Rubritalea_halochordaticola was not found in NCBI database, trying to download the next best match
+  Prosthecobacter_debontii                                                  | successfully downloaded (total 57, 150 more to go)
+  bacterium_DG890                                                           | not found in the NCBI database
+  bacterium_DG890 was not found in NCBI database, trying to download the next best match
+  bacterium_enrichment_culture_clone_AOM-SR-B3                              | not found in the NCBI database
+  bacterium_DG873                                                           | not found in the NCBI database
+  bacterium_DG873 was not found in NCBI database, trying to download the next best match
+  Adhaeribacter_aerolatus                                                   | not found in the NCBI database
+  Adhaeribacter_aerolatus was not found in NCBI database, trying to download the next best match
+  Adhaeribacter_sp._TSX13-1                                                 | not found in the NCBI database
+  Adhaeribacter_sp._TSX13-1 was not found in NCBI database, trying to download the next best match
+  Adhaeribacter_aquaticus_DSM_16391                                         | successfully downloaded (total 58, 148 more to go)
+  bacterium_Chibacore_1500                                                  | not found in the NCBI database
+  bacterium_Chibacore_1500 was not found in NCBI database, trying to download the next best match
+  Gemmatimonadetes_bacterium_LP81                                           | not found in the NCBI database
+  Gemmatimonadetes_bacterium_LP81 was not found in NCBI database, trying to download the next best match
+  Laceyella_tengchongensis                                                  | not found in the NCBI database
+  Laceyella_tengchongensis was not found in NCBI database, trying to download the next best match
+  Natranaerobiaceae_bacterium_Z1001                                         | not found in the NCBI database
+  bacterium_AMSU                                                            | not found in the NCBI database
+  bacterium_AMSU was not found in NCBI database, trying to download the next best match
+  Muriicola_sp._A6B8                                                        | not found in the NCBI database
+  Muriicola_sp._A6B8 was not found in NCBI database, trying to download the next best match
+  Zeaxanthinibacter_enoshimensis                                            | successfully downloaded (total 59, 146 more to go)
+  bacterium_2BP-6                                                           | not found in the NCBI database
+  bacterium_2BP-6 was not found in NCBI database, trying to download the next best match
+  Desulfatiglans_anilini_DSM_4660                                           | successfully downloaded (total 60, 145 more to go)
+  bacterium_09.96.18                                                        | not found in the NCBI database
+  anaerobic_syntrophic_bacterium_NE23-3                                     | not found in the NCBI database
+  anaerobic_syntrophic_bacterium_NE23-3 was not found in NCBI database, trying to download the next best match
+  Geobacter_sp._AOG3                                                        | not found in the NCBI database
+  Geobacter_sp._AOG3 was not found in NCBI database, trying to download the next best match
+  Desulfosporosinus_sp._5apy                                                | not found in the NCBI database
+  anaerobic_bacterium_MO-CFX2                                               | successfully downloaded (total 61, 142 more to go)
+  anaerobic_bacterium_MO-CFX1                                               | successfully downloaded (total 62, 141 more to go)
+  anaerobic_ammonium-oxidizing_planctomycete_JMK-1                          | not found in the NCBI database
+  alpha_proteobacterium_endosymbiont_2_of_Inanidrilus_makropetalos          | not found in the NCBI database
+  alpha_proteobacterium_endosymbiont_2_of_Inanidrilus_makropetalos was not found in NCBI database, trying to download the next best match
+  Candidatus_Nitrosoarchaeum_limnia_SFB1                                    | was downloaded previously (total 63, 139 more to go)
+  alpha_proteobacterium_endosymbiont_1b_of_Inanidrilus_makropetalos         | not found in the NCBI database
+  alpha_proteobacterium_endosymbiont_1b_of_Inanidrilus_makropetalos was not found in NCBI database, trying to download the next best match
+  Candidatus_Nitrosoarchaeum_limnia_SFB1                                    | was downloaded previously (total 64, 138 more to go)
+  alpha_proteobacterium_SOGA19                                              | not found in the NCBI database
+  alpha_proteobacterium_SOGA19 was not found in NCBI database, trying to download the next best match
+  alpha_proteobacterium_SOGA29                                              | not found in the NCBI database
+  alpha_proteobacterium_SOGA29 was not found in NCBI database, trying to download the next best match
+  Candidatus_Nitrosoarchaeum_limnia_BG20                                    | successfully downloaded (total 65, 137 more to go)
+  alpha_proteobacterium_GMD37A6                                             | not found in the NCBI database
+  alpha_proteobacterium_GMD37A6 was not found in NCBI database, trying to download the next best match
+  alpha_proteobacterium_GMD37B10                                            | not found in the NCBI database
+  alpha_proteobacterium_GMD37B10 was not found in NCBI database, trying to download the next best match
+  Thalassospira_sp._2ta1                                                    | not found in the NCBI database
+  actinobacterium_YJF2-33                                                   | not found in the NCBI database
+  actinobacterium_YJF2-33 was not found in NCBI database, trying to download the next best match
+  bacterium_enrichment_culture_clone_auto8_4W                               | not found in the NCBI database
+  actinobacterium_BGR_77                                                    | not found in the NCBI database
+  actinobacterium_BGR_74                                                    | not found in the NCBI database
+  actinobacterium_BGR_74 was not found in NCBI database, trying to download the next best match
+  actinobacterium_BGR_127                                                   | not found in the NCBI database
+  actinobacterium_BGR_127 was not found in NCBI database, trying to download the next best match
+  Thermasporomyces_composti                                                 | successfully downloaded (total 66, 133 more to go)
+  actinobacterium_BGR_43                                                    | not found in the NCBI database
+  actinobacterium_BGR_43 was not found in NCBI database, trying to download the next best match
+  bacterium_enrichment_culture_clone_auto8_4W                               | not found in the NCBI database
+  bacterium_enrichment_culture_clone_auto8_4W was not found in NCBI database, trying to download the next best match
+  Ilumatobacter_fluminis                                                    | successfully downloaded (total 67, 132 more to go)
+  Zymoseptoria_tritici                                                      | successfully downloaded (total 68, 131 more to go)
+  Xenococcus_sp._PCC_7305                                                   | successfully downloaded (total 69, 130 more to go)
+  Waddlia_sp._G817                                                          | not found in the NCBI database
+  Waddlia_sp._G817 was not found in NCBI database, trying to download the next best match
+  Waddlia_chondrophila_WSU_86-1044                                          | successfully downloaded (total 70, 129 more to go)
+  Virgibacillus_sp._WZ-2013                                                 | not found in the NCBI database
+  Virgibacillus_sp._WZ-2013 was not found in NCBI database, trying to download the next best match
+  Virgibacillus_sp._M2024                                                   | not found in the NCBI database
+  Virgibacillus_sp._M2024 was not found in NCBI database, trying to download the next best match
+  Desulfonatronum_lacustre_DSM_10312                                        | successfully downloaded (total 71, 128 more to go)
+  Victivallis_vadensis_ATCC_BAA-548                                         | not found in the NCBI database
+  Victivallis_vadensis_ATCC_BAA-548 was not found in NCBI database, trying to download the next best match
+  Victivallis_vadensis                                                      | successfully downloaded (total 72, 127 more to go)
+  Vibrio_sp._Gp-3-5.1                                                       | not found in the NCBI database
+  Vibrio_sp._Gp-3-5.1 was not found in NCBI database, trying to download the next best match
+  Desulfohalobium_retbaense_DSM_5692                                        | successfully downloaded (total 73, 126 more to go)
+  Vibrio_parahaemolyticus_UCM-V493                                          | successfully downloaded (total 74, 125 more to go)
+  Verrucomicrobiaceae_bacterium_CHC12                                       | not found in the NCBI database
+  Verrucomicrobiaceae_bacterium_CHC12 was not found in NCBI database, trying to download the next best match
+  Luteolibacter_algae                                                       | not found in the NCBI database
+  Luteolibacter_algae was not found in NCBI database, trying to download the next best match
+Oikopleura dioica has too fragmented reference genome! It will not be downloaded.
+  Oikopleura_dioica                                                         | not found in the NCBI database
+Verrucomicrobia bacterium SCGC AAA164-O14 has too fragmented reference genome! It will not be downloaded.
+  Verrucomicrobia_bacterium_SCGC_AAA164-O14                                 | not found in the NCBI database
+  Verrucomicrobia_bacterium_SCGC_AAA027-I19                                 | successfully downloaded (total 75, 122 more to go)
+  Ureibacillus_thermosphaericus                                             | successfully downloaded (total 76, 121 more to go)
+  Trueperella_pyogenes                                                      | successfully downloaded (total 77, 120 more to go)
+  Triglochin_maritima                                                       | not found in the NCBI database
+  Triglochin_maritima was not found in NCBI database, trying to download the next best match
+  Butomus_umbellatus                                                        | not found in the NCBI database
+  Butomus_umbellatus was not found in NCBI database, trying to download the next best match
+  Alisma_plantago-aquatica                                                  | not found in the NCBI database
+  Alisma_plantago-aquatica was not found in NCBI database, trying to download the next best match
+  Potamogeton_berchtoldii                                                   | not found in the NCBI database
+  Treponema_primitia_ZAS-2                                                  | successfully downloaded (total 78, 118 more to go)
+  Treponema_primitia_ZAS-1                                                  | successfully downloaded (total 79, 117 more to go)
+  Treponema_caldaria_DSM_7334                                               | successfully downloaded (total 80, 116 more to go)
+  Treponema_azotonutricium_ZAS-9                                            | successfully downloaded (total 81, 115 more to go)
+  Thiorhodospira_sp._SLG                                                    | not found in the NCBI database
+  Thiorhodospira_sp._SLG was not found in NCBI database, trying to download the next best match
+  Cellvibrio_japonicus_Ueda107                                              | successfully downloaded (total 82, 114 more to go)
+  Thiorhodospira_sibirica_ATCC_700588                                       | successfully downloaded (total 83, 113 more to go)
+  Thiomargarita_namibiensis                                                 | not found in the NCBI database
+  Thiohalobacter_thiocyanaticus                                             | successfully downloaded (total 84, 111 more to go)
+  Thiogranum_longum                                                         | successfully downloaded (total 85, 110 more to go)
+  Thiocapsa_imhoffii                                                        | not found in the NCBI database
+  Thiocapsa_imhoffii was not found in NCBI database, trying to download the next best match
+  Alkalilimnicola_ehrlichii_MLHE-1                                          | successfully downloaded (total 86, 109 more to go)
+  Thioalkalivibrio_thiocyanoxidans_ARh_4                                    | successfully downloaded (total 87, 108 more to go)
+  Thioalkalivibrio_thiocyanodenitrificans_ARhD_1                            | successfully downloaded (total 88, 107 more to go)
+  Thioalkalivibrio_sulfidiphilus_HL-EbGr7                                   | successfully downloaded (total 89, 106 more to go)
+  Thioalkalivibrio_sp._BB57                                                 | not found in the NCBI database
+  Thioalkalivibrio_sp._BB57 was not found in NCBI database, trying to download the next best match
+  Thioalkalivibrio_sp._AKL17                                                | successfully downloaded (total 90, 105 more to go)
+  Thioalkalivibrio_sp._ALSr1                                                | successfully downloaded (total 91, 104 more to go)
+  Thioalkalivibrio_sp._ALN1                                                 | not found in the NCBI database
+  Thioalkalivibrio_sp._ALN1 was not found in NCBI database, trying to download the next best match
+  Alkalispirillum_sp._ACO3                                                  | not found in the NCBI database
+  Alkalispirillum_sp._ACO3 was not found in NCBI database, trying to download the next best match
+  Alkalispirillum_sp._ACO5                                                  | not found in the NCBI database
+  Alkalispirillum_sp._ACO5 was not found in NCBI database, trying to download the next best match
+  Alkalispirillum_sp._ACO4                                                  | not found in the NCBI database
+  Thioalkalivibrio_sp._ALJ8                                                 | successfully downloaded (total 92, 102 more to go)
+  Thioalkalivibrio_sp._ALJ17                                                | successfully downloaded (total 93, 101 more to go)
+  Thioalkalivibrio_denitrificans                                            | successfully downloaded (total 94, 100 more to go)
+  Thioalkalispira_microaerophila                                            | not found in the NCBI database
+  Thioalkalispira_microaerophila was not found in NCBI database, trying to download the next best match
+  Legionella_sp._HB09011                                                    | not found in the NCBI database
+  Legionella_sp._HB09011 was not found in NCBI database, trying to download the next best match
+  bacterium_enrichment_culture_clone_41(2013)                               | not found in the NCBI database
+  bacterium_enrichment_culture_clone_41(2013) was not found in NCBI database, trying to download the next best match
+  Vesicomya_sp._endosymbiont                                                | not found in the NCBI database
+  Thermoleophilum_album                                                     | successfully downloaded (total 95, 98 more to go)
+  Thermofilum_sp._1910b                                                     | successfully downloaded (total 96, 97 more to go)
+  Thermofilum_pendens_Hrk_5                                                 | successfully downloaded (total 97, 96 more to go)
+  Thermodesulfovibrio_thiophilus_DSM_17215                                  | successfully downloaded (total 98, 95 more to go)
+  Thermodesulfovibrio_aggregans                                             | successfully downloaded (total 99, 94 more to go)
+  Thermodesulforhabdus_norvegica                                            | successfully downloaded (total 100, 93 more to go)
+  Thermodesulfatator_atlanticus                                             | successfully downloaded (total 101, 92 more to go)
+  Thermococcus_sp._4557                                                     | successfully downloaded (total 102, 91 more to go)
+  Thermobispora_bispora                                                     | successfully downloaded (total 103, 90 more to go)
+  Thermobaculum_sp._enrichment_culture_clone_VanCtr100                      | not found in the NCBI database
+  Thermobaculum_sp._enrichment_culture_clone_VanCtr100 was not found in NCBI database, trying to download the next best match
+  Anaerolinea_thermophila_UNI-1                                             | successfully downloaded (total 104, 89 more to go)
+  Thermoanaerobacter_uzonensis                                              | successfully downloaded (total 105, 88 more to go)
+  Thermoanaerobacter_sp._X514                                               | successfully downloaded (total 106, 87 more to go)
+  Thermoanaerobacter_sp._X513                                               | successfully downloaded (total 107, 86 more to go)
+  Thermincola_potens_JR                                                     | successfully downloaded (total 108, 85 more to go)
+  Thermanaerothrix_daxensis                                                 | successfully downloaded (total 109, 84 more to go)
+  Thalassospira_xiamenensis_M-5_=_DSM_17429                                 | successfully downloaded (total 110, 83 more to go)
+  Thalassospira_sp._PR54-1                                                  | not found in the NCBI database
+  Thalassospira_sp._PR54-1 was not found in NCBI database, trying to download the next best match
+  Olavius_loisae_endosymbiont_2                                             | not found in the NCBI database
+  Olavius_loisae_endosymbiont_2 was not found in NCBI database, trying to download the next best match
+  Thalassospira_profundimaris                                               | successfully downloaded (total 111, 82 more to go)
+  Teredinibacter_turnerae                                                   | successfully downloaded (total 112, 81 more to go)
+  Tepidamorphus_gemmatus                                                    | successfully downloaded (total 113, 80 more to go)
+  Syntrophomonas_sp._enrichment_culture_clone_06-1235251-81                 | not found in the NCBI database
+  Syntrophomonas_sp._enrichment_culture_clone_06-1235251-81 was not found in NCBI database, trying to download the next best match
+  bacterium_enrichment_culture_clone_GD-A-3                                 | not found in the NCBI database
+  bacterium_enrichment_culture_clone_GD-A-3 was not found in NCBI database, trying to download the next best match
+  Leptopilina_clavipes                                                      | not found in the NCBI database
+  Leptopilina_clavipes was not found in NCBI database, trying to download the next best match
+  Halothiobacillus_sp._RA13                                                 | not found in the NCBI database
+  Syntrophobacter_wolinii                                                   | not found in the NCBI database
+  Syntrophobacter_wolinii was not found in NCBI database, trying to download the next best match
+  bacterium_enrichment_culture_clone_E36_A                                  | not found in the NCBI database
+  bacterium_enrichment_culture_clone_E36_A was not found in NCBI database, trying to download the next best match
+  delta_proteobacterium_S2552                                               | not found in the NCBI database
+  Syntrophobacter_fumaroxidans_MPOB                                         | successfully downloaded (total 114, 77 more to go)
+  Sulfuritalea_hydrogenivorans_sk43H                                        | successfully downloaded (total 115, 76 more to go)
+  Sulfitobacter_sp._NAS-14.1                                                | successfully downloaded (total 116, 75 more to go)
+  Sulfitobacter_sp._EE-36                                                   | successfully downloaded (total 117, 74 more to go)
+  Succinispira_mobilis_DSM_6222                                             | successfully downloaded (total 118, 73 more to go)
+  Streptomyces_variabilis                                                   | not found in the NCBI database
+  Streptomyces_variabilis was not found in NCBI database, trying to download the next best match
+  Acidithiomicrobium_sp._P1                                                 | not found in the NCBI database
+  Acidithiomicrobium_sp._P1 was not found in NCBI database, trying to download the next best match
+  Streptomyces_sp._enrichment_culture_clone_SCL_1-17                        | not found in the NCBI database
+  Streptomyces_sp._WMMB_557                                                 | not found in the NCBI database
+  Streptomyces_sp._WMMB_557 was not found in NCBI database, trying to download the next best match
+  Streptomyces_sp._MAR3_CNR877_PL04                                         | not found in the NCBI database
+  Streptomyces_sp._MAR3_CNR877_PL04 was not found in NCBI database, trying to download the next best match
+  Streptomyces_sp._S4-SC1                                                   | not found in the NCBI database
+  Streptomyces_sp._S4-SC1 was not found in NCBI database, trying to download the next best match
+  Herbaspirillum_sp._FSBSN5                                                 | not found in the NCBI database
+  Streptomyces_sp._MUSC26T                                                  | not found in the NCBI database
+  Streptomyces_sp._MUSC26T was not found in NCBI database, trying to download the next best match
+  Streptomyces_sp._MAR4_CNP-082                                             | not found in the NCBI database
+  Streptomyces_sp._MAR4_CNP-082 was not found in NCBI database, trying to download the next best match
+  Streptomyces_sp._MAR4_CNX-435                                             | not found in the NCBI database
+  Streptomyces_mobaraensis_NBRC_13819_=_DSM_40847                           | successfully downloaded (total 119, 69 more to go)
+  Streptococcus_agalactiae_SS1219                                           | successfully downloaded (total 120, 68 more to go)
+  Stella_vacuolata                                                          | not found in the NCBI database
+  Stella_vacuolata was not found in NCBI database, trying to download the next best match
+  Rhodospirillales_bacterium_URHD0088                                       | successfully downloaded (total 121, 67 more to go)
+  Stappia_sp._JL1095                                                        | successfully downloaded (total 122, 66 more to go)
+  Staphylococcus_aureus_subsp._aureus_CN1                                   | successfully downloaded (total 123, 65 more to go)
+  Stanieria_sp._PCC_7302                                                    | not found in the NCBI database
+  Stanieria_sp._PCC_7302 was not found in NCBI database, trying to download the next best match
+  Dermocarpella_sp._PCC_7326                                                | not found in the NCBI database
+  Dermocarpella_sp._PCC_7326 was not found in NCBI database, trying to download the next best match
+  Myxosarcina_sp._PCC_7312                                                  | not found in the NCBI database
+  Myxosarcina_sp._PCC_7312 was not found in NCBI database, trying to download the next best match
+  Myxosarcina_sp._GI1                                                       | successfully downloaded (total 124, 64 more to go)
+  Sporosarcina_pasteurii                                                    | successfully downloaded (total 125, 63 more to go)
+  Spongiibacter_sp._CC-AMW-B                                                | not found in the NCBI database
+  Spongiibacter_sp._CC-AMW-B was not found in NCBI database, trying to download the next best match
+  bacterium_symbiont_of_Acharax_sp._Guiness                                 | not found in the NCBI database
+  Spirochaeta_sp._kf401                                                     | not found in the NCBI database
+  Spirochaeta_sp._kf401 was not found in NCBI database, trying to download the next best match
+  rod-shaped_symbiont_of_Mixotricha_paradoxa                                | not found in the NCBI database
+  Spirochaeta_sp._JC230                                                     | successfully downloaded (total 126, 60 more to go)
+  Spirochaeta_sp._HT                                                        | not found in the NCBI database
+  Spirochaeta_sp._HT was not found in NCBI database, trying to download the next best match
+  Treponema_caldaria                                                        | successfully downloaded (total 127, 59 more to go)
+  Spirochaeta_sp                                                            | not found in the NCBI database
+  Spirochaeta_sp was not found in NCBI database, trying to download the next best match
+  Treponema_primitia                                                        | successfully downloaded (total 128, 58 more to go)
+  Sphingobacterium_sp._21                                                   | successfully downloaded (total 129, 57 more to go)
+  Sphaerochaeta_globosa_str._Buddy                                          | successfully downloaded (total 130, 56 more to go)
+  Sphaerochaeta_coccoides_DSM_17374                                         | successfully downloaded (total 131, 55 more to go)
+  Solirubrobacter_sp._URHD0082                                              | successfully downloaded (total 132, 54 more to go)
+  Solanum_melongena_(eggplant)                                              | not found in the NCBI database
+  Solanum_melongena_(eggplant) was not found in NCBI database, trying to download the next best match
+Hydra vulgaris has too fragmented reference genome! It will not be downloaded.
+  Hydra_vulgaris                                                            | not found in the NCBI database
+  Hydra_vulgaris was not found in NCBI database, trying to download the next best match
+  Aptenodytes_forsteri_(emperor_penguin)                                    | not found in the NCBI database
+  Snodgrassella_alvi_wkB2                                                   | successfully downloaded (total 133, 52 more to go)
+  Sneathiella_glossodoripedis_JCM_23214                                     | successfully downloaded (total 134, 51 more to go)
+  Silicibacter_sp._LS103                                                    | not found in the NCBI database
+  Silicibacter_sp._LS103 was not found in NCBI database, trying to download the next best match
+  Pseudoruegeria_sp._D-17                                                   | not found in the NCBI database
+  Pseudoruegeria_sp._D-17 was not found in NCBI database, trying to download the next best match
+  alpha_proteobacterium_STF-07                                              | not found in the NCBI database
+  alpha_proteobacterium_STF-07 was not found in NCBI database, trying to download the next best match
+  bacterium_WHC1-4                                                          | not found in the NCBI database
+  Sideroxydans_paludicola                                                   | not found in the NCBI database
+  Sideroxydans_paludicola was not found in NCBI database, trying to download the next best match
+  Burkholderia_andropogonis_Ba3549                                          | successfully downloaded (total 135, 49 more to go)
+  Serratia_symbiotica                                                       | successfully downloaded (total 136, 48 more to go)
+  Schleiferia_thermophila_str._Yellowstone                                  | successfully downloaded (total 137, 47 more to go)
+  Saprospiraceae_bacterium_KMM_9006                                         | not found in the NCBI database
+  Saprospiraceae_bacterium_KMM_9006 was not found in NCBI database, trying to download the next best match
+  Lyngbya_confervoides_BDU141951                                            | successfully downloaded (total 138, 46 more to go)
+  Sandaracinus_amylolyticus                                                 | successfully downloaded (total 139, 45 more to go)
+  Salinispira_pacifica                                                      | successfully downloaded (total 140, 44 more to go)
+  Saccharicrinis_carchari                                                   | not found in the NCBI database
+  Saccharicrinis_carchari was not found in NCBI database, trying to download the next best match
+  Bacteroidetes_bacterium_HY2                                               | not found in the NCBI database
+  Bacteroidetes_bacterium_HY2 was not found in NCBI database, trying to download the next best match
+  bacterium_endosymbiont_of_Osedax_mucofloris                               | not found in the NCBI database
+  bacterium_endosymbiont_of_Osedax_mucofloris was not found in NCBI database, trying to download the next best match
+  Marinilabilia_salmonicolor                                                | successfully downloaded (total 141, 43 more to go)
+  Ruegeria_sp._H-90                                                         | not found in the NCBI database
+  Ruegeria_sp._H-90 was not found in NCBI database, trying to download the next best match
+  Ruegeria_sp._TM1040                                                       | successfully downloaded (total 142, 42 more to go)
+  Roseovarius_crassostreae                                                  | successfully downloaded (total 143, 41 more to go)
+  Roseobacter_sp._SK209-2-6                                                 | successfully downloaded (total 144, 40 more to go)
+  Roseivivax_halodurans_JCM_10272                                           | successfully downloaded (total 145, 39 more to go)
+  Roseivirga_ehrenbergii                                                    | successfully downloaded (total 146, 38 more to go)
+  Roseibacillus_ponti                                                       | not found in the NCBI database
+  Roseibacillus_ponti was not found in NCBI database, trying to download the next best match
+  Luteolibacter_algae                                                       | not found in the NCBI database
+  Roseibacillus_persicicus                                                  | not found in the NCBI database
+  Roseibacillus_persicicus was not found in NCBI database, trying to download the next best match
+  Haloferula_helveola                                                       | not found in the NCBI database
+  Roseibacillus_ishigakijimensis                                            | not found in the NCBI database
+  Roseibacillus_ishigakijimensis was not found in NCBI database, trying to download the next best match
+  Persicirhabdus_sediminis                                                  | not found in the NCBI database
+  Rickettsia_prowazekii_str._Breinl                                         | successfully downloaded (total 147, 34 more to go)
+  Rhodovibrio_sp._K12-12B                                                   | not found in the NCBI database
+  Rhodovibrio_sp._K12-12B was not found in NCBI database, trying to download the next best match
+  Rhodovibrio_sp._K12-11A                                                   | not found in the NCBI database
+  Rhodovibrio_sp._K12-11A was not found in NCBI database, trying to download the next best match
+  Rhodovibrio_sp._2Mb1                                                      | not found in the NCBI database
+  Rhodovibrio_salinarum_DSM_9154                                            | successfully downloaded (total 148, 32 more to go)
+  Rhodospirillaceae_bacterium_CAU1121                                       | not found in the NCBI database
+  Rhodospirillaceae_bacterium_CAU1121 was not found in NCBI database, trying to download the next best match
+  Olavius_loisae_endosymbiont_3                                             | not found in the NCBI database
+  Rhodopirellula_sp._SM49                                                   | not found in the NCBI database
+  Rhodopirellula_sp._SM49 was not found in NCBI database, trying to download the next best match
+  Rhodopirellula_sp._SM52                                                   | not found in the NCBI database
+  Rhodopirellula_sp._SM52 was not found in NCBI database, trying to download the next best match
+Rhodopirellula maiorica SM1 has too fragmented reference genome! It will not be downloaded.
+  Rhodopirellula_maiorica_SM1                                               | not found in the NCBI database
+  Rhodopirellula_maiorica_SM1 was not found in NCBI database, trying to download the next best match
+  Rhodopirellula_sp._SM30                                                   | not found in the NCBI database
+  Rhodopirellula_sp._K587                                                   | not found in the NCBI database
+  Rhodopirellula_sp._K587 was not found in NCBI database, trying to download the next best match
+  Rhodopirellula_sp._SM52                                                   | not found in the NCBI database
+  Rhodopirellula_sp._SM52 was not found in NCBI database, trying to download the next best match
+  Rhodopirellula_baltica                                                    | was downloaded previously (total 149, 29 more to go)
+  Rhodococcus_ruber_Chol-4                                                  | successfully downloaded (total 150, 28 more to go)
+  Rhodobacteraceae_bacterium_BS-W15                                         | successfully downloaded (total 151, 27 more to go)
+  Pseudoruegeria_aquimaris                                                  | successfully downloaded (total 152, 26 more to go)
+  Pseudomonas_sp._C16w                                                      | not found in the NCBI database
+  Pseudomonas_sp._C16w was not found in NCBI database, trying to download the next best match
+  Pseudomonas_sp._G-R2A7                                                    | not found in the NCBI database
+  Pseudomonas_sp._G-R2A7 was not found in NCBI database, trying to download the next best match
+  Pseudomonas_sp._G-R2A19                                                   | not found in the NCBI database
+  Pseudomonas_sp._G-R2A19 was not found in NCBI database, trying to download the next best match
+  Pseudomonas_fluorescens_EGD-AQ6                                           | successfully downloaded (total 153, 25 more to go)
+  Pseudomonas_filiscindens                                                  | not found in the NCBI database
+  Pseudomonas_bauzanensis                                                   | successfully downloaded (total 154, 23 more to go)
+  Pseudoalteromonas_sp._S8-38                                               | successfully downloaded (total 155, 22 more to go)
+  Pseudoalteromonas_lipolytica_SCSIO_04301                                  | successfully downloaded (total 156, 21 more to go)
+  Propionibacterium_sp._434-HC2                                             | successfully downloaded (total 157, 20 more to go)
+  Portibacter_lacus                                                         | not found in the NCBI database
+  Portibacter_lacus was not found in NCBI database, trying to download the next best match
+  Tetraselmis_sp._GSL018                                                    | not found in the NCBI database
+  Tetraselmis_sp._GSL018 was not found in NCBI database, trying to download the next best match
+  Lyngbya_confervoides_BDU141951                                            | was downloaded previously (total 158, 19 more to go)
+  Porites_australiensis                                                     | not found in the NCBI database
+  Porites_australiensis was not found in NCBI database, trying to download the next best match
+  Oikopleura_dioica                                                         | not found in the NCBI database
+  Oikopleura_dioica was not found in NCBI database, trying to download the next best match
+  Prosthecobacter_debontii                                                  | was downloaded previously (total 159, 18 more to go)
+  Planctomycetes_bacterium_SCGC_AAA282-C19                                  | successfully downloaded (total 160, 17 more to go)
+  Planctomycetales_bacterium_VM20-7                                         | not found in the NCBI database
+  Planctomycetales_bacterium_VM20-7 was not found in NCBI database, trying to download the next best match
+  Planctomycetes_bacterium_R1                                               | was downloaded previously (total 161, 16 more to go)
+  Planctomycetaceae_bacterium_FC18                                          | successfully downloaded (total 162, 15 more to go)
+  Planctomyces_sp                                                           | not found in the NCBI database
+  Planctomyces_sp was not found in NCBI database, trying to download the next best match
+  Gimesia_maris                                                             | was downloaded previously (total 163, 14 more to go)
+  Planctomyces_maris_DSM_8797                                               | successfully downloaded (total 164, 13 more to go)
+  Pirellula_sp                                                              | not found in the NCBI database
+  Pirellula_sp was not found in NCBI database, trying to download the next best match
+  Rhodopirellula_sp._SM32                                                   | not found in the NCBI database
+  Rhodopirellula_sp._SM32 was not found in NCBI database, trying to download the next best match
+  Rhodopirellula_sp._SM35                                                   | not found in the NCBI database
+  Rhodopirellula_sp._SM35 was not found in NCBI database, trying to download the next best match
+  Rhodopirellula_sp._SM23                                                   | not found in the NCBI database
+  Phaeodactylum_tricornutum                                                 | successfully downloaded (total 165, 11 more to go)
+  Pelagibius_litoralis                                                      | not found in the NCBI database
+  Pelagibius_litoralis was not found in NCBI database, trying to download the next best match
+  mucus_bacterium_23                                                        | not found in the NCBI database
+  mucus_bacterium_23 was not found in NCBI database, trying to download the next best match
+  mucus_bacterium_77                                                        | not found in the NCBI database
+  Owenweeksia_hongkongensis_DSM_17368                                       | successfully downloaded (total 166, 9 more to go)
+  Olavius_algarvensis_Delta_4_endosymbiont                                  | successfully downloaded (total 167, 8 more to go)
+  Oceanicola_granulosus_HTCC2516                                            | successfully downloaded (total 168, 7 more to go)
+  Oceanibaculum_indicum_P24                                                 | successfully downloaded (total 169, 6 more to go)
+  Nonlabens_marinus_S1-08                                                   | successfully downloaded (total 170, 5 more to go)
+  Nitrospira_sp._Ecomares_2.1                                               | not found in the NCBI database
+  Nitrospira_sp._Ecomares_2.1 was not found in NCBI database, trying to download the next best match
+  Nitrospira_sp._enrichment_culture_clone_LPTV-F2                           | not found in the NCBI database
+  Nitrospira_sp._enrichment_culture_clone_LPTV-F2 was not found in NCBI database, trying to download the next best match
+  Nitrospira_marina_Nb-295                                                  | not found in the NCBI database
+  Nitrospira_marina_Nb-295 was not found in NCBI database, trying to download the next best match
+  Nitrospira_marina                                                         | not found in the NCBI database
+  NC10_bacterium_enrichment_culture_clone_Ino-F12                           | not found in the NCBI database
+  NC10_bacterium_enrichment_culture_clone_Ino-F12 was not found in NCBI database, trying to download the next best match
+  unidentified_bacterium_wb1_A12                                            | not found in the NCBI database
+  unidentified_bacterium_wb1_A12 was not found in NCBI database, trying to download the next best match
+  Desulfobacca_acetoxidans_DSM_11109                                        | successfully downloaded (total 171, 3 more to go)
+  Mycobacterium_sp._Ellin180                                                | not found in the NCBI database
+  Microbulbifer_thermotolerans                                              | successfully downloaded (total 172, 1 more to go)
+Methylogaea oryzae JCM 16910 has too fragmented reference genome! It will not be downloaded.
+  Methylogaea_oryzae_JCM_16910                                              | not found in the NCBI database
+  Methylogaea_oryzae_JCM_16910 was not found in NCBI database, trying to download the next best match
+  Nitrosococcus_halophilus                                                  | successfully downloaded (total 173, 0 more to go)
+
+Downloaded reference(s):
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Adhaeribacter_aquaticus_DSM_16391.fasta ==> Adhaeribacter_aquaticus_DSM_16391
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Alcanivorax_dieselolei_B5.fasta ==> Alcanivorax_dieselolei_B5
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Alkalilimnicola_ehrlichii_MLHE_1.fasta ==> Alkalilimnicola_ehrlichii_MLHE_1
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Anaerolinea_thermophila_UNI_1.fasta ==> Anaerolinea_thermophila_UNI_1
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Anaeromyxobacter_sp._K.fasta ==> Anaeromyxobacter_sp._K
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Anaerophaga_thermohalophila.fasta ==> Anaerophaga_thermohalophila
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Arcticibacter_svalbardensis_MN12_7.fasta ==> Arcticibacter_svalbardensis_MN12_7
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Blastopirellula_marina.fasta ==> Blastopirellula_marina
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Blastopirellula_marina_DSM_3645.fasta ==> Blastopirellula_marina_DSM_3645
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Burkholderia_andropogonis_Ba3549.fasta ==> Burkholderia_andropogonis_Ba3549
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Candidatus_Nitrosoarchaeum_limnia_BG20.fasta ==> Candidatus_Nitrosoarchaeum_limnia_BG20
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Candidatus_Nitrosoarchaeum_limnia_SFB1.fasta ==> Candidatus_Nitrosoarchaeum_limnia_SFB1
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Cellvibrio_japonicus_Ueda107.fasta ==> Cellvibrio_japonicus_Ueda107
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Chondromyces_apiculatus_DSM_436.fasta ==> Chondromyces_apiculatus_DSM_436
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Citrobacter_youngae_ATCC_29220.fasta ==> Citrobacter_youngae_ATCC_29220
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Cyanobacterium_aponinum_PCC_10605.fasta ==> Cyanobacterium_aponinum_PCC_10605
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Dehalogenimonas_lykanthroporepellens_BL_DC_9.fasta ==> Dehalogenimonas_lykanthroporepellens_BL_DC_9
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Desulfatiglans_anilini_DSM_4660.fasta ==> Desulfatiglans_anilini_DSM_4660
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Desulfobacca_acetoxidans_DSM_11109.fasta ==> Desulfobacca_acetoxidans_DSM_11109
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Desulfobulbus_sp._Tol_SR.fasta ==> Desulfobulbus_sp._Tol_SR
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Desulfococcus_oleovorans_Hxd3.fasta ==> Desulfococcus_oleovorans_Hxd3
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Desulfohalobium_retbaense_DSM_5692.fasta ==> Desulfohalobium_retbaense_DSM_5692
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Desulfonatronum_lacustre_DSM_10312.fasta ==> Desulfonatronum_lacustre_DSM_10312
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Desulfovibrio_termitidis_HI1.fasta ==> Desulfovibrio_termitidis_HI1
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Enhygromyxa_salina.fasta ==> Enhygromyxa_salina
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Geoalkalibacter_ferrihydriticus_DSM_17813.fasta ==> Geoalkalibacter_ferrihydriticus_DSM_17813
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Geobacter_bemidjiensis_Bem.fasta ==> Geobacter_bemidjiensis_Bem
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Geobacter_sp._M18.fasta ==> Geobacter_sp._M18
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Geobacter_sp._OR_1.fasta ==> Geobacter_sp._OR_1
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Gimesia_maris.fasta ==> Gimesia_maris
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Hyphomonas_chukchiensis.fasta ==> Hyphomonas_chukchiensis
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Ignavibacterium_album_JCM_16511.fasta ==> Ignavibacterium_album_JCM_16511
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Ilumatobacter_fluminis.fasta ==> Ilumatobacter_fluminis
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Levilinea_saccharolytica.fasta ==> Levilinea_saccharolytica
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Lewinella_nigricans.fasta ==> Lewinella_nigricans
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Lutispora_thermophila.fasta ==> Lutispora_thermophila
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Lyngbya_confervoides_BDU141951.fasta ==> Lyngbya_confervoides_BDU141951
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Mangrovibacterium_diazotrophicum.fasta ==> Mangrovibacterium_diazotrophicum
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Mangrovimonas_yunxiaonensis.fasta ==> Mangrovimonas_yunxiaonensis
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Marichromatium_purpuratum_984.fasta ==> Marichromatium_purpuratum_984
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Marinilabilia_salmonicolor.fasta ==> Marinilabilia_salmonicolor
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Marinomonas_mediterranea_MMB_1.fasta ==> Marinomonas_mediterranea_MMB_1
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Marivita_sp._SSW136.fasta ==> Marivita_sp._SSW136
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Megasphaera_paucivorans.fasta ==> Megasphaera_paucivorans
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Methylomarinum_vadi.fasta ==> Methylomarinum_vadi
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Methylomicrobium_album.fasta ==> Methylomicrobium_album
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Methylopila_sp._M107.fasta ==> Methylopila_sp._M107
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Microbulbifer_thermotolerans.fasta ==> Microbulbifer_thermotolerans
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Myxosarcina_sp._GI1.fasta ==> Myxosarcina_sp._GI1
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Nitrosococcus_halophilus.fasta ==> Nitrosococcus_halophilus
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Nonlabens_marinus_S1_08.fasta ==> Nonlabens_marinus_S1_08
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Oceanibaculum_indicum_P24.fasta ==> Oceanibaculum_indicum_P24
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Oceanicola_granulosus_HTCC2516.fasta ==> Oceanicola_granulosus_HTCC2516
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Olavius_algarvensis_Delta_4_endosymbiont.fasta ==> Olavius_algarvensis_Delta_4_endosymbiont
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Owenweeksia_hongkongensis_DSM_17368.fasta ==> Owenweeksia_hongkongensis_DSM_17368
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Parcubacteria_bacterium_RAAC4_OD1_1.fasta ==> Parcubacteria_bacterium_RAAC4_OD1_1
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Phaeodactylum_tricornutum.fasta ==> Phaeodactylum_tricornutum
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Pimelobacter_simplex.fasta ==> Pimelobacter_simplex
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Planctomyces_maris_DSM_8797.fasta ==> Planctomyces_maris_DSM_8797
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Planctomycetaceae_bacterium_FC18.fasta ==> Planctomycetaceae_bacterium_FC18
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Planctomycetes_bacterium_R1.fasta ==> Planctomycetes_bacterium_R1
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Planctomycetes_bacterium_SCGC_AAA282_C19.fasta ==> Planctomycetes_bacterium_SCGC_AAA282_C19
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Porphyrobacter_sanguineus.fasta ==> Porphyrobacter_sanguineus
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Propionibacterium_sp._434_HC2.fasta ==> Propionibacterium_sp._434_HC2
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Prosthecobacter_debontii.fasta ==> Prosthecobacter_debontii
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Pseudoalteromonas_lipolytica_SCSIO_04301.fasta ==> Pseudoalteromonas_lipolytica_SCSIO_04301
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Pseudoalteromonas_sp._S8_38.fasta ==> Pseudoalteromonas_sp._S8_38
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Pseudomonas_bauzanensis.fasta ==> Pseudomonas_bauzanensis
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Pseudomonas_fluorescens_EGD_AQ6.fasta ==> Pseudomonas_fluorescens_EGD_AQ6
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Pseudoruegeria_aquimaris.fasta ==> Pseudoruegeria_aquimaris
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Rathayibacter_iranicus.fasta ==> Rathayibacter_iranicus
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Rhodobacteraceae_bacterium_BS_W15.fasta ==> Rhodobacteraceae_bacterium_BS_W15
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Rhodococcus_ruber_Chol_4.fasta ==> Rhodococcus_ruber_Chol_4
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Rhodococcus_sp.fasta ==> Rhodococcus_sp
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Rhodopirellula_baltica.fasta ==> Rhodopirellula_baltica
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Rhodospirillales_bacterium_URHD0088.fasta ==> Rhodospirillales_bacterium_URHD0088
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Rhodovibrio_salinarum_DSM_9154.fasta ==> Rhodovibrio_salinarum_DSM_9154
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Rickettsia_prowazekii_str._Breinl.fasta ==> Rickettsia_prowazekii_str._Breinl
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Roseivirga_ehrenbergii.fasta ==> Roseivirga_ehrenbergii
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Roseivivax_halodurans_JCM_10272.fasta ==> Roseivivax_halodurans_JCM_10272
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Roseobacter_sp._SK209_2_6.fasta ==> Roseobacter_sp._SK209_2_6
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Roseomonas_cervicalis.fasta ==> Roseomonas_cervicalis
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Roseovarius_crassostreae.fasta ==> Roseovarius_crassostreae
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Ruegeria_sp._TM1040.fasta ==> Ruegeria_sp._TM1040
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Salinispira_pacifica.fasta ==> Salinispira_pacifica
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Sandaracinus_amylolyticus.fasta ==> Sandaracinus_amylolyticus
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Schleiferia_thermophila_str._Yellowstone.fasta ==> Schleiferia_thermophila_str._Yellowstone
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Serratia_symbiotica.fasta ==> Serratia_symbiotica
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Sneathiella_glossodoripedis_JCM_23214.fasta ==> Sneathiella_glossodoripedis_JCM_23214
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Snodgrassella_alvi_wkB2.fasta ==> Snodgrassella_alvi_wkB2
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Solemya_velum_gill_symbiont.fasta ==> Solemya_velum_gill_symbiont
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Solirubrobacter_sp._URHD0082.fasta ==> Solirubrobacter_sp._URHD0082
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Solitalea_canadensis.fasta ==> Solitalea_canadensis
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Sphaerochaeta_coccoides_DSM_17374.fasta ==> Sphaerochaeta_coccoides_DSM_17374
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Sphaerochaeta_globosa_str._Buddy.fasta ==> Sphaerochaeta_globosa_str._Buddy
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Sphingobacterium_sp._21.fasta ==> Sphingobacterium_sp._21
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Spirochaeta_sp._JC230.fasta ==> Spirochaeta_sp._JC230
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Sporosarcina_pasteurii.fasta ==> Sporosarcina_pasteurii
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Staphylococcus_aureus_subsp._aureus_CN1.fasta ==> Staphylococcus_aureus_subsp._aureus_CN1
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Stappia_sp._JL1095.fasta ==> Stappia_sp._JL1095
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Streptococcus_agalactiae_SS1219.fasta ==> Streptococcus_agalactiae_SS1219
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Streptomyces_mobaraensis_NBRC_13819___DSM_40847.fasta ==> Streptomyces_mobaraensis_NBRC_13819___DSM_40847
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Succinispira_mobilis_DSM_6222.fasta ==> Succinispira_mobilis_DSM_6222
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Sulfitobacter_sp._EE_36.fasta ==> Sulfitobacter_sp._EE_36
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Sulfitobacter_sp._NAS_14.1.fasta ==> Sulfitobacter_sp._NAS_14.1
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Sulfuritalea_hydrogenivorans_sk43H.fasta ==> Sulfuritalea_hydrogenivorans_sk43H
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Syntrophobacter_fumaroxidans_MPOB.fasta ==> Syntrophobacter_fumaroxidans_MPOB
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Tepidamorphus_gemmatus.fasta ==> Tepidamorphus_gemmatus
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Teredinibacter_turnerae.fasta ==> Teredinibacter_turnerae
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Teredinibacter_turnerae_T7902.fasta ==> Teredinibacter_turnerae_T7902
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Thalassospira_profundimaris.fasta ==> Thalassospira_profundimaris
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Thalassospira_xiamenensis_M_5___DSM_17429.fasta ==> Thalassospira_xiamenensis_M_5___DSM_17429
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Thermanaerothrix_daxensis.fasta ==> Thermanaerothrix_daxensis
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Thermasporomyces_composti.fasta ==> Thermasporomyces_composti
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Thermincola_potens_JR.fasta ==> Thermincola_potens_JR
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Thermoanaerobacter_sp._X513.fasta ==> Thermoanaerobacter_sp._X513
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Thermoanaerobacter_sp._X514.fasta ==> Thermoanaerobacter_sp._X514
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Thermoanaerobacter_uzonensis.fasta ==> Thermoanaerobacter_uzonensis
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Thermobispora_bispora.fasta ==> Thermobispora_bispora
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Thermobispora_bispora_DSM_43833.fasta ==> Thermobispora_bispora_DSM_43833
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Thermococcus_sp._4557.fasta ==> Thermococcus_sp._4557
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Thermodesulfatator_atlanticus.fasta ==> Thermodesulfatator_atlanticus
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Thermodesulforhabdus_norvegica.fasta ==> Thermodesulforhabdus_norvegica
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Thermodesulfovibrio_aggregans.fasta ==> Thermodesulfovibrio_aggregans
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Thermodesulfovibrio_thiophilus_DSM_17215.fasta ==> Thermodesulfovibrio_thiophilus_DSM_17215
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Thermodesulfovibrio_yellowstonii_DSM_11347.fasta ==> Thermodesulfovibrio_yellowstonii_DSM_11347
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Thermofilum_pendens_Hrk_5.fasta ==> Thermofilum_pendens_Hrk_5
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Thermofilum_sp._1910b.fasta ==> Thermofilum_sp._1910b
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Thermoleophilum_album.fasta ==> Thermoleophilum_album
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Thioalkalivibrio_denitrificans.fasta ==> Thioalkalivibrio_denitrificans
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Thioalkalivibrio_sp._AKL17.fasta ==> Thioalkalivibrio_sp._AKL17
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Thioalkalivibrio_sp._ALJ17.fasta ==> Thioalkalivibrio_sp._ALJ17
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Thioalkalivibrio_sp._ALJ8.fasta ==> Thioalkalivibrio_sp._ALJ8
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Thioalkalivibrio_sp._ALSr1.fasta ==> Thioalkalivibrio_sp._ALSr1
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Thioalkalivibrio_sulfidiphilus_HL_EbGr7.fasta ==> Thioalkalivibrio_sulfidiphilus_HL_EbGr7
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Thioalkalivibrio_thiocyanodenitrificans_ARhD_1.fasta ==> Thioalkalivibrio_thiocyanodenitrificans_ARhD_1
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Thioalkalivibrio_thiocyanoxidans_ARh_4.fasta ==> Thioalkalivibrio_thiocyanoxidans_ARh_4
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Thiogranum_longum.fasta ==> Thiogranum_longum
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Thiohalobacter_thiocyanaticus.fasta ==> Thiohalobacter_thiocyanaticus
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Thiorhodospira_sibirica_ATCC_700588.fasta ==> Thiorhodospira_sibirica_ATCC_700588
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Treponema_azotonutricium_ZAS_9.fasta ==> Treponema_azotonutricium_ZAS_9
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Treponema_caldaria.fasta ==> Treponema_caldaria
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Treponema_caldaria_DSM_7334.fasta ==> Treponema_caldaria_DSM_7334
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Treponema_primitia.fasta ==> Treponema_primitia
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Treponema_primitia_ZAS_1.fasta ==> Treponema_primitia_ZAS_1
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Treponema_primitia_ZAS_2.fasta ==> Treponema_primitia_ZAS_2
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Trueperella_pyogenes.fasta ==> Trueperella_pyogenes
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Umezawaea_tangerina.fasta ==> Umezawaea_tangerina
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Ureibacillus_thermosphaericus.fasta ==> Ureibacillus_thermosphaericus
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Verrucomicrobia_bacterium_SCGC_AAA027_I19.fasta ==> Verrucomicrobia_bacterium_SCGC_AAA027_I19
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Vibrio_parahaemolyticus_UCM_V493.fasta ==> Vibrio_parahaemolyticus_UCM_V493
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Victivallis_vadensis.fasta ==> Victivallis_vadensis
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Waddlia_chondrophila_WSU_86_1044.fasta ==> Waddlia_chondrophila_WSU_86_1044
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Xenococcus_sp._PCC_7305.fasta ==> Xenococcus_sp._PCC_7305
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Zeaxanthinibacter_enoshimensis.fasta ==> Zeaxanthinibacter_enoshimensis
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Zymoseptoria_tritici.fasta ==> Zymoseptoria_tritici
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/anaerobic_bacterium_MO_CFX1.fasta ==> anaerobic_bacterium_MO_CFX1
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/anaerobic_bacterium_MO_CFX2.fasta ==> anaerobic_bacterium_MO_CFX2
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/bacterium_UASB14.fasta ==> bacterium_UASB14
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/candidate_division_TM7_genomosp._GTL1.fasta ==> candidate_division_TM7_genomosp._GTL1
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/gamma_proteobacterium_HIMB30.fasta ==> gamma_proteobacterium_HIMB30
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/hot_springs_metagenome.fasta ==> hot_springs_metagenome
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/marine_gamma_proteobacterium_HTCC2080.fasta ==> marine_gamma_proteobacterium_HTCC2080
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/marine_gamma_proteobacterium_HTCC2143.fasta ==> marine_gamma_proteobacterium_HTCC2143
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/mine_drainage_metagenome.fasta ==> mine_drainage_metagenome
+  All references were combined in combined_reference.fasta
+
+Starting quast.py for the combined reference...
+/home/sogin/tools/quast-5.0.2/quast.py --combined-ref --colors #E31A1C,#1F78B4,#33A02C,#6A3D9A,#FF7F00,#800000,#A6CEE3,#B2DF8A,#333300 --ls solid,solid,solid,solid,solid,solid,solid,solid,solid --ambiguity-usage all 3847_A.contigs.fasta 3847_B.contigs.fasta 3847_C.contigs.fasta 3847_D.contigs.fasta 3847_E.contigs.fasta 3847_G.contigs.fasta 3847_H.contigs.fasta 3847_I.contigs.fasta coassembly.contigs.fa -R /scratch/sogin/tmp.379235/combined_report/quast_corrected_input/combined_reference.fasta -o /scratch/sogin/tmp.379235/combined_report/combined_reference --labels "3847_A.contigs, 3847_B.contigs, 3847_C.contigs, 3847_D.contigs, 3847_E.contigs, 3847_G.contigs, 3847_H.contigs, 3847_I.contigs, coassembly.contigs"
+
+Started: 2019-04-05 17:44:46
+
+Logging to /scratch/sogin/tmp.379235/combined_report/combined_reference/quast.log
+NOTICE: Maximum number of threads is set to 20 (use --threads option to set it manually)
+
+CWD: /scratch/sogin/tmp.379235
+Main parameters: 
+  MODE: meta, threads: 20, minimum contig length: 500, minimum alignment length: 65, \
+  ambiguity: all, threshold for extensive misassembly size: 1000
+
+Reference:
+  /scratch/sogin/tmp.379235/combined_report/quast_corrected_input/combined_reference.fasta ==> combined_reference
+
+Contigs:
+  Pre-processing...
+  1  3847_A.contigs.fasta ==> 3847_A.contigs
+  2  3847_B.contigs.fasta ==> 3847_B.contigs
+  3  3847_C.contigs.fasta ==> 3847_C.contigs
+  4  3847_D.contigs.fasta ==> 3847_D.contigs
+  5  3847_E.contigs.fasta ==> 3847_E.contigs
+  6  3847_G.contigs.fasta ==> 3847_G.contigs
+  7  3847_H.contigs.fasta ==> 3847_H.contigs
+  8  3847_I.contigs.fasta ==> 3847_I.contigs
+  9  coassembly.contigs.fa ==> coassembly.contigs
+
+2019-04-05 17:52:22
+Running Basic statistics processor...
+  Reference genome:
+    combined_reference.fasta, length = 739225449, num fragments = 7250, GC % = 55.04
+WARNING:   Reference genome is fragmented. You may consider rerunning QUAST using --fragmented option. QUAST will try to detect misassemblies caused by the fragmentation and mark them fake (will be excluded from # misassemblies).
+  Contig files: 
+    1  3847_A.contigs
+    2  3847_B.contigs
+    3  3847_C.contigs
+    4  3847_D.contigs
+    5  3847_E.contigs
+    6  3847_G.contigs
+    7  3847_H.contigs
+    8  3847_I.contigs
+    9  coassembly.contigs
+  Calculating N50 and L50...
+    1  3847_A.contigs, N50 = 942, L50 = 156996, Total length = 603702767, GC % = 57.71, # N's per 100 kbp =  0.00
+    2  3847_B.contigs, N50 = 881, L50 = 198854, Total length = 636335988, GC % = 58.92, # N's per 100 kbp =  0.00
+    3  3847_C.contigs, N50 = 895, L50 = 267940, Total length = 917793153, GC % = 58.29, # N's per 100 kbp =  0.00
+    4  3847_D.contigs, N50 = 1054, L50 = 283528, Total length = 1075863188, GC % = 58.70, # N's per 100 kbp =  0.00
+    5  3847_E.contigs, N50 = 876, L50 = 262784, Total length = 827004583, GC % = 56.59, # N's per 100 kbp =  0.00
+    6  3847_G.contigs, N50 = 797, L50 = 199449, Total length = 546829115, GC % = 53.67, # N's per 100 kbp =  0.00
+    7  3847_H.contigs, N50 = 906, L50 = 214091, Total length = 778273581, GC % = 51.75, # N's per 100 kbp =  0.00
+    8  3847_I.contigs, N50 = 845, L50 = 157671, Total length = 510332357, GC % = 53.18, # N's per 100 kbp =  0.00
+    9  coassembly.contigs, N50 = 1268, L50 = 1392366, Total length = 7672066743, GC % = 57.72, # N's per 100 kbp =  0.00
+Done.
+
+2019-04-05 18:11:02
+Running Contig analyzer...
+  1  3847_A.contigs
+  1  Logging to files /scratch/sogin/tmp.379235/combined_report/combined_reference/contigs_reports/contigs_report_3847_A-contigs.stdout and contigs_report_3847_A-contigs.stderr...
+  1  Aligning contigs to the reference
+  2  3847_B.contigs
+  2  Logging to files /scratch/sogin/tmp.379235/combined_report/combined_reference/contigs_reports/contigs_report_3847_B-contigs.stdout and contigs_report_3847_B-contigs.stderr...
+  2  Aligning contigs to the reference
+  3  3847_C.contigs
+  3  Logging to files /scratch/sogin/tmp.379235/combined_report/combined_reference/contigs_reports/contigs_report_3847_C-contigs.stdout and contigs_report_3847_C-contigs.stderr...
+  3  Aligning contigs to the reference
+  4  3847_D.contigs
+  4  Logging to files /scratch/sogin/tmp.379235/combined_report/combined_reference/contigs_reports/contigs_report_3847_D-contigs.stdout and contigs_report_3847_D-contigs.stderr...
+  4  Aligning contigs to the reference
+  5  3847_E.contigs
+  5  Logging to files /scratch/sogin/tmp.379235/combined_report/combined_reference/contigs_reports/contigs_report_3847_E-contigs.stdout and contigs_report_3847_E-contigs.stderr...
+  5  Aligning contigs to the reference
+  6  3847_G.contigs
+  6  Logging to files /scratch/sogin/tmp.379235/combined_report/combined_reference/contigs_reports/contigs_report_3847_G-contigs.stdout and contigs_report_3847_G-contigs.stderr...
+  6  Aligning contigs to the reference
+  7  3847_H.contigs
+  7  Logging to files /scratch/sogin/tmp.379235/combined_report/combined_reference/contigs_reports/contigs_report_3847_H-contigs.stdout and contigs_report_3847_H-contigs.stderr...
+  7  Aligning contigs to the reference
+  8  3847_I.contigs
+  8  Logging to files /scratch/sogin/tmp.379235/combined_report/combined_reference/contigs_reports/contigs_report_3847_I-contigs.stdout and contigs_report_3847_I-contigs.stderr...
+  8  Aligning contigs to the reference
+  9  coassembly.contigs
+  9  Logging to files /scratch/sogin/tmp.379235/combined_report/combined_reference/contigs_reports/contigs_report_coassembly-contigs.stdout and contigs_report_coassembly-contigs.stderr...
+  9  Aligning contigs to the reference
+  8  Analysis is finished.
+  2  Analysis is finished.
+  6  Analysis is finished.
+  1  Analysis is finished.
+  7  Analysis is finished.
+  5  Analysis is finished.
+  3  Analysis is finished.
+  4  Analysis is finished.
+  9  Analysis is finished.
+  Information about interspecies translocations by references for 3847_A_contigs is saved to /scratch/sogin/tmp.379235/combined_report/combined_reference/contigs_reports/interspecies_translocations_by_refs_3847_A_contigs.info
+  Information about interspecies translocations by references for 3847_B_contigs is saved to /scratch/sogin/tmp.379235/combined_report/combined_reference/contigs_reports/interspecies_translocations_by_refs_3847_B_contigs.info
+  Information about interspecies translocations by references for 3847_C_contigs is saved to /scratch/sogin/tmp.379235/combined_report/combined_reference/contigs_reports/interspecies_translocations_by_refs_3847_C_contigs.info
+  Information about interspecies translocations by references for 3847_D_contigs is saved to /scratch/sogin/tmp.379235/combined_report/combined_reference/contigs_reports/interspecies_translocations_by_refs_3847_D_contigs.info
+  Information about interspecies translocations by references for 3847_E_contigs is saved to /scratch/sogin/tmp.379235/combined_report/combined_reference/contigs_reports/interspecies_translocations_by_refs_3847_E_contigs.info
+  Information about interspecies translocations by references for 3847_G_contigs is saved to /scratch/sogin/tmp.379235/combined_report/combined_reference/contigs_reports/interspecies_translocations_by_refs_3847_G_contigs.info
+  Information about interspecies translocations by references for 3847_H_contigs is saved to /scratch/sogin/tmp.379235/combined_report/combined_reference/contigs_reports/interspecies_translocations_by_refs_3847_H_contigs.info
+  Information about interspecies translocations by references for 3847_I_contigs is saved to /scratch/sogin/tmp.379235/combined_report/combined_reference/contigs_reports/interspecies_translocations_by_refs_3847_I_contigs.info
+  Information about interspecies translocations by references for coassembly_contigs is saved to /scratch/sogin/tmp.379235/combined_report/combined_reference/contigs_reports/interspecies_translocations_by_refs_coassembly_contigs.info
+  Creating total report...
+    saved to /scratch/sogin/tmp.379235/combined_report/combined_reference/contigs_reports/misassemblies_report.txt, misassemblies_report.tsv, and misassemblies_report.tex
+  Transposed version of total report...
+    saved to /scratch/sogin/tmp.379235/combined_report/combined_reference/contigs_reports/transposed_report_misassemblies.txt, transposed_report_misassemblies.tsv, and transposed_report_misassemblies.tex
+  Creating total report...
+    saved to /scratch/sogin/tmp.379235/combined_report/combined_reference/contigs_reports/unaligned_report.txt, unaligned_report.tsv, and unaligned_report.tex
+Done.
+
+2019-04-05 18:24:13
+Running NA-NGA calculation...
+  1  3847_A.contigs, Largest alignment = 3298, NA50 = None, LA50 = None
+  2  3847_B.contigs, Largest alignment = 4871, NA50 = None, LA50 = None
+  3  3847_C.contigs, Largest alignment = 3434, NA50 = None, LA50 = None
+  4  3847_D.contigs, Largest alignment = 3702, NA50 = None, LA50 = None
+  5  3847_E.contigs, Largest alignment = 1546, NA50 = None, LA50 = None
+  6  3847_G.contigs, Largest alignment = 4921, NA50 = None, LA50 = None
+  7  3847_H.contigs, Largest alignment = 3441, NA50 = None, LA50 = None
+  8  3847_I.contigs, Largest alignment = 2967, NA50 = None, LA50 = None
+  9  coassembly.contigs, Largest alignment = 41640, NA50 = None, LA50 = None
+Done.
+
+2019-04-05 18:27:13
+Running Genome analyzer...
+  NOTICE: No file with genomic features were provided. Use the --features option if you want to specify it.
+
+  NOTICE: No file with operons were provided. Use the -O option if you want to specify it.
+  1  3847_A.contigs
+  2  3847_B.contigs
+  3  3847_C.contigs
+  4  3847_D.contigs
+  5  3847_E.contigs
+  6  3847_G.contigs
+  7  3847_H.contigs
+  8  3847_I.contigs
+  9  coassembly.contigs
+  2  Analysis is finished.
+  1  Analysis is finished.
+  8  Analysis is finished.
+  6  Analysis is finished.
+  7  Analysis is finished.
+  5  Analysis is finished.
+  3  Analysis is finished.
+  4  Analysis is finished.
+  9  Analysis is finished.
+Done.
+
+NOTICE: Genes are not predicted by default. Use --gene-finding or --glimmer option to enable it.
+
+2019-04-05 18:37:28
+Creating large visual summaries...
+This may take a while: press Ctrl-C to skip this step..
+  1 of 1: Creating Icarus viewers...
+Done
+
+2019-04-05 19:18:36
+RESULTS:
+  Text versions of total report are saved to /scratch/sogin/tmp.379235/combined_report/combined_reference/report.txt, report.tsv, and report.tex
+  Text versions of transposed total report are saved to /scratch/sogin/tmp.379235/combined_report/combined_reference/transposed_report.txt, transposed_report.tsv, and transposed_report.tex
+  HTML version (interactive tables and plots) is saved to /scratch/sogin/tmp.379235/combined_report/combined_reference/report.html
+  Icarus (contig browser) is saved to /scratch/sogin/tmp.379235/combined_report/combined_reference/icarus.html
+
+Excluding downloaded references with low genome fraction from further analysis..
+
+Filtered reference(s):
+  /scratch/sogin/tmp.379235/combined_report/quast_downloaded_references/Propionibacterium_sp._434_HC2.fasta ==> Propionibacterium_sp._434_HC2
+  All references were combined in combined_reference.fasta
+  Pre-processing...
+  1  3847_A.contigs.fasta ==> 3847_A.contigs
+  2  3847_B.contigs.fasta ==> 3847_B.contigs
+  3  3847_C.contigs.fasta ==> 3847_C.contigs
+  4  3847_D.contigs.fasta ==> 3847_D.contigs
+  5  3847_E.contigs.fasta ==> 3847_E.contigs
+  6  3847_G.contigs.fasta ==> 3847_G.contigs
+  7  3847_H.contigs.fasta ==> 3847_H.contigs
+  8  3847_I.contigs.fasta ==> 3847_I.contigs
+  9  coassembly.contigs.fa ==> coassembly.contigs
+
+Starting quast.py for the corrected combined reference...
+/home/sogin/tools/quast-5.0.2/quast.py --combined-ref --colors #E31A1C,#1F78B4,#33A02C,#6A3D9A,#FF7F00,#800000,#A6CEE3,#B2DF8A,#333300 --ls solid,solid,solid,solid,solid,solid,solid,solid,solid --ambiguity-usage all 3847_A.contigs.fasta 3847_B.contigs.fasta 3847_C.contigs.fasta 3847_D.contigs.fasta 3847_E.contigs.fasta 3847_G.contigs.fasta 3847_H.contigs.fasta 3847_I.contigs.fasta coassembly.contigs.fa -R /scratch/sogin/tmp.379235/combined_report/quast_corrected_input/combined_reference.fasta -o /scratch/sogin/tmp.379235/combined_report/combined_reference --labels "3847_A.contigs, 3847_B.contigs, 3847_C.contigs, 3847_D.contigs, 3847_E.contigs, 3847_G.contigs, 3847_H.contigs, 3847_I.contigs, coassembly.contigs"
+
+Started: 2019-04-05 19:28:40
+
+Logging to /scratch/sogin/tmp.379235/combined_report/combined_reference/quast.log
+NOTICE: Output directory already exists and looks like a QUAST output dir. Existing results can be reused (e.g. previously generated alignments)!
+NOTICE: Maximum number of threads is set to 20 (use --threads option to set it manually)
+
+CWD: /scratch/sogin/tmp.379235
+Main parameters: 
+  MODE: meta, threads: 20, minimum contig length: 500, minimum alignment length: 65, \
+  ambiguity: all, threshold for extensive misassembly size: 1000
+
+Reference:
+  /scratch/sogin/tmp.379235/combined_report/quast_corrected_input/combined_reference.fasta ==> combined_reference
+
+Contigs:
+  Pre-processing...
+  1  3847_A.contigs.fasta ==> 3847_A.contigs
+  2  3847_B.contigs.fasta ==> 3847_B.contigs
+  3  3847_C.contigs.fasta ==> 3847_C.contigs
+  4  3847_D.contigs.fasta ==> 3847_D.contigs
+  5  3847_E.contigs.fasta ==> 3847_E.contigs
+  6  3847_G.contigs.fasta ==> 3847_G.contigs
+  7  3847_H.contigs.fasta ==> 3847_H.contigs
+  8  3847_I.contigs.fasta ==> 3847_I.contigs
+  9  coassembly.contigs.fa ==> coassembly.contigs
+
+2019-04-05 19:36:02
+Running Basic statistics processor...
+  Reference genome:
+    combined_reference.fasta, length = 2568635, num fragments = 81, GC % = 59.99
+WARNING:   Reference genome is fragmented. You may consider rerunning QUAST using --fragmented option. QUAST will try to detect misassemblies caused by the fragmentation and mark them fake (will be excluded from # misassemblies).
+  Contig files: 
+    1  3847_A.contigs
+    2  3847_B.contigs
+    3  3847_C.contigs
+    4  3847_D.contigs
+    5  3847_E.contigs
+    6  3847_G.contigs
+    7  3847_H.contigs
+    8  3847_I.contigs
+    9  coassembly.contigs
+  Calculating N50 and L50...
+    1  3847_A.contigs, N50 = 942, L50 = 156996, Total length = 603702767, GC % = 57.71, # N's per 100 kbp =  0.00
+    2  3847_B.contigs, N50 = 881, L50 = 198854, Total length = 636335988, GC % = 58.92, # N's per 100 kbp =  0.00
+    3  3847_C.contigs, N50 = 895, L50 = 267940, Total length = 917793153, GC % = 58.29, # N's per 100 kbp =  0.00
+    4  3847_D.contigs, N50 = 1054, L50 = 283528, Total length = 1075863188, GC % = 58.70, # N's per 100 kbp =  0.00
+    5  3847_E.contigs, N50 = 876, L50 = 262784, Total length = 827004583, GC % = 56.59, # N's per 100 kbp =  0.00
+    6  3847_G.contigs, N50 = 797, L50 = 199449, Total length = 546829115, GC % = 53.67, # N's per 100 kbp =  0.00
+    7  3847_H.contigs, N50 = 906, L50 = 214091, Total length = 778273581, GC % = 51.75, # N's per 100 kbp =  0.00
+    8  3847_I.contigs, N50 = 845, L50 = 157671, Total length = 510332357, GC % = 53.18, # N's per 100 kbp =  0.00
+    9  coassembly.contigs, N50 = 1268, L50 = 1392366, Total length = 7672066743, GC % = 57.72, # N's per 100 kbp =  0.00
+Done.
+
+2019-04-05 19:54:18
+Running Contig analyzer...
+  1  3847_A.contigs
+  2  3847_B.contigs
+  3  3847_C.contigs
+  4  3847_D.contigs
+  5  3847_E.contigs
+  6  3847_G.contigs
+  7  3847_H.contigs
+  8  3847_I.contigs
+  9  coassembly.contigs
+  1  Logging to files /scratch/sogin/tmp.379235/combined_report/combined_reference/contigs_reports/contigs_report_3847_A-contigs.stdout and contigs_report_3847_A-contigs.stderr...
+  6  Logging to files /scratch/sogin/tmp.379235/combined_report/combined_reference/contigs_reports/contigs_report_3847_G-contigs.stdout and contigs_report_3847_G-contigs.stderr...
+  2  Logging to files /scratch/sogin/tmp.379235/combined_report/combined_reference/contigs_reports/contigs_report_3847_B-contigs.stdout and contigs_report_3847_B-contigs.stderr...
+  8  Logging to files /scratch/sogin/tmp.379235/combined_report/combined_reference/contigs_reports/contigs_report_3847_I-contigs.stdout and contigs_report_3847_I-contigs.stderr...
+  5  Logging to files /scratch/sogin/tmp.379235/combined_report/combined_reference/contigs_reports/contigs_report_3847_E-contigs.stdout and contigs_report_3847_E-contigs.stderr...
+  7  Logging to files /scratch/sogin/tmp.379235/combined_report/combined_reference/contigs_reports/contigs_report_3847_H-contigs.stdout and contigs_report_3847_H-contigs.stderr...
+  3  Logging to files /scratch/sogin/tmp.379235/combined_report/combined_reference/contigs_reports/contigs_report_3847_C-contigs.stdout and contigs_report_3847_C-contigs.stderr...
+  4  Logging to files /scratch/sogin/tmp.379235/combined_report/combined_reference/contigs_reports/contigs_report_3847_D-contigs.stdout and contigs_report_3847_D-contigs.stderr...
+  6  Aligning contigs to the reference
+  1  Aligning contigs to the reference
+  8  Aligning contigs to the reference
+  2  Aligning contigs to the reference
+  5  Aligning contigs to the reference
+  7  Aligning contigs to the reference
+  3  Aligning contigs to the reference
+  4  Aligning contigs to the reference
+  9  Logging to files /scratch/sogin/tmp.379235/combined_report/combined_reference/contigs_reports/contigs_report_coassembly-contigs.stdout and contigs_report_coassembly-contigs.stderr...
+  9  Aligning contigs to the reference
+  8  Analysis is finished.
+  6  Analysis is finished.
+  1  Analysis is finished.
+  2  Analysis is finished.
+  7  Analysis is finished.
+  5  Analysis is finished.
+  3  Analysis is finished.
+  4  Analysis is finished.
+  9  Analysis is finished.
+  Information about interspecies translocations by references for 3847_A_contigs is saved to /scratch/sogin/tmp.379235/combined_report/combined_reference/contigs_reports/interspecies_translocations_by_refs_3847_A_contigs.info
+  Information about interspecies translocations by references for 3847_B_contigs is saved to /scratch/sogin/tmp.379235/combined_report/combined_reference/contigs_reports/interspecies_translocations_by_refs_3847_B_contigs.info
+  Information about interspecies translocations by references for 3847_C_contigs is saved to /scratch/sogin/tmp.379235/combined_report/combined_reference/contigs_reports/interspecies_translocations_by_refs_3847_C_contigs.info
+  Information about interspecies translocations by references for 3847_D_contigs is saved to /scratch/sogin/tmp.379235/combined_report/combined_reference/contigs_reports/interspecies_translocations_by_refs_3847_D_contigs.info
+  Information about interspecies translocations by references for 3847_E_contigs is saved to /scratch/sogin/tmp.379235/combined_report/combined_reference/contigs_reports/interspecies_translocations_by_refs_3847_E_contigs.info
+  Information about interspecies translocations by references for 3847_G_contigs is saved to /scratch/sogin/tmp.379235/combined_report/combined_reference/contigs_reports/interspecies_translocations_by_refs_3847_G_contigs.info
+  Information about interspecies translocations by references for 3847_H_contigs is saved to /scratch/sogin/tmp.379235/combined_report/combined_reference/contigs_reports/interspecies_translocations_by_refs_3847_H_contigs.info
+  Information about interspecies translocations by references for 3847_I_contigs is saved to /scratch/sogin/tmp.379235/combined_report/combined_reference/contigs_reports/interspecies_translocations_by_refs_3847_I_contigs.info
+  Information about interspecies translocations by references for coassembly_contigs is saved to /scratch/sogin/tmp.379235/combined_report/combined_reference/contigs_reports/interspecies_translocations_by_refs_coassembly_contigs.info
+  Creating total report...
+    saved to /scratch/sogin/tmp.379235/combined_report/combined_reference/contigs_reports/misassemblies_report.txt, misassemblies_report.tsv, and misassemblies_report.tex
+  Transposed version of total report...
+    saved to /scratch/sogin/tmp.379235/combined_report/combined_reference/contigs_reports/transposed_report_misassemblies.txt, transposed_report_misassemblies.tsv, and transposed_report_misassemblies.tex
+  Creating total report...
+    saved to /scratch/sogin/tmp.379235/combined_report/combined_reference/contigs_reports/unaligned_report.txt, unaligned_report.tsv, and unaligned_report.tex
+Done.
+
+2019-04-05 20:00:52
+Running NA-NGA calculation...
+  1  3847_A.contigs, Largest alignment = 2543, NA50 = None, LA50 = None
+  2  3847_B.contigs, Largest alignment = 1405, NA50 = None, LA50 = None
+  3  3847_C.contigs, Largest alignment = 1813, NA50 = None, LA50 = None
+  4  3847_D.contigs, Largest alignment = 617, NA50 = None, LA50 = None
+  5  3847_E.contigs, Largest alignment = 991, NA50 = None, LA50 = None
+  6  3847_G.contigs, Largest alignment = 1366, NA50 = None, LA50 = None
+  7  3847_H.contigs, Largest alignment = 1345, NA50 = None, LA50 = None
+  8  3847_I.contigs, Largest alignment = 756, NA50 = None, LA50 = None
+  9  coassembly.contigs, Largest alignment = 41640, NA50 = None, LA50 = None
+Done.
+
+2019-04-05 20:04:01
+Running Genome analyzer...
+  NOTICE: No file with genomic features were provided. Use the --features option if you want to specify it.
+
+  NOTICE: No file with operons were provided. Use the -O option if you want to specify it.
+  1  3847_A.contigs
+  2  3847_B.contigs
+  3  3847_C.contigs
+  4  3847_D.contigs
+  5  3847_E.contigs
+  6  3847_G.contigs
+  7  3847_H.contigs
+  8  3847_I.contigs
+  9  coassembly.contigs
+  8  Analysis is finished.
+  6  Analysis is finished.
+  1  Analysis is finished.
+  2  Analysis is finished.
+  7  Analysis is finished.
+  3  Analysis is finished.
+  5  Analysis is finished.
+  4  Analysis is finished.
+  9  Analysis is finished.
+Done.
+
+NOTICE: Genes are not predicted by default. Use --gene-finding or --glimmer option to enable it.
+
+2019-04-05 20:06:40
+Creating large visual summaries...
+This may take a while: press Ctrl-C to skip this step..
+  1 of 1: Creating Icarus viewers...
+Done
+
+2019-04-05 20:09:10
+RESULTS:
+  Text versions of total report are saved to /scratch/sogin/tmp.379235/combined_report/combined_reference/report.txt, report.tsv, and report.tex
+  Text versions of transposed total report are saved to /scratch/sogin/tmp.379235/combined_report/combined_reference/transposed_report.txt, transposed_report.tsv, and transposed_report.tex
+  HTML version (interactive tables and plots) is saved to /scratch/sogin/tmp.379235/combined_report/combined_reference/report.html
+  Icarus (contig browser) is saved to /scratch/sogin/tmp.379235/combined_report/combined_reference/icarus.html
+
+Partitioning contigs into bins aligned to each reference..
+  processing 3847_A.contigs
+  processing 3847_B.contigs
+  processing 3847_C.contigs
+  processing 3847_D.contigs
+  processing 3847_E.contigs
+  processing 3847_G.contigs
+  processing 3847_I.contigs
+  processing 3847_H.contigs
+  processing coassembly.contigs
+
+Starting quast.py for the contigs aligned to Propionibacterium_sp._434_HC2... (logging to /scratch/sogin/tmp.379235/combined_report/runs_per_reference/Propionibacterium_sp._434_HC2/quast.log)
+/home/sogin/tools/quast-5.0.2/quast.py --colors #E31A1C,#1F78B4,#33A02C,#6A3D9A,#FF7F00,#800000,#A6CEE3,#B2DF8A,#333300 --ls solid,solid,solid,solid,solid,solid,solid,solid,solid --no-check-meta --contig-thresholds 1000,5000,10000,25000,50000 /scratch/sogin/tmp.379235/combined_report/quast_corrected_input/3847_A-contigs_to_Propionibacterium_sp._434_HC2.fasta /scratch/sogin/tmp.379235/combined_report/quast_corrected_input/3847_B-contigs_to_Propionibacterium_sp._434_HC2.fasta /scratch/sogin/tmp.379235/combined_report/quast_corrected_input/3847_C-contigs_to_Propionibacterium_sp._434_HC2.fasta /scratch/sogin/tmp.379235/combined_report/quast_corrected_input/3847_D-contigs_to_Propionibacterium_sp._434_HC2.fasta /scratch/sogin/tmp.379235/combined_report/quast_corrected_input/3847_E-contigs_to_Propionibacterium_sp._434_HC2.fasta /scratch/sogin/tmp.379235/combined_report/quast_corrected_input/3847_G-contigs_to_Propionibacterium_sp._434_HC2.fasta /scratch/sogin/tmp.379235/combined_report/quast_corrected_input/3847_H-contigs_to_Propionibacterium_sp._434_HC2.fasta /scratch/sogin/tmp.379235/combined_report/quast_corrected_input/3847_I-contigs_to_Propionibacterium_sp._434_HC2.fasta /scratch/sogin/tmp.379235/combined_report/quast_corrected_input/coassembly-contigs_to_Propionibacterium_sp._434_HC2.fasta -R /scratch/sogin/tmp.379235/combined_report/quast_corrected_input/Propionibacterium_sp._434_HC2.fasta__1 -o /scratch/sogin/tmp.379235/combined_report/runs_per_reference/Propionibacterium_sp._434_HC2 --labels "3847_A.contigs, 3847_B.contigs, 3847_C.contigs, 3847_D.contigs, 3847_E.contigs, 3847_G.contigs, 3847_H.contigs, 3847_I.contigs, coassembly.contigs"
+
+Started: 2019-04-05 20:20:42
+
+Logging to /scratch/sogin/tmp.379235/combined_report/runs_per_reference/Propionibacterium_sp._434_HC2/quast.log
+NOTICE: Maximum number of threads is set to 20 (use --threads option to set it manually)
+
+CWD: /scratch/sogin/tmp.379235
+Main parameters: 
+  MODE: meta, threads: 20, minimum contig length: 500, minimum alignment length: 65, \
+  ambiguity: one, threshold for extensive misassembly size: 1000
+
+Reference:
+  /scratch/sogin/tmp.379235/combined_report/quast_corrected_input/Propionibacterium_sp._434_HC2.fasta__1 ==> Propionibacterium_sp._434_HC2
+
+Contigs:
+  Pre-processing...
+  1  /scratch/sogin/tmp.379235/combined_report/quast_corrected_input/3847_A-contigs_to_Propionibacterium_sp._434_HC2.fasta ==> 3847_A.contigs
+  2  /scratch/sogin/tmp.379235/combined_report/quast_corrected_input/3847_B-contigs_to_Propionibacterium_sp._434_HC2.fasta ==> 3847_B.contigs
+  3  /scratch/sogin/tmp.379235/combined_report/quast_corrected_input/3847_C-contigs_to_Propionibacterium_sp._434_HC2.fasta ==> 3847_C.contigs
+  4  /scratch/sogin/tmp.379235/combined_report/quast_corrected_input/3847_D-contigs_to_Propionibacterium_sp._434_HC2.fasta ==> 3847_D.contigs
+  5  /scratch/sogin/tmp.379235/combined_report/quast_corrected_input/3847_E-contigs_to_Propionibacterium_sp._434_HC2.fasta ==> 3847_E.contigs
+  6  /scratch/sogin/tmp.379235/combined_report/quast_corrected_input/3847_G-contigs_to_Propionibacterium_sp._434_HC2.fasta ==> 3847_G.contigs
+  7  /scratch/sogin/tmp.379235/combined_report/quast_corrected_input/3847_H-contigs_to_Propionibacterium_sp._434_HC2.fasta ==> 3847_H.contigs
+  8  /scratch/sogin/tmp.379235/combined_report/quast_corrected_input/3847_I-contigs_to_Propionibacterium_sp._434_HC2.fasta ==> 3847_I.contigs
+  9  /scratch/sogin/tmp.379235/combined_report/quast_corrected_input/coassembly-contigs_to_Propionibacterium_sp._434_HC2.fasta ==> coassembly.contigs
+
+2019-04-05 20:20:43
+Running Basic statistics processor...
+  Reference genome:
+    Propionibacterium_sp._434_HC2.fasta__1, length = 2568635, num fragments = 81, GC % = 59.99
+WARNING:   Reference genome is fragmented. You may consider rerunning QUAST using --fragmented option. QUAST will try to detect misassemblies caused by the fragmentation and mark them fake (will be excluded from # misassemblies).
+  Contig files: 
+    1  3847_A.contigs
+    2  3847_B.contigs
+    3  3847_C.contigs
+    4  3847_D.contigs
+    5  3847_E.contigs
+    6  3847_G.contigs
+    7  3847_H.contigs
+    8  3847_I.contigs
+    9  coassembly.contigs
+  Calculating N50 and L50...
+    1  3847_A.contigs, N50 = 782, L50 = 335, Total length = 813906, GC % = 59.59, # N's per 100 kbp =  0.00
+    2  3847_B.contigs, N50 = 727, L50 = 168, Total length = 399644, GC % = 60.59, # N's per 100 kbp =  0.00
+    3  3847_C.contigs, N50 = 701, L50 = 181, Total length = 358804, GC % = 60.04, # N's per 100 kbp =  0.00
+    4  3847_D.contigs, N50 = 2588, L50 = 10, Total length = 207402, GC % = 52.79, # N's per 100 kbp =  0.00
+    5  3847_E.contigs, N50 = 682, L50 = 47, Total length = 114484, GC % = 59.92, # N's per 100 kbp =  0.00
+    6  3847_G.contigs, N50 = 701, L50 = 171, Total length = 346410, GC % = 59.39, # N's per 100 kbp =  0.00
+    7  3847_H.contigs, N50 = 670, L50 = 193, Total length = 355684, GC % = 59.37, # N's per 100 kbp =  0.00
+    8  3847_I.contigs, N50 = 10106, L50 = 3, Total length = 180911, GC % = 51.53, # N's per 100 kbp =  0.00
+    9  coassembly.contigs, N50 = 14963, L50 = 59, Total length = 2771188, GC % = 59.23, # N's per 100 kbp =  0.00
+Done.
+
+2019-04-05 20:20:43
+Running Contig analyzer...
+  1  3847_A.contigs
+  1  Logging to files /scratch/sogin/tmp.379235/combined_report/runs_per_reference/Propionibacterium_sp._434_HC2/contigs_reports/contigs_report_3847_A-contigs.stdout and contigs_report_3847_A-contigs.stderr...
+  2  3847_B.contigs
+  1  Aligning contigs to the reference
+  3  3847_C.contigs
+  2  Logging to files /scratch/sogin/tmp.379235/combined_report/runs_per_reference/Propionibacterium_sp._434_HC2/contigs_reports/contigs_report_3847_B-contigs.stdout and contigs_report_3847_B-contigs.stderr...
+  3  Logging to files /scratch/sogin/tmp.379235/combined_report/runs_per_reference/Propionibacterium_sp._434_HC2/contigs_reports/contigs_report_3847_C-contigs.stdout and contigs_report_3847_C-contigs.stderr...
+  4  3847_D.contigs
+  2  Aligning contigs to the reference
+  3  Aligning contigs to the reference
+  5  3847_E.contigs
+  4  Logging to files /scratch/sogin/tmp.379235/combined_report/runs_per_reference/Propionibacterium_sp._434_HC2/contigs_reports/contigs_report_3847_D-contigs.stdout and contigs_report_3847_D-contigs.stderr...
+  5  Logging to files /scratch/sogin/tmp.379235/combined_report/runs_per_reference/Propionibacterium_sp._434_HC2/contigs_reports/contigs_report_3847_E-contigs.stdout and contigs_report_3847_E-contigs.stderr...
+  4  Aligning contigs to the reference
+  6  3847_G.contigs
+  7  3847_H.contigs
+  5  Aligning contigs to the reference
+  7  Logging to files /scratch/sogin/tmp.379235/combined_report/runs_per_reference/Propionibacterium_sp._434_HC2/contigs_reports/contigs_report_3847_H-contigs.stdout and contigs_report_3847_H-contigs.stderr...
+  6  Logging to files /scratch/sogin/tmp.379235/combined_report/runs_per_reference/Propionibacterium_sp._434_HC2/contigs_reports/contigs_report_3847_G-contigs.stdout and contigs_report_3847_G-contigs.stderr...
+  7  Aligning contigs to the reference
+  6  Aligning contigs to the reference
+  8  3847_I.contigs
+  9  coassembly.contigs
+  8  Logging to files /scratch/sogin/tmp.379235/combined_report/runs_per_reference/Propionibacterium_sp._434_HC2/contigs_reports/contigs_report_3847_I-contigs.stdout and contigs_report_3847_I-contigs.stderr...
+  9  Logging to files /scratch/sogin/tmp.379235/combined_report/runs_per_reference/Propionibacterium_sp._434_HC2/contigs_reports/contigs_report_coassembly-contigs.stdout and contigs_report_coassembly-contigs.stderr...
+  8  Aligning contigs to the reference
+  9  Aligning contigs to the reference
+  4  Analysis is finished.
+  2  Analysis is finished.
+  5  Analysis is finished.
+  6  Analysis is finished.
+  8  Analysis is finished.
+  7  Analysis is finished.
+  3  Analysis is finished.
+  1  Analysis is finished.
+  9  Analysis is finished.
+  Creating total report...
+    saved to /scratch/sogin/tmp.379235/combined_report/runs_per_reference/Propionibacterium_sp._434_HC2/contigs_reports/misassemblies_report.txt, misassemblies_report.tsv, and misassemblies_report.tex
+  Transposed version of total report...
+    saved to /scratch/sogin/tmp.379235/combined_report/runs_per_reference/Propionibacterium_sp._434_HC2/contigs_reports/transposed_report_misassemblies.txt, transposed_report_misassemblies.tsv, and transposed_report_misassemblies.tex
+  Creating total report...
+    saved to /scratch/sogin/tmp.379235/combined_report/runs_per_reference/Propionibacterium_sp._434_HC2/contigs_reports/unaligned_report.txt, unaligned_report.tsv, and unaligned_report.tex
+Done.
+
+2019-04-05 20:20:55
+Running NA-NGA calculation...
+  1  3847_A.contigs, Largest alignment = 2543, NA50 = 620, LA50 = 479
+  2  3847_B.contigs, Largest alignment = 1405, NA50 = 515, LA50 = 302
+  3  3847_C.contigs, Largest alignment = 1813, NA50 = 549, LA50 = 249
+  4  3847_D.contigs, Largest alignment = 617, NA50 = None, LA50 = None
+  5  3847_E.contigs, Largest alignment = 991, NA50 = 495, LA50 = 93
+  6  3847_G.contigs, Largest alignment = 1366, NA50 = 517, LA50 = 253
+  7  3847_H.contigs, Largest alignment = 1345, NA50 = 519, LA50 = 264
+  8  3847_I.contigs, Largest alignment = 756, NA50 = None, LA50 = None
+  9  coassembly.contigs, Largest alignment = 41640, NA50 = 9556, NGA50 = 10757, LA50 = 85, LGA50 = 75
+Done.
+
+2019-04-05 20:20:56
+Running Genome analyzer...
+  NOTICE: No file with genomic features were provided. Use the --features option if you want to specify it.
+
+  NOTICE: No file with operons were provided. Use the -O option if you want to specify it.
+  1  3847_A.contigs
+  2  3847_B.contigs
+  3  3847_C.contigs
+  4  3847_D.contigs
+  5  3847_E.contigs
+  6  3847_G.contigs
+  7  3847_H.contigs
+  8  3847_I.contigs
+  9  coassembly.contigs
+  7  Analysis is finished.
+  8  Analysis is finished.
+  4  Analysis is finished.
+  6  Analysis is finished.
+  3  Analysis is finished.
+  2  Analysis is finished.
+  5  Analysis is finished.
+  1  Analysis is finished.
+  9  Analysis is finished.
+Done.
+
+NOTICE: Genes are not predicted by default. Use --gene-finding or --glimmer option to enable it.
+
+2019-04-05 20:20:57
+Creating large visual summaries...
+This may take a while: press Ctrl-C to skip this step..
+  1 of 1: Creating Icarus viewers...
+Done
+
+2019-04-05 20:20:57
+RESULTS:
+  Text versions of total report are saved to /scratch/sogin/tmp.379235/combined_report/runs_per_reference/Propionibacterium_sp._434_HC2/report.txt, report.tsv, and report.tex
+  Text versions of transposed total report are saved to /scratch/sogin/tmp.379235/combined_report/runs_per_reference/Propionibacterium_sp._434_HC2/transposed_report.txt, transposed_report.tsv, and transposed_report.tex
+  HTML version (interactive tables and plots) is saved to /scratch/sogin/tmp.379235/combined_report/runs_per_reference/Propionibacterium_sp._434_HC2/report.html
+  Icarus (contig browser) is saved to /scratch/sogin/tmp.379235/combined_report/runs_per_reference/Propionibacterium_sp._434_HC2/icarus.html
+
+Starting quast.py for the contigs not aligned anywhere... (logging to /scratch/sogin/tmp.379235/combined_report/not_aligned/quast.log)
+/home/sogin/tools/quast-5.0.2/quast.py --colors #E31A1C,#1F78B4,#33A02C,#6A3D9A,#FF7F00,#800000,#A6CEE3,#B2DF8A,#333300 --ls solid,solid,solid,solid,solid,solid,solid,solid,solid --no-check-meta --contig-thresholds 1000,5000,10000,25000,50000 -t 20 /scratch/sogin/tmp.379235/combined_report/quast_corrected_input/3847_A-contigs_not_aligned_anywhere.fasta /scratch/sogin/tmp.379235/combined_report/quast_corrected_input/3847_B-contigs_not_aligned_anywhere.fasta /scratch/sogin/tmp.379235/combined_report/quast_corrected_input/3847_C-contigs_not_aligned_anywhere.fasta /scratch/sogin/tmp.379235/combined_report/quast_corrected_input/3847_D-contigs_not_aligned_anywhere.fasta /scratch/sogin/tmp.379235/combined_report/quast_corrected_input/3847_E-contigs_not_aligned_anywhere.fasta /scratch/sogin/tmp.379235/combined_report/quast_corrected_input/3847_G-contigs_not_aligned_anywhere.fasta /scratch/sogin/tmp.379235/combined_report/quast_corrected_input/3847_H-contigs_not_aligned_anywhere.fasta /scratch/sogin/tmp.379235/combined_report/quast_corrected_input/3847_I-contigs_not_aligned_anywhere.fasta /scratch/sogin/tmp.379235/combined_report/quast_corrected_input/coassembly-contigs_not_aligned_anywhere.fasta -o /scratch/sogin/tmp.379235/combined_report/not_aligned --labels "3847_A.contigs, 3847_B.contigs, 3847_C.contigs, 3847_D.contigs, 3847_E.contigs, 3847_G.contigs, 3847_H.contigs, 3847_I.contigs, coassembly.contigs"
+
+Started: 2019-04-05 20:20:57
+
+Logging to /scratch/sogin/tmp.379235/combined_report/not_aligned/quast.log
+
+CWD: /scratch/sogin/tmp.379235
+Main parameters: 
+  MODE: meta, threads: 20, minimum contig length: 500, minimum alignment length: 65, \
+  ambiguity: one, threshold for extensive misassembly size: 1000
+
+Contigs:
+  Pre-processing...
+  1  /scratch/sogin/tmp.379235/combined_report/quast_corrected_input/3847_A-contigs_not_aligned_anywhere.fasta ==> 3847_A.contigs
+  2  /scratch/sogin/tmp.379235/combined_report/quast_corrected_input/3847_B-contigs_not_aligned_anywhere.fasta ==> 3847_B.contigs
+  3  /scratch/sogin/tmp.379235/combined_report/quast_corrected_input/3847_C-contigs_not_aligned_anywhere.fasta ==> 3847_C.contigs
+  4  /scratch/sogin/tmp.379235/combined_report/quast_corrected_input/3847_D-contigs_not_aligned_anywhere.fasta ==> 3847_D.contigs
+  5  /scratch/sogin/tmp.379235/combined_report/quast_corrected_input/3847_E-contigs_not_aligned_anywhere.fasta ==> 3847_E.contigs
+  6  /scratch/sogin/tmp.379235/combined_report/quast_corrected_input/3847_G-contigs_not_aligned_anywhere.fasta ==> 3847_G.contigs
+  7  /scratch/sogin/tmp.379235/combined_report/quast_corrected_input/3847_H-contigs_not_aligned_anywhere.fasta ==> 3847_H.contigs
+  8  /scratch/sogin/tmp.379235/combined_report/quast_corrected_input/3847_I-contigs_not_aligned_anywhere.fasta ==> 3847_I.contigs
+  9  /scratch/sogin/tmp.379235/combined_report/quast_corrected_input/coassembly-contigs_not_aligned_anywhere.fasta ==> coassembly.contigs
+
+2019-04-05 20:26:17
+Running Basic statistics processor...
+  Contig files: 
+    1  3847_A.contigs
+    2  3847_B.contigs
+    3  3847_C.contigs
+    4  3847_D.contigs
+    5  3847_E.contigs
+    6  3847_G.contigs
+    7  3847_H.contigs
+    8  3847_I.contigs
+    9  coassembly.contigs
+  Calculating N50 and L50...
+    1  3847_A.contigs, N50 = 943, L50 = 156674, Total length = 602888861, GC % = 57.70, # N's per 100 kbp =  0.00
+    2  3847_B.contigs, N50 = 881, L50 = 198694, Total length = 635936344, GC % = 58.92, # N's per 100 kbp =  0.00
+    3  3847_C.contigs, N50 = 895, L50 = 267773, Total length = 917434349, GC % = 58.29, # N's per 100 kbp =  0.00
+    4  3847_D.contigs, N50 = 1054, L50 = 283532, Total length = 1075655786, GC % = 58.70, # N's per 100 kbp =  0.00
+    5  3847_E.contigs, N50 = 876, L50 = 262742, Total length = 826890099, GC % = 56.59, # N's per 100 kbp =  0.00
+    6  3847_G.contigs, N50 = 797, L50 = 199282, Total length = 546482705, GC % = 53.67, # N's per 100 kbp =  0.00
+    7  3847_H.contigs, N50 = 906, L50 = 213921, Total length = 777917897, GC % = 51.75, # N's per 100 kbp =  0.00
+    8  3847_I.contigs, N50 = 845, L50 = 157706, Total length = 510151446, GC % = 53.18, # N's per 100 kbp =  0.00
+    9  coassembly.contigs, N50 = 1267, L50 = 1393059, Total length = 7669295555, GC % = 57.72, # N's per 100 kbp =  0.00
+Done.
+
+NOTICE: Genes are not predicted by default. Use --gene-finding or --glimmer option to enable it.
+
+2019-04-05 20:44:27
+Creating large visual summaries...
+This may take a while: press Ctrl-C to skip this step..
+  1 of 1: Creating Icarus viewers...
+Done
+
+2019-04-05 20:49:07
+RESULTS:
+  Text versions of total report are saved to /scratch/sogin/tmp.379235/combined_report/not_aligned/report.txt, report.tsv, and report.tex
+  Text versions of transposed total report are saved to /scratch/sogin/tmp.379235/combined_report/not_aligned/transposed_report.txt, transposed_report.tsv, and transposed_report.tex
+  HTML version (interactive tables and plots) is saved to /scratch/sogin/tmp.379235/combined_report/not_aligned/report.html
+  Icarus (contig browser) is saved to /scratch/sogin/tmp.379235/combined_report/not_aligned/icarus.html
+
+2019-04-05 20:49:07
+Summarizing results...
+
+  Text versions of reports and plots for each metric (for all references and assemblies) are saved to /scratch/sogin/tmp.379235/combined_report/summary/
+  Icarus (contig browser) is saved to /scratch/sogin/tmp.379235/combined_report/icarus.html
+  Drawing interactive Krona plots...
+  Krona chart for 3847_A.contigs is saved to /scratch/sogin/tmp.379235/combined_report/krona_charts/3847_A.contigs_taxonomy_chart.html
+  Krona chart for 3847_B.contigs is saved to /scratch/sogin/tmp.379235/combined_report/krona_charts/3847_B.contigs_taxonomy_chart.html
+  Krona chart for 3847_C.contigs is saved to /scratch/sogin/tmp.379235/combined_report/krona_charts/3847_C.contigs_taxonomy_chart.html
+  Krona chart for 3847_D.contigs is saved to /scratch/sogin/tmp.379235/combined_report/krona_charts/3847_D.contigs_taxonomy_chart.html
+  Krona chart for 3847_E.contigs is saved to /scratch/sogin/tmp.379235/combined_report/krona_charts/3847_E.contigs_taxonomy_chart.html
+  Krona chart for 3847_G.contigs is saved to /scratch/sogin/tmp.379235/combined_report/krona_charts/3847_G.contigs_taxonomy_chart.html
+  Krona chart for 3847_H.contigs is saved to /scratch/sogin/tmp.379235/combined_report/krona_charts/3847_H.contigs_taxonomy_chart.html
+  Krona chart for 3847_I.contigs is saved to /scratch/sogin/tmp.379235/combined_report/krona_charts/3847_I.contigs_taxonomy_chart.html
+  Krona chart for coassembly.contigs is saved to /scratch/sogin/tmp.379235/combined_report/krona_charts/coassembly.contigs_taxonomy_chart.html
+  Summary Krona chart is saved to /scratch/sogin/tmp.379235/combined_report/krona_charts/summary_taxonomy_chart.html
+  Extended version of HTML-report (for all references and assemblies) is saved to /scratch/sogin/tmp.379235/combined_report/report.html
+
+MetaQUAST finished.
+  Log is saved to /scratch/sogin/tmp.379235/combined_report/metaquast.log
+
+Finished: 2019-04-05 20:49:20
+Elapsed time: 10:34:36.899933
+Total NOTICEs: 10; WARNINGs: 1; non-fatal ERRORs: 0
+
+Thank you for using QUAST!
+job finished: 
+Fri Apr  5 20:55:10 CEST 2019

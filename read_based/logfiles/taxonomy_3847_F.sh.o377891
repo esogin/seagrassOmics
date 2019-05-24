@@ -1,0 +1,773 @@
+job started: 
+job ID: 377891
+Mon Apr  1 10:15:50 CEST 2019
+gc-node-22
+shell: /bin/bash
+
+This is phyloFlash v3.3b1
+
+[10:15:51] Using dbhome
+	   '/opt/extern/bremen/symbiosis/tools_HGV/phyloFlash/132'
+[10:15:51] working on library 3847_F_class
+[10:15:52] Using interleaved read data
+[10:15:52] Forward reads
+	   /opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/3847_F/qc/3847_F_q2_ktrimmed.fq.gz
+[10:15:52] Reverse reads from interleaved read file
+	   /opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/3847_F/qc/3847_F_q2_ktrimmed.fq.gz
+[10:15:52] Current operating system linux
+[10:15:52] Checking for required tools.
+[10:15:52] Using nhmmer found at
+	   "/opt/extern/bremen/symbiosis/tools_HGV/phyloFlash/barrnap-HGV/binaries/linux/nhmmer".
+[10:15:52] Using cat found at "/bin/cat".
+[10:15:52] Using vsearch found at "/opt/share/software/bin/vsearch".
+[10:15:52] Using awk found at "/usr/bin/awk".
+[10:15:52] Using reformat found at "/opt/share/software/bin/reformat.sh".
+[10:15:52] Using bbmap found at "/opt/share/software/bin/bbmap.sh".
+[10:15:52] Using mafft found at "/opt/share/software/bin/mafft".
+[10:15:52] Using spades found at "/opt/share/software/bin/spades.py".
+[10:15:52] Using sed found at "/bin/sed".
+[10:15:52] Using plotscript_SVG found at
+	   "/opt/extern/bremen/symbiosis/tools_HGV/phyloFlash/phyloFlash_plotscript_svg.pl".
+[10:15:52] Using fastaFromBed found at
+	   "/opt/share/software/bin/fastaFromBed".
+[10:15:52] Using barrnap found at
+	   "/opt/extern/bremen/symbiosis/tools_HGV/phyloFlash/barrnap-HGV/bin/barrnap_HGV".
+[10:15:52] Using grep found at "/bin/grep".
+[10:15:52] All required tools found.
+[10:15:52] filtering reads with SSU db using minimum identity of 70%
+[10:15:52] running subcommand:
+	   /opt/share/software/bin/bbmap.sh fast=t minidentity=0.7 -Xmx20g
+	   reads=-1 threads=24 po=f outputunmapped=f
+	   path=/opt/extern/bremen/symbiosis/tools_HGV/phyloFlash/132
+	   out=3847_F_class.bbmap.sam
+	   outm=3847_F_class.3847_F_q2_ktrimmed.fq.gz.SSU.1.fq noheader=t
+	   ambiguous=all build=1
+	   in=/opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/3847_F/qc/3847_F_q2_ktrimmed.fq.gz
+	   bhist=3847_F_class.basecompositionhistogram
+	   ihist=3847_F_class.inserthistogram
+	   idhist=3847_F_class.idhistogram scafstats=3847_F_class.hitstats
+	   overwrite=t outm2=3847_F_class.3847_F_q2_ktrimmed.fq.gz.SSU.2.fq
+	   pairlen=1200 interleaved=t 2>3847_F_class.bbmap.out
+[10:33:55] done...
+[10:33:55] Reading SAM file 3847_F_class.bbmap.sam into memory
+[10:33:56] Writing fixed SAM file to
+	   3847_F_class.3847_F_q2_ktrimmed.fq.gz.SSU.sam
+[10:33:57] Done
+[10:33:57] Total read segments processed: 211532836
+[10:33:57] insert size median: 267
+[10:33:57] insert size std deviation: 112
+[10:33:57] Summarizing taxonomy from mapping hits to SILVA database
+[10:33:58] done...
+[10:33:58] Forward read segments mapping: 29632
+[10:33:58] Reverse read segments mapping: 29216
+[10:33:58] Reporting mapping statistics for paired end input
+[10:33:58] Total read pairs with at least one segment mapping: 15891
+[10:33:59] => both segments mapping to same reference: 17653
+[10:33:59] => both segments mapping to different references: 7053
+[10:33:59] Read segments where next segment unmapped: 9436
+[10:33:59] mapping rate: 0.015%
+[10:33:59] creating phylotypes with SPAdes
+[10:33:59] kmers for SPAdes are 73,83,93
+[10:33:59] running subcommand:
+	   /opt/share/software/bin/spades.py -o 3847_F_class.spades -t 24
+	   -m 20 -k 73,83,93 -1
+	   3847_F_class.3847_F_q2_ktrimmed.fq.gz.SSU.1.fq -2
+	   3847_F_class.3847_F_q2_ktrimmed.fq.gz.SSU.2.fq
+	   >3847_F_class.spades.out 2>&1
+[10:34:51] done...
+[10:34:51] getting SSU phylotypes and their coverages...
+[10:34:51] running subcommand:
+	   /opt/extern/bremen/symbiosis/tools_HGV/phyloFlash/barrnap-HGV/bin/barrnap_HGV
+	    --evalue 1e-100 --reject 0.6 --kingdom bac --gene ssu --threads
+	   24 3847_F_class.spades/scaffolds.fasta
+	   >3847_F_class.scaffolds.bac.gff 2>3847_F_class.barrnap.out
+[10:35:01] running subcommand:
+	   /opt/extern/bremen/symbiosis/tools_HGV/phyloFlash/barrnap-HGV/bin/barrnap_HGV
+	    --evalue 1e-100 --reject 0.6 --kingdom arch --gene ssu
+	   --threads 24 3847_F_class.spades/scaffolds.fasta
+	   >3847_F_class.scaffolds.arch.gff 2>3847_F_class.barrnap.out
+[10:35:10] running subcommand:
+	   /opt/extern/bremen/symbiosis/tools_HGV/phyloFlash/barrnap-HGV/bin/barrnap_HGV
+	    --evalue 1e-100 --reject 0.6 --kingdom euk --gene ssu --threads
+	   24 3847_F_class.spades/scaffolds.fasta
+	   >3847_F_class.scaffolds.euk.gff 2>3847_F_class.barrnap.out
+[10:35:23] running subcommand:
+	   /opt/share/software/bin/fastaFromBed -fi
+	   3847_F_class.spades/scaffolds.fasta -bed
+	   3847_F_class.scaffolds.final.gff -fo
+	   3847_F_class.spades_rRNAs.fastaFromBed.fasta -s -name
+	   >3847_F_class.fastaFromBed.out 2>&1
+[10:35:23] done...
+[10:35:23] mapping extracted SSU reads back on SPAdes SSU sequences
+[10:35:23] running subcommand:
+	   /opt/share/software/bin/bbmap.sh fast=t minidentity=0.98 -Xmx20g
+	   threads=24 po=f outputunmapped=t
+	   ref=3847_F_class.spades_rRNAs.final.fasta nodisk
+	   in=3847_F_class.3847_F_q2_ktrimmed.fq.gz.SSU.1.fq
+	   out=3847_F_class.3847_F_q2_ktrimmed.fq.gz.SSU_spades.sam
+	   noheader=t overwrite=t interleaved=t pairlen=1200
+	   2>3847_F_class.remap_spades.bbmap.out
+[10:35:34] done...
+[10:35:34] searching for DB matches with vsearch
+[10:35:34] running subcommand:
+	   /bin/cat 3847_F_class.spades_rRNAs.final.fasta
+	   >3847_F_class.all.final.fasta
+[10:35:34] Vsearch v2.5.0+ found, will index database to UDB file
+[10:35:34] running subcommand:
+	   /opt/share/software/bin/vsearch -usearch_global
+	   3847_F_class.all.final.fasta -id 0.7 -userout
+	   3847_F_class.all.vsearch.csv -userfields
+	   query+target+id+alnlen+evalue+id3+qs+pairs+gaps+mism+ids
+	   -threads 24 --strand plus --notrunclabels -notmatched
+	   3847_F_class.all.final.phyloFlash.notmatched.fa -dbmatched
+	   3847_F_class.all.final.phyloFlash.dbhits.fa -db
+	   /opt/extern/bremen/symbiosis/tools_HGV/phyloFlash/132/SILVA_SSU.noLSU.masked.trimmed.udb
+	   >3847_F_class.all.vsearch.out 2>&1
+[10:35:42] done...
+[10:35:42] clustering DB matches at 97%
+[10:35:42] running subcommand:
+	   /opt/share/software/bin/vsearch   --cluster_fast
+	   3847_F_class.all.final.phyloFlash.dbhits.fa -id 0.97 -centroids
+	   3847_F_class.all.dbhits.NR97.fa -notrunclabels --threads 24
+	   >3847_F_class.clusterdbhits.out 2>&1
+[10:35:44] done...
+[10:35:44] creating alignment and tree...
+[10:35:44] running subcommand:
+	   /bin/cat 3847_F_class.all.dbhits.NR97.fa
+	   3847_F_class.spades_rRNAs.final.fasta
+	   >3847_F_class.SSU.collection.fasta
+[10:35:44] running subcommand:
+	   /opt/share/software/bin/mafft --treeout
+	   3847_F_class.SSU.collection.fasta
+	   >3847_F_class.SSU.collection.alignment.fasta
+	   2>3847_F_class.SSU.collection.alignment.mafftout
+[10:35:48] done...
+[10:35:48] Reading remappings to summarize taxonomy of unmapped reads
+[10:35:48] Reading results of remapping to SPAdes results
+[10:35:48] total fwd reads remapping:2191
+[10:35:48] total rev reads remapping:2209
+[10:35:50] Done
+[10:35:50] writing final files...
+[10:35:50] exporting results to csv
+Use of uninitialized value in concatenation (.) or string at /opt/extern/bremen/symbiosis/tools_HGV/phyloFlash/phyloFlash.pl line 873.
+[10:35:50] generating graphics for report in SVG format
+[10:35:50] Plotting mapping ID histogram
+[10:35:50] running subcommand:
+	   /opt/extern/bremen/symbiosis/tools_HGV/phyloFlash/phyloFlash_plotscript_svg.pl
+	   --hist 3847_F_class.idhistogram  --title="Mapping identity (%)" 
+	   >3847_F_class.plotscript.out 2>&1
+[10:35:50] Plotting piechart of mapping ratios
+[10:35:50] running subcommand:
+	   /opt/extern/bremen/symbiosis/tools_HGV/phyloFlash/phyloFlash_plotscript_svg.pl
+	   -pie 3847_F_class.mapratio.csv -title="0.015 % pairs mapped"
+	   >3847_F_class.plotscript.out 2>&1
+[10:35:50] Plotting piechart of assembled reads ratio
+[10:35:50] running subcommand:
+	   /opt/extern/bremen/symbiosis/tools_HGV/phyloFlash/phyloFlash_plotscript_svg.pl
+	   --pie 3847_F_class.assemratio.csv  --title="Reads assembled"
+	   >3847_F_class.plotscript.out 2>&1
+[10:35:50] Plotting histogram of insert sizes
+[10:35:50] running subcommand:
+	   /opt/extern/bremen/symbiosis/tools_HGV/phyloFlash/phyloFlash_plotscript_svg.pl
+	   --hist  3847_F_class.inserthistogram  --title="Insert size (bp)"
+	    >3847_F_class.plotscript.out 2>&1
+[10:35:50] Plotting tree of assembled + reference SSU sequences
+[10:35:50] running subcommand:
+	   /opt/extern/bremen/symbiosis/tools_HGV/phyloFlash/phyloFlash_plotscript_svg.pl
+	   -tree 3847_F_class.SSU.collection.fasta.tree -assemcov
+	   3847_F_class.phyloFlash.extractedSSUclassifications.csv
+	   -treefasta 3847_F_class.SSU.collection.fasta -unassemcount 54448
+	   >3847_F_class.plotscript.out 2>&1
+[10:35:50] Plotting barplot of taxonomic summary
+[10:35:50] running subcommand:
+	   /opt/extern/bremen/symbiosis/tools_HGV/phyloFlash/phyloFlash_plotscript_svg.pl
+	   -bar 3847_F_class.phyloFlash.NTUabundance.csv -title="Taxonomic
+	   summary from reads mapped" >3847_F_class.plotscript.out 2>&1
+[10:35:51] done
+[10:35:51] Generating HTML-formatted report and graphics ... 
+[10:35:51] Cleaning temp files...
+[10:35:51] Walltime used: 19.97 minutes with 24 CPU cores
+[10:35:51] Thank you for using phyloFlash
+	   You can find your results in 3847_F_class.*,
+	   Your main result file is 3847_F_class.phyloFlash
+[10:35:51] Saving log to file 3847_F_class.phyloFlash.log
+[10:35:51] Compressing results into tar.gz archive
+	   3847_F_class.phyloFlash.tar.gz
+[10:35:58] Done...
+
+This is phyloFlash v3.3b1
+
+[10:35:59] Using dbhome
+	   '/opt/extern/bremen/symbiosis/tools_HGV/phyloFlash/132'
+[10:35:59] working on library 3847_F_phyla
+[10:35:59] Using interleaved read data
+[10:35:59] Forward reads
+	   /opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/3847_F/qc/3847_F_q2_ktrimmed.fq.gz
+[10:35:59] Reverse reads from interleaved read file
+	   /opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/3847_F/qc/3847_F_q2_ktrimmed.fq.gz
+[10:35:59] Current operating system linux
+[10:35:59] Checking for required tools.
+[10:36:00] Using reformat found at "/opt/share/software/bin/reformat.sh".
+[10:36:00] Using fastaFromBed found at
+	   "/opt/share/software/bin/fastaFromBed".
+[10:36:00] Using barrnap found at
+	   "/opt/extern/bremen/symbiosis/tools_HGV/phyloFlash/barrnap-HGV/bin/barrnap_HGV".
+[10:36:00] Using spades found at "/opt/share/software/bin/spades.py".
+[10:36:00] Using nhmmer found at
+	   "/opt/extern/bremen/symbiosis/tools_HGV/phyloFlash/barrnap-HGV/binaries/linux/nhmmer".
+[10:36:00] Using grep found at "/bin/grep".
+[10:36:00] Using cat found at "/bin/cat".
+[10:36:00] Using awk found at "/usr/bin/awk".
+[10:36:00] Using vsearch found at "/opt/share/software/bin/vsearch".
+[10:36:00] Using mafft found at "/opt/share/software/bin/mafft".
+[10:36:00] Using plotscript_SVG found at
+	   "/opt/extern/bremen/symbiosis/tools_HGV/phyloFlash/phyloFlash_plotscript_svg.pl".
+[10:36:00] Using sed found at "/bin/sed".
+[10:36:00] Using bbmap found at "/opt/share/software/bin/bbmap.sh".
+[10:36:00] All required tools found.
+[10:36:00] filtering reads with SSU db using minimum identity of 70%
+[10:36:00] running subcommand:
+	   /opt/share/software/bin/bbmap.sh fast=t minidentity=0.7 -Xmx20g
+	   reads=-1 threads=24 po=f outputunmapped=f
+	   path=/opt/extern/bremen/symbiosis/tools_HGV/phyloFlash/132
+	   out=3847_F_phyla.bbmap.sam
+	   outm=3847_F_phyla.3847_F_q2_ktrimmed.fq.gz.SSU.1.fq noheader=t
+	   ambiguous=all build=1
+	   in=/opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/3847_F/qc/3847_F_q2_ktrimmed.fq.gz
+	   bhist=3847_F_phyla.basecompositionhistogram
+	   ihist=3847_F_phyla.inserthistogram
+	   idhist=3847_F_phyla.idhistogram scafstats=3847_F_phyla.hitstats
+	   overwrite=t outm2=3847_F_phyla.3847_F_q2_ktrimmed.fq.gz.SSU.2.fq
+	   pairlen=1200 interleaved=t 2>3847_F_phyla.bbmap.out
+[10:47:28] done...
+[10:47:28] Reading SAM file 3847_F_phyla.bbmap.sam into memory
+[10:47:29] Writing fixed SAM file to
+	   3847_F_phyla.3847_F_q2_ktrimmed.fq.gz.SSU.sam
+[10:47:29] Done
+[10:47:29] Total read segments processed: 211532836
+[10:47:29] insert size median: 267
+[10:47:29] insert size std deviation: 112
+[10:47:29] Summarizing taxonomy from mapping hits to SILVA database
+[10:47:31] done...
+[10:47:31] Forward read segments mapping: 29632
+[10:47:31] Reverse read segments mapping: 29216
+[10:47:31] Reporting mapping statistics for paired end input
+[10:47:31] Total read pairs with at least one segment mapping: 15891
+[10:47:31] => both segments mapping to same reference: 17653
+[10:47:31] => both segments mapping to different references: 7053
+[10:47:31] Read segments where next segment unmapped: 9436
+[10:47:31] mapping rate: 0.015%
+[10:47:31] creating phylotypes with SPAdes
+[10:47:31] kmers for SPAdes are 73,83,93
+[10:47:31] running subcommand:
+	   /opt/share/software/bin/spades.py -o 3847_F_phyla.spades -t 24
+	   -m 20 -k 73,83,93 -1
+	   3847_F_phyla.3847_F_q2_ktrimmed.fq.gz.SSU.1.fq -2
+	   3847_F_phyla.3847_F_q2_ktrimmed.fq.gz.SSU.2.fq
+	   >3847_F_phyla.spades.out 2>&1
+[10:48:23] done...
+[10:48:23] getting SSU phylotypes and their coverages...
+[10:48:23] running subcommand:
+	   /opt/extern/bremen/symbiosis/tools_HGV/phyloFlash/barrnap-HGV/bin/barrnap_HGV
+	    --evalue 1e-100 --reject 0.6 --kingdom bac --gene ssu --threads
+	   24 3847_F_phyla.spades/scaffolds.fasta
+	   >3847_F_phyla.scaffolds.bac.gff 2>3847_F_phyla.barrnap.out
+[10:48:32] running subcommand:
+	   /opt/extern/bremen/symbiosis/tools_HGV/phyloFlash/barrnap-HGV/bin/barrnap_HGV
+	    --evalue 1e-100 --reject 0.6 --kingdom arch --gene ssu
+	   --threads 24 3847_F_phyla.spades/scaffolds.fasta
+	   >3847_F_phyla.scaffolds.arch.gff 2>3847_F_phyla.barrnap.out
+[10:48:41] running subcommand:
+	   /opt/extern/bremen/symbiosis/tools_HGV/phyloFlash/barrnap-HGV/bin/barrnap_HGV
+	    --evalue 1e-100 --reject 0.6 --kingdom euk --gene ssu --threads
+	   24 3847_F_phyla.spades/scaffolds.fasta
+	   >3847_F_phyla.scaffolds.euk.gff 2>3847_F_phyla.barrnap.out
+[10:48:54] running subcommand:
+	   /opt/share/software/bin/fastaFromBed -fi
+	   3847_F_phyla.spades/scaffolds.fasta -bed
+	   3847_F_phyla.scaffolds.final.gff -fo
+	   3847_F_phyla.spades_rRNAs.fastaFromBed.fasta -s -name
+	   >3847_F_phyla.fastaFromBed.out 2>&1
+[10:48:54] done...
+[10:48:54] mapping extracted SSU reads back on SPAdes SSU sequences
+[10:48:54] running subcommand:
+	   /opt/share/software/bin/bbmap.sh fast=t minidentity=0.98 -Xmx20g
+	   threads=24 po=f outputunmapped=t
+	   ref=3847_F_phyla.spades_rRNAs.final.fasta nodisk
+	   in=3847_F_phyla.3847_F_q2_ktrimmed.fq.gz.SSU.1.fq
+	   out=3847_F_phyla.3847_F_q2_ktrimmed.fq.gz.SSU_spades.sam
+	   noheader=t overwrite=t interleaved=t pairlen=1200
+	   2>3847_F_phyla.remap_spades.bbmap.out
+[10:49:07] done...
+[10:49:07] searching for DB matches with vsearch
+[10:49:07] running subcommand:
+	   /bin/cat 3847_F_phyla.spades_rRNAs.final.fasta
+	   >3847_F_phyla.all.final.fasta
+[10:49:08] Vsearch v2.5.0+ found, will index database to UDB file
+[10:49:08] running subcommand:
+	   /opt/share/software/bin/vsearch -usearch_global
+	   3847_F_phyla.all.final.fasta -id 0.7 -userout
+	   3847_F_phyla.all.vsearch.csv -userfields
+	   query+target+id+alnlen+evalue+id3+qs+pairs+gaps+mism+ids
+	   -threads 24 --strand plus --notrunclabels -notmatched
+	   3847_F_phyla.all.final.phyloFlash.notmatched.fa -dbmatched
+	   3847_F_phyla.all.final.phyloFlash.dbhits.fa -db
+	   /opt/extern/bremen/symbiosis/tools_HGV/phyloFlash/132/SILVA_SSU.noLSU.masked.trimmed.udb
+	   >3847_F_phyla.all.vsearch.out 2>&1
+[10:49:15] done...
+[10:49:15] clustering DB matches at 97%
+[10:49:15] running subcommand:
+	   /opt/share/software/bin/vsearch   --cluster_fast
+	   3847_F_phyla.all.final.phyloFlash.dbhits.fa -id 0.97 -centroids
+	   3847_F_phyla.all.dbhits.NR97.fa -notrunclabels --threads 24
+	   >3847_F_phyla.clusterdbhits.out 2>&1
+[10:49:17] done...
+[10:49:17] creating alignment and tree...
+[10:49:17] running subcommand:
+	   /bin/cat 3847_F_phyla.all.dbhits.NR97.fa
+	   3847_F_phyla.spades_rRNAs.final.fasta
+	   >3847_F_phyla.SSU.collection.fasta
+[10:49:17] running subcommand:
+	   /opt/share/software/bin/mafft --treeout
+	   3847_F_phyla.SSU.collection.fasta
+	   >3847_F_phyla.SSU.collection.alignment.fasta
+	   2>3847_F_phyla.SSU.collection.alignment.mafftout
+[10:49:20] done...
+[10:49:20] Reading remappings to summarize taxonomy of unmapped reads
+[10:49:20] Reading results of remapping to SPAdes results
+[10:49:20] total fwd reads remapping:2184
+[10:49:20] total rev reads remapping:2211
+[10:49:21] Done
+[10:49:21] writing final files...
+[10:49:21] exporting results to csv
+Use of uninitialized value in concatenation (.) or string at /opt/extern/bremen/symbiosis/tools_HGV/phyloFlash/phyloFlash.pl line 873.
+[10:49:21] generating graphics for report in SVG format
+[10:49:21] Plotting mapping ID histogram
+[10:49:21] running subcommand:
+	   /opt/extern/bremen/symbiosis/tools_HGV/phyloFlash/phyloFlash_plotscript_svg.pl
+	   --hist 3847_F_phyla.idhistogram  --title="Mapping identity (%)" 
+	   >3847_F_phyla.plotscript.out 2>&1
+[10:49:21] Plotting piechart of mapping ratios
+[10:49:21] running subcommand:
+	   /opt/extern/bremen/symbiosis/tools_HGV/phyloFlash/phyloFlash_plotscript_svg.pl
+	   -pie 3847_F_phyla.mapratio.csv -title="0.015 % pairs mapped"
+	   >3847_F_phyla.plotscript.out 2>&1
+[10:49:21] Plotting piechart of assembled reads ratio
+[10:49:21] running subcommand:
+	   /opt/extern/bremen/symbiosis/tools_HGV/phyloFlash/phyloFlash_plotscript_svg.pl
+	   --pie 3847_F_phyla.assemratio.csv  --title="Reads assembled"
+	   >3847_F_phyla.plotscript.out 2>&1
+[10:49:21] Plotting histogram of insert sizes
+[10:49:21] running subcommand:
+	   /opt/extern/bremen/symbiosis/tools_HGV/phyloFlash/phyloFlash_plotscript_svg.pl
+	   --hist  3847_F_phyla.inserthistogram  --title="Insert size (bp)"
+	    >3847_F_phyla.plotscript.out 2>&1
+[10:49:21] Plotting tree of assembled + reference SSU sequences
+[10:49:21] running subcommand:
+	   /opt/extern/bremen/symbiosis/tools_HGV/phyloFlash/phyloFlash_plotscript_svg.pl
+	   -tree 3847_F_phyla.SSU.collection.fasta.tree -assemcov
+	   3847_F_phyla.phyloFlash.extractedSSUclassifications.csv
+	   -treefasta 3847_F_phyla.SSU.collection.fasta -unassemcount 54453
+	   >3847_F_phyla.plotscript.out 2>&1
+[10:49:22] Plotting barplot of taxonomic summary
+[10:49:22] running subcommand:
+	   /opt/extern/bremen/symbiosis/tools_HGV/phyloFlash/phyloFlash_plotscript_svg.pl
+	   -bar 3847_F_phyla.phyloFlash.NTUabundance.csv -title="Taxonomic
+	   summary from reads mapped" >3847_F_phyla.plotscript.out 2>&1
+[10:49:22] done
+[10:49:22] Generating HTML-formatted report and graphics ... 
+[10:49:22] Cleaning temp files...
+[10:49:22] Walltime used: 13.35 minutes with 24 CPU cores
+[10:49:22] Thank you for using phyloFlash
+	   You can find your results in 3847_F_phyla.*,
+	   Your main result file is 3847_F_phyla.phyloFlash
+[10:49:22] Saving log to file 3847_F_phyla.phyloFlash.log
+[10:49:22] Compressing results into tar.gz archive
+	   3847_F_phyla.phyloFlash.tar.gz
+[10:49:29] Done...
+
+This is phyloFlash v3.3b1
+
+[10:49:29] Using dbhome
+	   '/opt/extern/bremen/symbiosis/tools_HGV/phyloFlash/132'
+[10:49:29] working on library 3847_F_order
+[10:49:29] Using interleaved read data
+[10:49:29] Forward reads
+	   /opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/3847_F/qc/3847_F_q2_ktrimmed.fq.gz
+[10:49:29] Reverse reads from interleaved read file
+	   /opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/3847_F/qc/3847_F_q2_ktrimmed.fq.gz
+[10:49:29] Current operating system linux
+[10:49:29] Checking for required tools.
+[10:49:30] Using bbmap found at "/opt/share/software/bin/bbmap.sh".
+[10:49:30] Using nhmmer found at
+	   "/opt/extern/bremen/symbiosis/tools_HGV/phyloFlash/barrnap-HGV/binaries/linux/nhmmer".
+[10:49:30] Using mafft found at "/opt/share/software/bin/mafft".
+[10:49:30] Using fastaFromBed found at
+	   "/opt/share/software/bin/fastaFromBed".
+[10:49:30] Using cat found at "/bin/cat".
+[10:49:30] Using sed found at "/bin/sed".
+[10:49:30] Using awk found at "/usr/bin/awk".
+[10:49:30] Using reformat found at "/opt/share/software/bin/reformat.sh".
+[10:49:30] Using barrnap found at
+	   "/opt/extern/bremen/symbiosis/tools_HGV/phyloFlash/barrnap-HGV/bin/barrnap_HGV".
+[10:49:30] Using grep found at "/bin/grep".
+[10:49:30] Using plotscript_SVG found at
+	   "/opt/extern/bremen/symbiosis/tools_HGV/phyloFlash/phyloFlash_plotscript_svg.pl".
+[10:49:30] Using spades found at "/opt/share/software/bin/spades.py".
+[10:49:30] Using vsearch found at "/opt/share/software/bin/vsearch".
+[10:49:30] All required tools found.
+[10:49:30] filtering reads with SSU db using minimum identity of 70%
+[10:49:30] running subcommand:
+	   /opt/share/software/bin/bbmap.sh fast=t minidentity=0.7 -Xmx20g
+	   reads=-1 threads=24 po=f outputunmapped=f
+	   path=/opt/extern/bremen/symbiosis/tools_HGV/phyloFlash/132
+	   out=3847_F_order.bbmap.sam
+	   outm=3847_F_order.3847_F_q2_ktrimmed.fq.gz.SSU.1.fq noheader=t
+	   ambiguous=all build=1
+	   in=/opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/3847_F/qc/3847_F_q2_ktrimmed.fq.gz
+	   bhist=3847_F_order.basecompositionhistogram
+	   ihist=3847_F_order.inserthistogram
+	   idhist=3847_F_order.idhistogram scafstats=3847_F_order.hitstats
+	   overwrite=t outm2=3847_F_order.3847_F_q2_ktrimmed.fq.gz.SSU.2.fq
+	   pairlen=1200 interleaved=t 2>3847_F_order.bbmap.out
+[11:01:46] done...
+[11:01:46] Reading SAM file 3847_F_order.bbmap.sam into memory
+[11:01:47] Writing fixed SAM file to
+	   3847_F_order.3847_F_q2_ktrimmed.fq.gz.SSU.sam
+[11:01:48] Done
+[11:01:48] Total read segments processed: 211532836
+[11:01:48] insert size median: 267
+[11:01:48] insert size std deviation: 112
+[11:01:48] Summarizing taxonomy from mapping hits to SILVA database
+[11:01:50] done...
+[11:01:50] Forward read segments mapping: 29632
+[11:01:50] Reverse read segments mapping: 29216
+[11:01:50] Reporting mapping statistics for paired end input
+[11:01:50] Total read pairs with at least one segment mapping: 15891
+[11:01:50] => both segments mapping to same reference: 17653
+[11:01:50] => both segments mapping to different references: 7053
+[11:01:50] Read segments where next segment unmapped: 9436
+[11:01:50] mapping rate: 0.015%
+[11:01:50] creating phylotypes with SPAdes
+[11:01:50] kmers for SPAdes are 73,83,93
+[11:01:50] running subcommand:
+	   /opt/share/software/bin/spades.py -o 3847_F_order.spades -t 24
+	   -m 20 -k 73,83,93 -1
+	   3847_F_order.3847_F_q2_ktrimmed.fq.gz.SSU.1.fq -2
+	   3847_F_order.3847_F_q2_ktrimmed.fq.gz.SSU.2.fq
+	   >3847_F_order.spades.out 2>&1
+[11:02:42] done...
+[11:02:42] getting SSU phylotypes and their coverages...
+[11:02:42] running subcommand:
+	   /opt/extern/bremen/symbiosis/tools_HGV/phyloFlash/barrnap-HGV/bin/barrnap_HGV
+	    --evalue 1e-100 --reject 0.6 --kingdom bac --gene ssu --threads
+	   24 3847_F_order.spades/scaffolds.fasta
+	   >3847_F_order.scaffolds.bac.gff 2>3847_F_order.barrnap.out
+[11:02:51] running subcommand:
+	   /opt/extern/bremen/symbiosis/tools_HGV/phyloFlash/barrnap-HGV/bin/barrnap_HGV
+	    --evalue 1e-100 --reject 0.6 --kingdom arch --gene ssu
+	   --threads 24 3847_F_order.spades/scaffolds.fasta
+	   >3847_F_order.scaffolds.arch.gff 2>3847_F_order.barrnap.out
+[11:03:00] running subcommand:
+	   /opt/extern/bremen/symbiosis/tools_HGV/phyloFlash/barrnap-HGV/bin/barrnap_HGV
+	    --evalue 1e-100 --reject 0.6 --kingdom euk --gene ssu --threads
+	   24 3847_F_order.spades/scaffolds.fasta
+	   >3847_F_order.scaffolds.euk.gff 2>3847_F_order.barrnap.out
+[11:03:13] running subcommand:
+	   /opt/share/software/bin/fastaFromBed -fi
+	   3847_F_order.spades/scaffolds.fasta -bed
+	   3847_F_order.scaffolds.final.gff -fo
+	   3847_F_order.spades_rRNAs.fastaFromBed.fasta -s -name
+	   >3847_F_order.fastaFromBed.out 2>&1
+[11:03:13] done...
+[11:03:13] mapping extracted SSU reads back on SPAdes SSU sequences
+[11:03:13] running subcommand:
+	   /opt/share/software/bin/bbmap.sh fast=t minidentity=0.98 -Xmx20g
+	   threads=24 po=f outputunmapped=t
+	   ref=3847_F_order.spades_rRNAs.final.fasta nodisk
+	   in=3847_F_order.3847_F_q2_ktrimmed.fq.gz.SSU.1.fq
+	   out=3847_F_order.3847_F_q2_ktrimmed.fq.gz.SSU_spades.sam
+	   noheader=t overwrite=t interleaved=t pairlen=1200
+	   2>3847_F_order.remap_spades.bbmap.out
+[11:03:26] done...
+[11:03:26] searching for DB matches with vsearch
+[11:03:26] running subcommand:
+	   /bin/cat 3847_F_order.spades_rRNAs.final.fasta
+	   >3847_F_order.all.final.fasta
+[11:03:26] Vsearch v2.5.0+ found, will index database to UDB file
+[11:03:26] running subcommand:
+	   /opt/share/software/bin/vsearch -usearch_global
+	   3847_F_order.all.final.fasta -id 0.7 -userout
+	   3847_F_order.all.vsearch.csv -userfields
+	   query+target+id+alnlen+evalue+id3+qs+pairs+gaps+mism+ids
+	   -threads 24 --strand plus --notrunclabels -notmatched
+	   3847_F_order.all.final.phyloFlash.notmatched.fa -dbmatched
+	   3847_F_order.all.final.phyloFlash.dbhits.fa -db
+	   /opt/extern/bremen/symbiosis/tools_HGV/phyloFlash/132/SILVA_SSU.noLSU.masked.trimmed.udb
+	   >3847_F_order.all.vsearch.out 2>&1
+[11:03:33] done...
+[11:03:33] clustering DB matches at 97%
+[11:03:33] running subcommand:
+	   /opt/share/software/bin/vsearch   --cluster_fast
+	   3847_F_order.all.final.phyloFlash.dbhits.fa -id 0.97 -centroids
+	   3847_F_order.all.dbhits.NR97.fa -notrunclabels --threads 24
+	   >3847_F_order.clusterdbhits.out 2>&1
+[11:03:35] done...
+[11:03:35] creating alignment and tree...
+[11:03:35] running subcommand:
+	   /bin/cat 3847_F_order.all.dbhits.NR97.fa
+	   3847_F_order.spades_rRNAs.final.fasta
+	   >3847_F_order.SSU.collection.fasta
+[11:03:35] running subcommand:
+	   /opt/share/software/bin/mafft --treeout
+	   3847_F_order.SSU.collection.fasta
+	   >3847_F_order.SSU.collection.alignment.fasta
+	   2>3847_F_order.SSU.collection.alignment.mafftout
+[11:03:39] done...
+[11:03:39] Reading remappings to summarize taxonomy of unmapped reads
+[11:03:39] Reading results of remapping to SPAdes results
+[11:03:39] total fwd reads remapping:2218
+[11:03:39] total rev reads remapping:2189
+[11:03:40] Done
+[11:03:40] writing final files...
+[11:03:40] exporting results to csv
+Use of uninitialized value in concatenation (.) or string at /opt/extern/bremen/symbiosis/tools_HGV/phyloFlash/phyloFlash.pl line 873.
+[11:03:40] generating graphics for report in SVG format
+[11:03:40] Plotting mapping ID histogram
+[11:03:40] running subcommand:
+	   /opt/extern/bremen/symbiosis/tools_HGV/phyloFlash/phyloFlash_plotscript_svg.pl
+	   --hist 3847_F_order.idhistogram  --title="Mapping identity (%)" 
+	   >3847_F_order.plotscript.out 2>&1
+[11:03:41] Plotting piechart of mapping ratios
+[11:03:41] running subcommand:
+	   /opt/extern/bremen/symbiosis/tools_HGV/phyloFlash/phyloFlash_plotscript_svg.pl
+	   -pie 3847_F_order.mapratio.csv -title="0.015 % pairs mapped"
+	   >3847_F_order.plotscript.out 2>&1
+[11:03:41] Plotting piechart of assembled reads ratio
+[11:03:41] running subcommand:
+	   /opt/extern/bremen/symbiosis/tools_HGV/phyloFlash/phyloFlash_plotscript_svg.pl
+	   --pie 3847_F_order.assemratio.csv  --title="Reads assembled"
+	   >3847_F_order.plotscript.out 2>&1
+[11:03:41] Plotting histogram of insert sizes
+[11:03:41] running subcommand:
+	   /opt/extern/bremen/symbiosis/tools_HGV/phyloFlash/phyloFlash_plotscript_svg.pl
+	   --hist  3847_F_order.inserthistogram  --title="Insert size (bp)"
+	    >3847_F_order.plotscript.out 2>&1
+[11:03:41] Plotting tree of assembled + reference SSU sequences
+[11:03:41] running subcommand:
+	   /opt/extern/bremen/symbiosis/tools_HGV/phyloFlash/phyloFlash_plotscript_svg.pl
+	   -tree 3847_F_order.SSU.collection.fasta.tree -assemcov
+	   3847_F_order.phyloFlash.extractedSSUclassifications.csv
+	   -treefasta 3847_F_order.SSU.collection.fasta -unassemcount 54441
+	   >3847_F_order.plotscript.out 2>&1
+[11:03:41] Plotting barplot of taxonomic summary
+[11:03:41] running subcommand:
+	   /opt/extern/bremen/symbiosis/tools_HGV/phyloFlash/phyloFlash_plotscript_svg.pl
+	   -bar 3847_F_order.phyloFlash.NTUabundance.csv -title="Taxonomic
+	   summary from reads mapped" >3847_F_order.plotscript.out 2>&1
+[11:03:41] done
+[11:03:41] Generating HTML-formatted report and graphics ... 
+[11:03:41] Cleaning temp files...
+[11:03:41] Walltime used: 14.17 minutes with 24 CPU cores
+[11:03:41] Thank you for using phyloFlash
+	   You can find your results in 3847_F_order.*,
+	   Your main result file is 3847_F_order.phyloFlash
+[11:03:41] Saving log to file 3847_F_order.phyloFlash.log
+[11:03:41] Compressing results into tar.gz archive
+	   3847_F_order.phyloFlash.tar.gz
+[11:03:49] Done...
+
+This is phyloFlash v3.3b1
+
+[11:03:50] Using dbhome
+	   '/opt/extern/bremen/symbiosis/tools_HGV/phyloFlash/132'
+[11:03:50] working on library 3847_F_family
+[11:03:50] Using interleaved read data
+[11:03:50] Forward reads
+	   /opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/3847_F/qc/3847_F_q2_ktrimmed.fq.gz
+[11:03:50] Reverse reads from interleaved read file
+	   /opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/3847_F/qc/3847_F_q2_ktrimmed.fq.gz
+[11:03:50] Current operating system linux
+[11:03:50] Checking for required tools.
+[11:03:50] Using plotscript_SVG found at
+	   "/opt/extern/bremen/symbiosis/tools_HGV/phyloFlash/phyloFlash_plotscript_svg.pl".
+[11:03:50] Using cat found at "/bin/cat".
+[11:03:50] Using reformat found at "/opt/share/software/bin/reformat.sh".
+[11:03:50] Using mafft found at "/opt/share/software/bin/mafft".
+[11:03:50] Using sed found at "/bin/sed".
+[11:03:50] Using spades found at "/opt/share/software/bin/spades.py".
+[11:03:50] Using vsearch found at "/opt/share/software/bin/vsearch".
+[11:03:50] Using awk found at "/usr/bin/awk".
+[11:03:50] Using bbmap found at "/opt/share/software/bin/bbmap.sh".
+[11:03:50] Using fastaFromBed found at
+	   "/opt/share/software/bin/fastaFromBed".
+[11:03:50] Using barrnap found at
+	   "/opt/extern/bremen/symbiosis/tools_HGV/phyloFlash/barrnap-HGV/bin/barrnap_HGV".
+[11:03:50] Using grep found at "/bin/grep".
+[11:03:50] Using nhmmer found at
+	   "/opt/extern/bremen/symbiosis/tools_HGV/phyloFlash/barrnap-HGV/binaries/linux/nhmmer".
+[11:03:50] All required tools found.
+[11:03:50] filtering reads with SSU db using minimum identity of 70%
+[11:03:50] running subcommand:
+	   /opt/share/software/bin/bbmap.sh fast=t minidentity=0.7 -Xmx20g
+	   reads=-1 threads=24 po=f outputunmapped=f
+	   path=/opt/extern/bremen/symbiosis/tools_HGV/phyloFlash/132
+	   out=3847_F_family.bbmap.sam
+	   outm=3847_F_family.3847_F_q2_ktrimmed.fq.gz.SSU.1.fq noheader=t
+	   ambiguous=all build=1
+	   in=/opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/3847_F/qc/3847_F_q2_ktrimmed.fq.gz
+	   bhist=3847_F_family.basecompositionhistogram
+	   ihist=3847_F_family.inserthistogram
+	   idhist=3847_F_family.idhistogram
+	   scafstats=3847_F_family.hitstats overwrite=t
+	   outm2=3847_F_family.3847_F_q2_ktrimmed.fq.gz.SSU.2.fq
+	   pairlen=1200 interleaved=t 2>3847_F_family.bbmap.out
+[11:15:58] done...
+[11:15:58] Reading SAM file 3847_F_family.bbmap.sam into memory
+[11:15:59] Writing fixed SAM file to
+	   3847_F_family.3847_F_q2_ktrimmed.fq.gz.SSU.sam
+[11:16:00] Done
+[11:16:00] Total read segments processed: 211532836
+[11:16:00] insert size median: 267
+[11:16:00] insert size std deviation: 112
+[11:16:00] Summarizing taxonomy from mapping hits to SILVA database
+[11:16:02] done...
+[11:16:02] Forward read segments mapping: 29632
+[11:16:02] Reverse read segments mapping: 29216
+[11:16:02] Reporting mapping statistics for paired end input
+[11:16:02] Total read pairs with at least one segment mapping: 15891
+[11:16:02] => both segments mapping to same reference: 17653
+[11:16:02] => both segments mapping to different references: 7053
+[11:16:02] Read segments where next segment unmapped: 9436
+[11:16:02] mapping rate: 0.015%
+[11:16:02] creating phylotypes with SPAdes
+[11:16:02] kmers for SPAdes are 73,83,93
+[11:16:02] running subcommand:
+	   /opt/share/software/bin/spades.py -o 3847_F_family.spades -t 24
+	   -m 20 -k 73,83,93 -1
+	   3847_F_family.3847_F_q2_ktrimmed.fq.gz.SSU.1.fq -2
+	   3847_F_family.3847_F_q2_ktrimmed.fq.gz.SSU.2.fq
+	   >3847_F_family.spades.out 2>&1
+[11:16:53] done...
+[11:16:53] getting SSU phylotypes and their coverages...
+[11:16:53] running subcommand:
+	   /opt/extern/bremen/symbiosis/tools_HGV/phyloFlash/barrnap-HGV/bin/barrnap_HGV
+	    --evalue 1e-100 --reject 0.6 --kingdom bac --gene ssu --threads
+	   24 3847_F_family.spades/scaffolds.fasta
+	   >3847_F_family.scaffolds.bac.gff 2>3847_F_family.barrnap.out
+[11:17:02] running subcommand:
+	   /opt/extern/bremen/symbiosis/tools_HGV/phyloFlash/barrnap-HGV/bin/barrnap_HGV
+	    --evalue 1e-100 --reject 0.6 --kingdom arch --gene ssu
+	   --threads 24 3847_F_family.spades/scaffolds.fasta
+	   >3847_F_family.scaffolds.arch.gff 2>3847_F_family.barrnap.out
+[11:17:11] running subcommand:
+	   /opt/extern/bremen/symbiosis/tools_HGV/phyloFlash/barrnap-HGV/bin/barrnap_HGV
+	    --evalue 1e-100 --reject 0.6 --kingdom euk --gene ssu --threads
+	   24 3847_F_family.spades/scaffolds.fasta
+	   >3847_F_family.scaffolds.euk.gff 2>3847_F_family.barrnap.out
+[11:17:24] running subcommand:
+	   /opt/share/software/bin/fastaFromBed -fi
+	   3847_F_family.spades/scaffolds.fasta -bed
+	   3847_F_family.scaffolds.final.gff -fo
+	   3847_F_family.spades_rRNAs.fastaFromBed.fasta -s -name
+	   >3847_F_family.fastaFromBed.out 2>&1
+[11:17:24] done...
+[11:17:24] mapping extracted SSU reads back on SPAdes SSU sequences
+[11:17:24] running subcommand:
+	   /opt/share/software/bin/bbmap.sh fast=t minidentity=0.98 -Xmx20g
+	   threads=24 po=f outputunmapped=t
+	   ref=3847_F_family.spades_rRNAs.final.fasta nodisk
+	   in=3847_F_family.3847_F_q2_ktrimmed.fq.gz.SSU.1.fq
+	   out=3847_F_family.3847_F_q2_ktrimmed.fq.gz.SSU_spades.sam
+	   noheader=t overwrite=t interleaved=t pairlen=1200
+	   2>3847_F_family.remap_spades.bbmap.out
+[11:17:35] done...
+[11:17:35] searching for DB matches with vsearch
+[11:17:35] running subcommand:
+	   /bin/cat 3847_F_family.spades_rRNAs.final.fasta
+	   >3847_F_family.all.final.fasta
+[11:17:35] Vsearch v2.5.0+ found, will index database to UDB file
+[11:17:35] running subcommand:
+	   /opt/share/software/bin/vsearch -usearch_global
+	   3847_F_family.all.final.fasta -id 0.7 -userout
+	   3847_F_family.all.vsearch.csv -userfields
+	   query+target+id+alnlen+evalue+id3+qs+pairs+gaps+mism+ids
+	   -threads 24 --strand plus --notrunclabels -notmatched
+	   3847_F_family.all.final.phyloFlash.notmatched.fa -dbmatched
+	   3847_F_family.all.final.phyloFlash.dbhits.fa -db
+	   /opt/extern/bremen/symbiosis/tools_HGV/phyloFlash/132/SILVA_SSU.noLSU.masked.trimmed.udb
+	   >3847_F_family.all.vsearch.out 2>&1
+[11:17:42] done...
+[11:17:42] clustering DB matches at 97%
+[11:17:42] running subcommand:
+	   /opt/share/software/bin/vsearch   --cluster_fast
+	   3847_F_family.all.final.phyloFlash.dbhits.fa -id 0.97 -centroids
+	   3847_F_family.all.dbhits.NR97.fa -notrunclabels --threads 24
+	   >3847_F_family.clusterdbhits.out 2>&1
+[11:17:44] done...
+[11:17:44] creating alignment and tree...
+[11:17:44] running subcommand:
+	   /bin/cat 3847_F_family.all.dbhits.NR97.fa
+	   3847_F_family.spades_rRNAs.final.fasta
+	   >3847_F_family.SSU.collection.fasta
+[11:17:44] running subcommand:
+	   /opt/share/software/bin/mafft --treeout
+	   3847_F_family.SSU.collection.fasta
+	   >3847_F_family.SSU.collection.alignment.fasta
+	   2>3847_F_family.SSU.collection.alignment.mafftout
+[11:17:48] done...
+[11:17:48] Reading remappings to summarize taxonomy of unmapped reads
+[11:17:48] Reading results of remapping to SPAdes results
+[11:17:48] total fwd reads remapping:2200
+[11:17:48] total rev reads remapping:2200
+[11:17:49] Done
+[11:17:49] writing final files...
+[11:17:49] exporting results to csv
+Use of uninitialized value in concatenation (.) or string at /opt/extern/bremen/symbiosis/tools_HGV/phyloFlash/phyloFlash.pl line 873.
+[11:17:49] generating graphics for report in SVG format
+[11:17:49] Plotting mapping ID histogram
+[11:17:49] running subcommand:
+	   /opt/extern/bremen/symbiosis/tools_HGV/phyloFlash/phyloFlash_plotscript_svg.pl
+	   --hist 3847_F_family.idhistogram  --title="Mapping identity (%)"
+	    >3847_F_family.plotscript.out 2>&1
+[11:17:49] Plotting piechart of mapping ratios
+[11:17:49] running subcommand:
+	   /opt/extern/bremen/symbiosis/tools_HGV/phyloFlash/phyloFlash_plotscript_svg.pl
+	   -pie 3847_F_family.mapratio.csv -title="0.015 % pairs mapped"
+	   >3847_F_family.plotscript.out 2>&1
+[11:17:49] Plotting piechart of assembled reads ratio
+[11:17:49] running subcommand:
+	   /opt/extern/bremen/symbiosis/tools_HGV/phyloFlash/phyloFlash_plotscript_svg.pl
+	   --pie 3847_F_family.assemratio.csv  --title="Reads assembled"
+	   >3847_F_family.plotscript.out 2>&1
+[11:17:50] Plotting histogram of insert sizes
+[11:17:50] running subcommand:
+	   /opt/extern/bremen/symbiosis/tools_HGV/phyloFlash/phyloFlash_plotscript_svg.pl
+	   --hist  3847_F_family.inserthistogram  --title="Insert size
+	   (bp)"  >3847_F_family.plotscript.out 2>&1
+[11:17:50] Plotting tree of assembled + reference SSU sequences
+[11:17:50] running subcommand:
+	   /opt/extern/bremen/symbiosis/tools_HGV/phyloFlash/phyloFlash_plotscript_svg.pl
+	   -tree 3847_F_family.SSU.collection.fasta.tree -assemcov
+	   3847_F_family.phyloFlash.extractedSSUclassifications.csv
+	   -treefasta 3847_F_family.SSU.collection.fasta -unassemcount
+	   54448 >3847_F_family.plotscript.out 2>&1
+[11:17:50] Plotting barplot of taxonomic summary
+[11:17:50] running subcommand:
+	   /opt/extern/bremen/symbiosis/tools_HGV/phyloFlash/phyloFlash_plotscript_svg.pl
+	   -bar 3847_F_family.phyloFlash.NTUabundance.csv -title="Taxonomic
+	   summary from reads mapped" >3847_F_family.plotscript.out 2>&1
+[11:17:50] done
+[11:17:50] Generating HTML-formatted report and graphics ... 
+[11:17:50] Cleaning temp files...
+[11:17:50] Walltime used: 13.98 minutes with 24 CPU cores
+[11:17:50] Thank you for using phyloFlash
+	   You can find your results in 3847_F_family.*,
+	   Your main result file is 3847_F_family.phyloFlash
+[11:17:50] Saving log to file 3847_F_family.phyloFlash.log
+[11:17:50] Compressing results into tar.gz archive
+	   3847_F_family.phyloFlash.tar.gz
+[11:17:57] Done...
+Writing 3847_F_classification.html...
+job finished: 
+Mon Apr  1 18:37:13 CEST 2019

@@ -1,0 +1,99 @@
+job started: 
+job ID: 377962
+Mon Apr  1 13:05:12 CEST 2019
+gc-node-13
+shell: /bin/bash
+java -ea -Xmx393461m -cp /opt/share/software/packages/BBMap_38.34/bin/current/ align2.BBMap build=1 overwrite=true fastareadlen=500 ref=/opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/coassembly/megahit/coassembly.contigs.fixed.fa in=/opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/3847_C/assembly/spades/corrected/3847_C_highfreq_kmers_1.00.0_0.cor.fastq.gz in2=/opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/3847_C/assembly/spades/corrected/3847_C_highfreq_kmers_2.00.0_0.cor.fastq.gz minid=0.98 fast=t covstats=3847_C_COV_STATS_CO statsfile=3847_C_STATS_CO outm=3847_C_mapped_coassembly.bam
+Executing align2.BBMap [tipsearch=20, maxindel=80, minhits=2, bwr=0.18, bw=40, minratio=0.65, midpad=150, minscaf=50, quickmatch=t, rescuemismatches=15, rescuedist=800, maxsites=3, maxsites2=100, build=1, overwrite=true, fastareadlen=500, ref=/opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/coassembly/megahit/coassembly.contigs.fixed.fa, in=/opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/3847_C/assembly/spades/corrected/3847_C_highfreq_kmers_1.00.0_0.cor.fastq.gz, in2=/opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/3847_C/assembly/spades/corrected/3847_C_highfreq_kmers_2.00.0_0.cor.fastq.gz, minid=0.98, covstats=3847_C_COV_STATS_CO, statsfile=3847_C_STATS_CO, outm=3847_C_mapped_coassembly.bam]
+Version 38.34
+
+Set MINIMUM_ALIGNMENT_SCORE_RATIO to 0.650
+Retaining first best site only for ambiguous mappings.
+Set MINIMUM_ALIGNMENT_SCORE_RATIO to 0.963
+NOTE:	Deleting contents of ref/genome/1 because reference is specified and overwrite=true
+NOTE:	Deleting contents of ref/index/1 because reference is specified and overwrite=true
+Writing reference.
+Executing dna.FastaToChromArrays2 [/opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/coassembly/megahit/coassembly.contigs.fixed.fa, 1, writeinthread=false, genscaffoldinfo=true, retain, waitforwriting=false, gz=true, maxlen=536670912, writechroms=true, minscaf=50, midpad=150, startpad=8000, stoppad=8000, nodisk=false]
+
+Set genScaffoldInfo=true
+Writing chunk 1
+Writing chunk 2
+Writing chunk 3
+Writing chunk 4
+Writing chunk 5
+Writing chunk 6
+Writing chunk 7
+Writing chunk 8
+Writing chunk 9
+Writing chunk 10
+Writing chunk 11
+Writing chunk 12
+Writing chunk 13
+Writing chunk 14
+Writing chunk 15
+Writing chunk 16
+Writing chunk 17
+Writing chunk 18
+Writing chunk 19
+Writing chunk 20
+Writing chunk 21
+Writing chunk 22
+Writing chunk 23
+Set genome to 1
+
+Loaded Reference:	15.494 seconds.
+Loading index for chunk 1-23, build 1
+No index available; generating from reference genome: /scratch/sogin/tmp.377962/ref/index/1/chr1-3_index_k13_c2_b1.block
+No index available; generating from reference genome: /scratch/sogin/tmp.377962/ref/index/1/chr20-23_index_k13_c2_b1.block
+No index available; generating from reference genome: /scratch/sogin/tmp.377962/ref/index/1/chr16-19_index_k13_c2_b1.block
+No index available; generating from reference genome: /scratch/sogin/tmp.377962/ref/index/1/chr12-15_index_k13_c2_b1.block
+No index available; generating from reference genome: /scratch/sogin/tmp.377962/ref/index/1/chr8-11_index_k13_c2_b1.block
+No index available; generating from reference genome: /scratch/sogin/tmp.377962/ref/index/1/chr4-7_index_k13_c2_b1.block
+Indexing threads started for block 8-11
+Indexing threads started for block 4-7
+Indexing threads started for block 16-19
+Indexing threads started for block 20-23
+Indexing threads started for block 12-15
+Indexing threads started for block 0-3
+Indexing threads finished for block 0-3
+Indexing threads finished for block 16-19
+Indexing threads finished for block 20-23
+Indexing threads finished for block 8-11
+Indexing threads finished for block 12-15
+Indexing threads finished for block 4-7
+Generated Index:	582.353 seconds.
+Finished Writing:	10.668 seconds.
+Analyzed Index:   	107.803 seconds.
+Found samtools 1.9
+Started output stream:	2.656 seconds.
+Cleared Memory:    	33.155 seconds.
+Processing reads in paired-ended mode.
+Started read stream.
+Started 80 mapping threads.
+Detecting finished threads: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79
+
+   ------------------   Results   ------------------   
+
+Genome:                	1
+Key Length:            	13
+Max Indel:             	10
+Minimum Score Ratio:  	0.96324
+Mapping Mode:         	normal
+
+Reads:                               	115164718
+Mapped reads:                        	50824310
+Mapped bases:                        	7631244770
+Ref scaffolds:                       	12846383
+Ref bases:                           	10068835939
+
+Percent mapped:                      	44.132
+Percent proper pairs:                	33.924
+Average coverage:                    	0.758
+Standard deviation:                    	1.881
+Percent scaffolds with any coverage: 	36.16
+Percent of reference bases covered:  	25.39
+
+Total time:     	4512.677 seconds.
+[bam_sort_core] merging from 28 files and 1 in-memory blocks...
+job finished: 
+Mon Apr  1 15:22:19 CEST 2019

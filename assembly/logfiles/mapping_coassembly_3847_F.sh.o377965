@@ -1,0 +1,17 @@
+job started: 
+job ID: 377965
+Mon Apr  1 13:05:12 CEST 2019
+gc-node-19
+shell: /bin/bash
+java -ea -Xmx422582m -cp /opt/share/software/packages/BBMap_38.34/bin/current/ align2.BBMap build=1 overwrite=true fastareadlen=500 ref=/opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/coassembly/megahit/coassembly.contigs.fixed.fa in=/opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/3847_F/assembly/spades/corrected/3847_F_highfreq_kmers_1.00.0_0.cor.fastq.gz in2=/opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/3847_F/assembly/spades/corrected/3847_F_highfreq_kmers_2.00.0_0.cor.fastq.gz minid=0.98 fast=t covstats=3847_F_COV_STATS_CO statsfile=3847_F_STATS_CO outm=3847_F_mapped_coassembly.bam
+Exception in thread "main" java.lang.AssertionError: Invalid input file: '/opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/3847_F/assembly/spades/corrected/3847_F_highfreq_kmers_1.00.0_0.cor.fastq.gz'
+	at align2.AbstractMapper.preparse0(AbstractMapper.java:821)
+	at align2.AbstractMapper.<init>(AbstractMapper.java:53)
+	at align2.BBMap.<init>(BBMap.java:43)
+	at align2.BBMap.main(BBMap.java:31)
+[E::hts_open_format] Failed to open file 3847_F_mapped_coassembly.bam
+samtools sort: can't open "3847_F_mapped_coassembly.bam": No such file or directory
+[E::hts_open_format] Failed to open file 3847_F_mapped_coassembly_sorted.bam
+samtools index: failed to open "3847_F_mapped_coassembly_sorted.bam": No such file or directory
+job finished: 
+Mon Apr  1 13:05:14 CEST 2019

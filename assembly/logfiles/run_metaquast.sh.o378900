@@ -1,0 +1,11 @@
+job ID: 378900
+Thu Apr  4 08:57:12 CEST 2019
+gc-node-16
+shell: /bin/bash
+ERROR! File not found (contigs): 3847_F.contigs.fasta
+
+In case you have troubles running QUAST, you can write to quast.support@cab.spbu.ru
+or report an issue on our GitHub repository https://github.com/ablab/quast/issues
+Please provide us with quast.log file from the output directory.
+job finished: 
+Thu Apr  4 09:04:26 CEST 2019

@@ -1,0 +1,15 @@
+job started: 
+job ID: 378013
+Mon Apr  1 16:06:18 CEST 2019
+gc-node-17
+shell: /bin/bash
+/var/spool/gridengine/execd/gc-node-17/job_scripts/378013: line 23: cd: too many arguments
+
+
+== Error ==  file not found: /opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/scripts/assembly/3847_F_highfreq_kmers.fq.gz (interlaced reads, library number: 1, library type: paired-end)
+
+In case you have troubles running SPAdes, you can write to spades.support@cab.spbu.ru
+or report an issue on our GitHub repository github.com/ablab/spades
+Please provide us with params.txt and spades.log files from the output directory.
+job finished: 
+Mon Apr  1 16:17:27 CEST 2019
