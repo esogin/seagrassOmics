@@ -44,7 +44,7 @@ bams=$(echo 3847_{A..I}_sorted.bam)
 #Profile BAM files
 bams=$(echo 3847_{A..I})
 for i in $bams;do
-	anvi-profile -i data/${i}_sorted.bam -c contigs.db --output-dir ${i}_profile --sample-name profile_"$i" -T 4;
+	anvi-profile -i data/${i}_sorted.bam -c contigs.db --output-dir ${i}_profile --sample-name profile_"$i" -T 1;
 done
 
 conda deactivate
@@ -56,10 +56,11 @@ date
 
 Notes: 
 
-1. ANvi profiling failed with cpus set to 24, retry this appraoch with cpus set to 4.
+1. Anvi profiling failed with cpus set to 24, retry this appraoch with cpus set to 1.
+2. Re- do profiling with system with cpus set to 1 to avoid running out of memory 
+3. This will take awhile, start May 25 2019
 
-
-## 2. gbtoolscp data
+## 2. gbtool scp data
 
 prep covstats files for gbtools
 prep of bin files
@@ -137,6 +138,8 @@ par(mfrow=c(3,3))
 
 #Do differential coverage plots for all bins
 
+#Do differential coverage plots for all bins
+#Edge vs. In
 for (l in 1:length(bl)){
 pdf(file=paste("diff_cov_plot_",lists[l],sep='',".pdf"),width=15, height=15)
 par(mfrow=c(3,3))
@@ -165,6 +168,66 @@ dev.off()
 }
 
 
+#Do differential coverage plots for all bins
+#Out vs. In
+for (l in 1:length(bl)){
+pdf(file=paste("diff_cov_plot_",lists[l],sep='',".pdf"),width=15, height=15)
+par(mfrow=c(3,3))
+#Out slice 1
+multiBinPlot(d, bins=bl[[l]], binNames=names(bl[[l]]),slice=c(1,7),cutoff=10000,legend=F, ylim=c(0.0001, 1E03),xlim=c(0.0001, 1E03))
+abline(0,1)
+multiBinPlot(d, bins=bl[[l]], binNames=names(bl[[l]]),slice=c(1,8),cutoff=10000,legend=F,ylim=c(0.0001, 1E03),xlim=c(0.0001, 1E03))
+abline(0,1)
+multiBinPlot(d, bins=bl[[l]], binNames=names(bl[[l]]),slice=c(1,9),cutoff=10000,legend=F,ylim=c(0.0001, 1E03),xlim=c(0.0001, 1E03))
+abline(0,1)
+#Out slice 5
+multiBinPlot(d, bins=bl[[l]], binNames=names(bl[[l]]),slice=c(2,7),cutoff=10000,legend=F,ylim=c(0.0001, 1E03),xlim=c(0.0001, 1E03))
+abline(0,1)
+multiBinPlot(d, bins=bl[[l]], binNames=names(bl[[l]]),slice=c(2,8),cutoff=10000,legend=F,ylim=c(0.0001, 1E03),xlim=c(0.0001, 1E03))
+abline(0,1)
+multiBinPlot(d, bins=bl[[l]], binNames=names(bl[[l]]),slice=c(2,9),cutoff=10000,legend=F,ylim=c(0.0001, 1E03),xlim=c(0.0001, 1E03))
+abline(0,1)
+#Out Slice 6
+multiBinPlot(d, bins=bl[[l]], binNames=names(bl[[l]]),slice=c(3,7),cutoff=10000,legend=F,ylim=c(0.0001, 1E03),xlim=c(0.0001, 1E03))
+abline(0,1)
+multiBinPlot(d, bins=bl[[l]], binNames=names(bl[[l]]),slice=c(3,8),cutoff=10000,legend=F,ylim=c(0.0001, 1E03),xlim=c(0.0001, 1E03))
+abline(0,1)
+multiBinPlot(d, bins=bl[[l]], binNames=names(bl[[l]]),slice=c(3,9),cutoff=10000,legend=T,ylim=c(0.0001, 1E03),xlim=c(0.0001, 1E03))
+abline(0,1)
+dev.off()
+}
+
+# Out vs. edge
+for (l in 1:length(bl)){
+pdf(file=paste("diff_cov_plot_",lists[l],sep='',".pdf"),width=15, height=15)
+par(mfrow=c(3,3))
+#Out slice 1
+multiBinPlot(d, bins=bl[[l]], binNames=names(bl[[l]]),slice=c(1,4),cutoff=10000,legend=F, ylim=c(0.0001, 1E03),xlim=c(0.0001, 1E03))
+abline(0,1)
+multiBinPlot(d, bins=bl[[l]], binNames=names(bl[[l]]),slice=c(1,5),cutoff=10000,legend=F,ylim=c(0.0001, 1E03),xlim=c(0.0001, 1E03))
+abline(0,1)
+multiBinPlot(d, bins=bl[[l]], binNames=names(bl[[l]]),slice=c(1,6),cutoff=10000,legend=F,ylim=c(0.0001, 1E03),xlim=c(0.0001, 1E03))
+abline(0,1)
+#Out slice 5
+multiBinPlot(d, bins=bl[[l]], binNames=names(bl[[l]]),slice=c(2,4),cutoff=10000,legend=F,ylim=c(0.0001, 1E03),xlim=c(0.0001, 1E03))
+abline(0,1)
+multiBinPlot(d, bins=bl[[l]], binNames=names(bl[[l]]),slice=c(2,5),cutoff=10000,legend=F,ylim=c(0.0001, 1E03),xlim=c(0.0001, 1E03))
+abline(0,1)
+multiBinPlot(d, bins=bl[[l]], binNames=names(bl[[l]]),slice=c(2,6),cutoff=10000,legend=F,ylim=c(0.0001, 1E03),xlim=c(0.0001, 1E03))
+abline(0,1)
+#Out Slice 6
+multiBinPlot(d, bins=bl[[l]], binNames=names(bl[[l]]),slice=c(3,4),cutoff=10000,legend=F,ylim=c(0.0001, 1E03),xlim=c(0.0001, 1E03))
+abline(0,1)
+multiBinPlot(d, bins=bl[[l]], binNames=names(bl[[l]]),slice=c(3,5),cutoff=10000,legend=F,ylim=c(0.0001, 1E03),xlim=c(0.0001, 1E03))
+abline(0,1)
+multiBinPlot(d, bins=bl[[l]], binNames=names(bl[[l]]),slice=c(3,6),cutoff=10000,legend=T,ylim=c(0.0001, 1E03),xlim=c(0.0001, 1E03))
+abline(0,1)
+dev.off()
+}
+
+
+
+
 # For Target Bins
 pdf(file="gc_cov_plot_meadow_bins.pdf",width=12, height=12)
 par(mfrow=c(3,3))
@@ -178,16 +241,24 @@ dev.off()
 #
 save.image('gbtools.RData')
 ```
+To get a handel on which bins are occuring in which places, I have also now implemented the diff coverage plots across bins and habitats, e.g., in vs edge, in vs. out, out vs. edge
+
+
+### Make coverage plots for all bins in analyses 
 
 I want to try to make violin plots to show differences in library coverage across habitats
 
-reformat covstats files for inport into R
-
+Reformat covstats files for inport into R
 ```bash
 libs=$(echo 3847_{A..I}_COVSTATS)
 for i in $libs; do cut -f 1,2,3 $i > "$i"_forR;done
 ```
 
+Prep bin table with brandon script: 
+
+```bash
+~/tools/genome-bin-tools-master/accessory_scripts/parse_bin_fasta_files.pl -i bins -o all.bins.tsv 
+```
 
 ```R
 # Import COV Stats Files 
@@ -204,6 +275,7 @@ covstats<-rbind(covstats, data.frame(lib_import))
 }
 # read bin files of meadow bins 
 bins<-read.table('data/meadow.bins.tsv', header=F)
+allbins<-read.table('data/all_bins.tsv')
 colnames(bins)<-c('name','contigID')
 
 #match to names
