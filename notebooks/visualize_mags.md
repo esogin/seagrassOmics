@@ -225,9 +225,6 @@ abline(0,1)
 dev.off()
 }
 
-
-
-
 # For Target Bins
 pdf(file="gc_cov_plot_meadow_bins.pdf",width=12, height=12)
 par(mfrow=c(3,3))
@@ -236,8 +233,6 @@ for(i in 2:9){
 		multiBinPlot(d, bins=d.meadows, binNames=names(d.meadows),slice=i,cutoff=5000, main=libs[i],legend=F, ylim=c(0.0001,1E3))
 	}
 dev.off()
-
-
 #
 save.image('gbtools.RData')
 ```
@@ -254,7 +249,7 @@ libs=$(echo 3847_{A..I}_COVSTATS)
 for i in $libs; do cut -f 1,2,3 $i > "$i"_forR;done
 ```
 
-Prep bin table with brandon script: 
+Prep bin table with Brandon script: 
 
 ```bash
 ~/tools/genome-bin-tools-master/accessory_scripts/parse_bin_fasta_files.pl -i bins -o all.bins.tsv 
@@ -275,7 +270,8 @@ covstats<-rbind(covstats, data.frame(lib_import))
 }
 # read bin files of meadow bins 
 bins<-read.table('data/meadow.bins.tsv', header=F)
-allbins<-read.table('data/all_bins.tsv')
+allbins<-read.table('data/all.bins.tsv')
+bins<-allbins #set which list to use
 colnames(bins)<-c('name','contigID')
 
 #match to names
@@ -283,8 +279,7 @@ covstats$name<-bins[match(covstats$ID,bins$contigID),'name']
 covstats2<-covstats[complete.cases(covstats),]
 
 #Save for plotting
-write.csv(covstats2,'results/annotated_covstats_meadow_bins.csv')
-
+write.csv(covstats2,'results/annotated_covstats_all_bins.csv')
 ```
 
 
