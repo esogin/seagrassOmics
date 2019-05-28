@@ -22,11 +22,16 @@ values=$(ls *fna)
 for i in $values; 
 	do 
 		echo $i 
-			phyloFlash.pl  - lib ${i%%.fa} -CPUs 24 -read1 $i;
+			phyloFlash.pl -lib ${i%%.fna} -CPUs 1 -read1 $i;
 		rm core
 	done		 
 echo "job finished: "
 date
+```
+
+```bash
+values=$(ls *fna);
+for i in $values;do nohup phyloFlash.pl -lib ${i%%.3.fna} -CPUs 1 -read1 fna/$i -zip > phyloflash.log; done	
 ```
 
 Run phyloflash on ENA Data
@@ -49,7 +54,6 @@ hostname
 echo "shell: $SHELL"
 cd /opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/soil_metagenomes/public_data/
 value=$(<accession_numbers)
-
 for i in $values; 
 	do 
 		echo $i 
