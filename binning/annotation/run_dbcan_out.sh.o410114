@@ -1,0 +1,8 @@
+job started: 
+job ID: 410114
+Fri May 31 12:07:39 CEST 2019
+gc-node-8
+shell: /bin/bash
+python: can't open file 'run_dbcan.py': [Errno 2] No such file or directory
+job finished: 
+Fri May 31 12:10:18 CEST 2019

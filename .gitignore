@@ -3,3 +3,5 @@ test
 binning/logfiles
 binning/archive
 read_based/logfiles
+*/*.sh.*
+gene_catalog/logfiles
