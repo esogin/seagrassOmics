@@ -107,7 +107,6 @@ steps:
 1. Call genes (prodigal)
 2. use the eggNOG mapper to call anntoations and get OGs
 
-
 ```bash
 #!/bin/bash
 #
@@ -144,8 +143,129 @@ rm /scratch/sogin/tmp.$JOB_ID -R;
 echo "job finished: "
 date
 ```
+Get cog results into useable format 
+```bash
+files=$(echo *emapper.annotations)
+for i in $files; do cut -f 1,21,22 $i > ${i%%_maNOG.emapper.annotations}_COG.txt; done
+#replace tabs with ; 
+
+files=$(echo *COG.txt)
+for i in $files; do  sed "s/\t/;/g" $i > ${i%%_COG.txt}_COG_fixed.txt; done
+
+```
+
+```R
+files<-list.files(pattern="COG_fixed.txt", recursive=T)
+# sep in to in-edge-out bins
+in_files<-files[grep('meadow',files)]
+df.in<-data.frame()
+for (i in 1:length(in_files)){
+df<-read.table(in_files[i],header=F, sep=';', quote="",fill=T)
+df$binID<-in_files[i]
+df$site<-'meadow'
+df.in<-rbind(df.in, data.frame(df))
+}
+
+edge_files<-files[grep('edge',files)]
+df.edge<-data.frame()
+for (i in 1:length(edge_files)){
+df<-read.table(edge_files[i],header=F, sep=';', quote="",fill=T)
+df$binID<-edge_files[i]
+df$site<-'edge'
+df.edge<-rbind(df.edge, data.frame(df))
+}
+
+out_files<-files[grep('out',files)]
+df.out<-data.frame()
+for (i in 1:length(out_files)){
+df<-read.table(out_files[i],header=F, sep=';', quote="",fill=T)
+df$binID<-out_files[i]
+df$site<-'out'
+df.out<-rbind(df.out, data.frame(df))
+}
+
+cogs<-rbind(df.in, df.edge, df.out)
+write.csv(cogs, file='bin_cog_annotation.csv')
+
+```
+
+### 5. Annotate with DBCan 
+Lessons: need to have dbcan in directory or really have the file of interest in the DB can directory :eyeroll: 
+
+All proteins were first called with prodigial and then run through DB can pipeline
+
+```Bash 
+#!/bin/bash
+#
+#$ -cwd 
+#$ -j y
+#$ -S /bin/bash
+#$ -pe smp 24
+#$ -V
+#$ -q main.q
+## Annotate bins run dbcan 
+echo "job started: " 
+echo "job ID: $JOB_ID"
+date
+hostname
+echo "shell: $SHELL"
+mkdir /scratch/sogin/tmp.$JOB_ID -p; 
+
+rsync -a /opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/coassembly/binning_v2/dastool_finalized_bins/result/target_bins/out_bins/run_dbcan/ /scratch/sogin/tmp.$JOB_ID/
+bins=$(echo *.faa)
+for i in $bins; do 
+ python run_dbcan.py $i protein --out_dir ${i%%.faa}_output --dia_cpu 24 --hmm_cpu 24 --hotpep_cpu 24;
+
+ python run_dbcan.py 102_sub.contigs_proteins.faa protein --out_dir output_test --dia_cpu 24 --hmm_cpu 24 --hotpep_cpu 24 
+done
+rsync -a /scratch/sogin/tmp.$JOB_ID/ /opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/coassembly/binning_v2/dastool_finalized_bins/result/target_bins/out_bins/run_dbcan/ 
+rm /scratch/sogin/tmp.$JOB_ID -R;
+echo "job finished: "
+date
+```
+
+Run DB can on all bins reguadless of quality/ habitat binning etc. Sort these bins out later
+```Bash 
+#!/bin/bash
+#
+#$ -cwd
+#$ -j y
+#$ -S /bin/bash
+#$ -pe smp 24
+#$ -V
+#$ -q main.q
+## Annotate bins run dbcan 
+echo "job started: " 
+echo "job ID: $JOB_ID"
+date
+hostname
+echo "shell: $SHELL"
+mkdir /scratch/sogin/tmp.$JOB_ID -p; 
+rsync -a /opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/coassembly/binning_v2/dastool_finalized_bins/result/prodigial/ /scratch/sogin/tmp.$JOB_ID/
+
+bins=$(echo ls *fa)
+for i in $bins; 
+	do
+		# run prodigial 
+		prodigal -i bins/$i -o genes/${i%%.fa}_genes.fa -a proteins/${i%%.fa}_proteins.faa;
+done
+
+rsync -a /scratch/sogin/tmp.$JOB_ID/ /opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/coassembly/binning_v2/dastool_finalized_bins/result/prodigial/ 
+rm /scratch/sogin/tmp.$JOB_ID -R;
+echo "job finished: "
+date
+```
 
 
-
-
-
+get data out of dbcan result
+move results folder to new folder 
+```r
+files<-list.files(pattern='overview.txt', recursive=T)
+dbcan_results<-data.frame()
+for (i in 1:length(files)){
+df<-read.table(files[i],sep='\t',header=T)
+colnames(df)<-c('Gene.ID', 'HMMER', 'Hotpep' ,'DIAMOND', 'Signalp', 'num_tools')
+df$bin<-files[i]
+dbcan_results<-rbind(dbcan_results, df)
+}
+```

@@ -38,15 +38,14 @@ anvi-run-hmms -c contigs.db --num-threads 48
 #anvi-setup-ncbi-cogs #do only once
 #Annotate assembly with cog categories, may be useful later on
 anvi-run-ncbi-cogs -c contigs.db --num-threads 48
-#Initialize BAM files
-bams=$(echo 3847_{A..I}_sorted.bam)
-#for sample in $bams; do anvi-init-bam bam/$sample -o $sample; done
+#Initialize BAM files - can skip, already have bam files sorted and initiated 
+#bams=$(echo 3847_{A..I}_sorted.bam)
+#for sample in $bams; do anvi-init-bam bam/$sample -o anvi_init/${sample%%_sorted.bam}index.bam; done
 #Profile BAM files
 bams=$(echo 3847_{A..I})
 for i in $bams;do
-	anvi-profile -i data/${i}_sorted.bam -c contigs.db --output-dir ${i}_profile --sample-name profile_"$i" -T 1;
+	anvi-profile -i bam/${i}_sorted.bam -c contigs.db --output-dir ${i}_profile --sample-name profile_"$i" -T 1 --min-contig-length 50000;
 done
-
 conda deactivate
 rsync -a /scratch/sogin/tmp.$JOB_ID/ /opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/coassembly/binning_v2/anvio/;
 rm /scratch/sogin/tmp.$JOB_ID -R;
@@ -59,6 +58,111 @@ Notes:
 1. Anvi profiling failed with cpus set to 24, retry this appraoch with cpus set to 1.
 2. Re- do profiling with system with cpus set to 1 to avoid running out of memory 
 3. This will take awhile, start May 25 2019
+
+Initialize all bam files 
+```bash
+conda activate anvio5
+libs=$(echo 3847_{A..I})
+for i in $libs; do
+	anvi-init-bam data/$i.bam -o data/"$i"_sorted.bam;
+done
+conda deactivate
+```
+
+New anvio profiling script
+*out*
+```bash
+#!/bin/bash
+#
+#$ -cwd
+#$ -j y
+#$ -S /bin/bash
+#$ -pe smp 48
+#$ -V
+#$ -q main.q@@himem
+## Profile with anvio
+
+echo "job started: " 
+echo "job ID: $JOB_ID"
+date
+hostname
+echo "shell: $SHELL"
+mkdir /scratch/sogin/tmp.$JOB_ID -p; 
+rsync -a /opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/coassembly/binning_v2/anvio/ /scratch/sogin/tmp.$JOB_ID/
+cd /scratch/sogin/tmp.$JOB_ID
+conda activate anvio5
+#Library A
+anvi-profile -i data/3847_A_sorted.bam -c contigs.db --output-dir 3847_A_profile --sample-name profile_3847_A -T 1 --min-contig-length 5000;
+anvi-profile -i data/3847_B_sorted.bam -c contigs.db --output-dir 3847_B_profile --sample-name profile_3847_B -T 1 --min-contig-length 5000;
+anvi-profile -i data/3847_C_sorted.bam -c contigs.db --output-dir 3847_C_profile --sample-name profile_3847_C -T 1 --min-contig-length 5000;
+conda deactivate
+rsync -a /scratch/sogin/tmp.$JOB_ID/ /opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/coassembly/binning_v2/anvio/out_profiles/;
+rm /scratch/sogin/tmp.$JOB_ID -R;
+echo "job finished: "
+date
+```
+*edge*
+```bash
+#!/bin/bash
+#
+#$ -cwd
+#$ -j y
+#$ -S /bin/bash
+#$ -pe smp 48
+#$ -V
+#$ -q main.q@@himem
+## Profile with anvio
+
+echo "job started: " 
+echo "job ID: $JOB_ID"
+date
+hostname
+echo "shell: $SHELL"
+mkdir /scratch/sogin/tmp.$JOB_ID -p; 
+rsync -a /opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/coassembly/binning_v2/anvio/ /scratch/sogin/tmp.$JOB_ID/
+cd /scratch/sogin/tmp.$JOB_ID
+conda activate anvio5
+#Library A
+anvi-profile -i data/3847_D_sorted.bam -c contigs.db --output-dir 3847_D_profile --sample-name profile_3847_D -T 1 --min-contig-length 5000;
+anvi-profile -i data/3847_E_sorted.bam -c contigs.db --output-dir 3847_E_profile --sample-name profile_3847_E -T 1 --min-contig-length 5000;
+anvi-profile -i data/3847_F_sorted.bam -c contigs.db --output-dir 3847_F_profile --sample-name profile_3847_F -T 1 --min-contig-length 5000;
+conda deactivate
+rsync -a /scratch/sogin/tmp.$JOB_ID/ /opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/coassembly/binning_v2/anvio/edge_profiles/;
+rm /scratch/sogin/tmp.$JOB_ID -R;
+echo "job finished: "
+date
+```
+*In*
+```bash
+#!/bin/bash
+#
+#$ -cwd
+#$ -j y
+#$ -S /bin/bash
+#$ -pe smp 48
+#$ -V
+#$ -q main.q@@himem
+## Profile with anvio
+
+echo "job started: " 
+echo "job ID: $JOB_ID"
+date
+hostname
+echo "shell: $SHELL"
+mkdir /scratch/sogin/tmp.$JOB_ID -p; 
+rsync -a /opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/coassembly/binning_v2/anvio/ /scratch/sogin/tmp.$JOB_ID/
+cd /scratch/sogin/tmp.$JOB_ID
+conda activate anvio5
+#Library A
+anvi-profile -i data/3847_G_sorted.bam -c contigs.db --output-dir 3847_G_profile --sample-name profile_3847_G -T 1 --min-contig-length 5000;
+anvi-profile -i data/3847_H_sorted.bam -c contigs.db --output-dir 3847_H_profile --sample-name profile_3847_H -T 1 --min-contig-length 5000;
+anvi-profile -i data/3847_I_sorted.bam -c contigs.db --output-dir 3847_I_profile --sample-name profile_3847_I -T 1 --min-contig-length 5000;
+conda deactivate
+rsync -a /scratch/sogin/tmp.$JOB_ID/ /opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/coassembly/binning_v2/anvio/in_profiles/;
+rm /scratch/sogin/tmp.$JOB_ID -R;
+echo "job finished: "
+date
+```
 
 ## 2. gbtool scp data
 
