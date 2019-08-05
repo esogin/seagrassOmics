@@ -45,7 +45,7 @@ Results: based on statistics (HSD test mean coverage across contigs ~ habitat) &
 
 
 
-**For cmoparision across libraries in annotation use the statistics plus visulization resutls in order to help determine which habitat bins belong to.**
+**For comparison across libraries in annotation use the statistics plus visulization resutls in order to help determine which habitat bins belong to.**
 
 ### Gene calling
 
@@ -55,7 +55,7 @@ gene calling doing in prodigal direcorty
 
 my qsub script
 
-```
+```bash
 #!/bin/bash
 #
 #$ -cwd
@@ -97,7 +97,7 @@ annotation done in highqc directory of prodigal directory
 
 copy all protein files to dbcan folder and run qsub script
 
-```
+```bash
 #!/bin/bash
 #
 #$ -cwd
@@ -127,10 +127,26 @@ echo "job finished: "
 date
 ```
 
+Use R to parse through dbcan results 
+get data out of dbcan result
+move results folder to new folder 
+```r
+files<-list.files(pattern='overview.txt', recursive=T)
+dbcan_results<-data.frame()
+for (i in 1:length(files)){
+df<-read.table(files[i],sep='\t',header=T)
+colnames(df)<-c('Gene.ID', 'HMMER', 'Hotpep' ,'DIAMOND', 'Signalp', 'num_tools')
+df$bin<-files[i]
+dbcan_results<-rbind(dbcan_results, df)
+}
+write.csv(dbcan_results, 'dbcan_results_July182019.csv')
+```
+
+
 4. run antismash 
 For antismash, copy only bacteria genomes over into folder
 
-```
+```bash
 #!/bin/bash
 #
 #$ -cwd
@@ -154,7 +170,7 @@ cd /scratch/sogin/tmp.$JOB_ID/bac/
 for i in *fa; do 
     mkdir ${i%%.fa}
     prodigal -i $i -o ${i%%.fa}/${i%%.fa}_coords.gbk  -a ${i%%.fa}/${i%%.fa}_orfs.faa -d ${i%%.fa}/${i%%.fa}_genes.fa
-    antismash ${i%%.fa}/${i%%.fa}_coords.gbk -c 48 --taxon bacteria --outputfolder ${i%%.fa} --full-hmmer
+    antismash ${i%%.fa}/${i%%.fa}_genes.fa -c 48 --taxon bacteria --input-type nucl --outputfolder ${i%%.fa} --full-hmmer --smcogs --transatpks_da
 done
 #
 conda deactivate
@@ -164,6 +180,29 @@ echo "job finished: "
 date
 ```
 
+Get out antismash results 
+```bash
+find ./ -size  0 -print0 |xargs -0 rm --
+
+files=$(ls)
+for i in $files;do  cut -f 1,3,4,5 $i/geneclusters.txt > $i/geneclusters_fixed.txt;done
+```
+
+```r
+files<-list.files(pattern='geneclusters_fixed.txt', recursive=T)
+remove<-c(19,28,40,42,75,77,79,83,92,95,96,100)
+
+asmsh<-data.frame()
+for (i in 1:length(files)){
+	tmp<-read.table(files[i],sep='\t')
+	asmsh<-rbind(asmsh, data.frame(bin=files[i],tmp))
+}
+
+write.csv(asmsh, 'combined_antismash_annotations.csv')
+```
+
+
+
 5. run prokka 
 
 copy bins over to prokka folder within the prodigial high qc bins directory
@@ -171,7 +210,7 @@ split bewteen archaea and bacteria
 run qsub script
 
 qsub script
-```
+```bash
 #!/bin/bash
 #
 #$ -cwd
@@ -212,7 +251,7 @@ Copy over proteins from prodigial run into eggnog folder
 
 run qsub script 
 
-```
+```bash
 #!/bin/bash
 #
 #$ -cwd
@@ -234,7 +273,7 @@ cd /scratch/sogin/tmp.$JOB_ID/bins/
 bins=$(echo *faa)
 
 for i in $bins; do
-        python2 ~/tools/eggnog-mapper/emapper.py -i ${i%%.fa}.faa --output ${i%%.fa}_maNOG -m diamond --usemem --cpu 12;
+        python2 ~/tools/eggnog-mapper/emapper.py -i $i --output ${i%%.fa}_maNOG -m diamond --usemem --cpu 12;
     done
 
 rsync -a /scratch/sogin/tmp.$JOB_ID/ /opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/coassembly/binning_v2/dastool_finalized_bins/result/prodigial/hiqc_bins/eggnog/;

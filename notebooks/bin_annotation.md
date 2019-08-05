@@ -268,4 +268,5 @@ colnames(df)<-c('Gene.ID', 'HMMER', 'Hotpep' ,'DIAMOND', 'Signalp', 'num_tools')
 df$bin<-files[i]
 dbcan_results<-rbind(dbcan_results, df)
 }
+write.csv(dbcan_results, 'dbcan_results_July182019.csv')
 ```
