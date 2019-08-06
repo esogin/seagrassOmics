@@ -1,7 +1,7 @@
 #Gene Catalog Update
 ## EM Sogin 
 ## Created July 23, 2019
-## Updated July 23, 2019
+## Updated August 5, 2019
 
 
 Description: in our initial gene catalog appraoch, we have issues with annotation and mapping results. This is likely because our inital gene catalog has over 83M genes to filter through. Try to reduce number of reads by filtering out short sequences and reimplement a gene catalog annotation strategy that is more tractable. 
@@ -78,6 +78,93 @@ Nr. sequences in:
 
 Nr of sequences out: 
 17,947,592
+
+
+##Need to re-visit clustering approach (try number 3)
+This is relatively small reduction in sequences. 
+
+**Update: The workflow for mmseqs was incorrect applied above, re-implement here:**
+
+This workflow takes combined assembilies dereplicates them, reduces the size and then calls proteins and genes on entire catalog. The piepline will then use mmseqs to create a non-redundant gene catalog for analysis. 
+
+my qsub script for a better pipeline
+
+```bash
+#!/bin/bash
+#
+#$ -cwd
+#$ -j y
+#$ -S /bin/bash
+#$ -pe smp 48
+#$ -V
+#$ -q main.q
+#$ -l "h=gc-node-22"
+#Creating a gene catalog
+echo "job started: " 
+echo "job ID: $JOB_ID"
+date
+hostname
+echo "shell: $SHELL"
+mkdir /scratch/sogin/tmp.$JOB_ID -p; 
+rsync -a /opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/gene_catalog/catalog/ /scratch/sogin/tmp.$JOB_ID/
+
+cd /scratch/sogin/tmp.$JOB_ID/
+
+
+echo "reduce catalog to only include sequences with at least 500 bp"
+echo "already done"
+#reformat.sh in=allcontigs_renamed.fa minlength=500 out=contigs_500bp.fasta
+
+echo "fix fasta headers"
+echo "already done"
+#reformat.sh in=contigs_500bp.fasta out=contigs_500bp_f1.fasta addunderscore
+#sed 's/_flag.*/g' contigs_500bp_f1.fasta > contigs.fasta
+
+echo "dereplicate catalog and run initial clustering using mmseqs"
+mkdir /scratch/sogin/tmp.$JOB_ID/clusters/
+
+#vsearch --derep_fulllength contigs.fasta --output clusters/rep_set.fa  --relabel group --relabel_keep
+
+#this clusters to 100 % identity on gene level (redundent step to above - see how many more sequences it removes)
+#mmseqs easy-linclust clusters/rep_set.fa clusters/derep_seqs tmp
+
+echo "call genes"
+mkdir /scratch/sogin/tmp.$JOB_ID/prodigal/
+mkdir /scratch/sogin/tmp.$JOB_ID/prodigal/genes/
+
+prodigal -i clusters/derep_seqs_rep_seq.fasta -o prodigal/genes/coords.gff  -a prodigal/genes/orfs.faa  -p meta -d prodigal/genes/genes.fa -f gff;
+
+mkdir prodigal/mmseqs/
+cd prodigal/mmseqs/
+
+mmseqs easy-cluster ../genes/orfs.faa orfs_clusters_50 tmp --min-seq-id 0.5
+mmseqs easy-cluster ../genes/orfs.faa orfs_clusters_90 tmp --min-seq-id 0.9
+
+echo "rsync back"
+rsync -a /scratch/sogin/tmp.$JOB_ID/ /opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/gene_catalog/catalog/
+
+echo "job finished: "
+date
+echo "CLEAN UP SCRATCH!!!"
+
+if [ "$?" -eq "0" ]; then
+  rm /scratch/tmp.$JOB_ID -R;
+  echo "Done"
+else
+  echo "Error while running rsync"
+fi
+```
+
+Clustering results: 
+| Step | number of sequences|
+|:-------:|:-------------:|
+| nr. contigs (initial)|75,805,676|
+| nr. contigs after removing short seqs|13,146,164|
+| nr. contigs after derep (vsearch) |13,132,325|
+| nr. contigs after mmseqs|12,701,223|
+|nr genes/proteins after progidal ||
+|nr. proteins after mmseqs (similarity threshold 50% identity)||
+
 
 
 Get rep sequence headers and subset protein file 
