@@ -80,7 +80,7 @@ Nr of sequences out:
 17,947,592
 
 
-##Need to re-visit clustering approach (try number 3)
+##Need to re-visit clustering approach (3rd time is the charm)
 This is relatively small reduction in sequences. 
 
 **Update: The workflow for mmseqs was incorrect applied above, re-implement here:**
@@ -162,105 +162,214 @@ Clustering results:
 | nr. contigs after removing short seqs|13,146,164|
 | nr. contigs after derep (vsearch) |13,132,325|
 | nr. contigs after mmseqs|12,701,223|
-|nr genes/proteins after progidal ||
-|nr. proteins after mmseqs (similarity threshold 50% identity)||
+|nr genes/proteins after progidal |21,199,115|
+|nr. proteins after mmseqs (similarity threshold 50% identity)|8,930,797|
+|nr. proteins after mmseqs (similarity threshold 90% identity)|17,288,787|
+
+*Annotation pipeline of 50% ID catalog*
+for some reason I can't get emapper to work on the server. Instead run on MPI servers 
+
+```bash
+#
+split -l 200000 -a 3 -d orfs_clusters_50_rep_seq.fasta input_file.chunk
+# generate all the commands that should be distributed in the cluster
+
+e_path=~/devtools/eggnog-mapper/
+
+for i in *chunk*; do  python2 $e_path/emapper.py -i $i -m diamond --no_annot --no_file_comments --cpu 48 -o $i; done
 
 
+cat *.chunk*.emapper.seed_orthologs > input_file.emapper.seed_orthologs
+python2 $e_path/emapper.py --annotate_hits_table input_file.emapper.seed_orthologs --no_file_comments -o output_file --cpu 48
+```
 
 Get rep sequence headers and subset protein file 
+using cluster 50 file
+```bash
+grep ">" orfs_clusters_50_rep_seq.fasta > headers
+```
+subset gene sequences with list of fasta headers from protein file
 
 ```bash
-grep ">" clusters_rep_seq.fasta > headers
+sed 's/>//g' headers > headers_list
+seqtk subseq genes.fa headers_list > genes_50_rep_seqs.fa
 ```
-* subset protein sequences with list of fasta headers
+Check if have same number of sequences
 
-
-```bash
-seqtk subseq genes/orfs.fa rep_seq_headers > orfs_rep_seqs.fa
-```
 Nr. seqs: 
-17947592
+8930797
 
-###5 Annotate gene catalog
-Using the MPI servers
 
-Try spliting up file 
+## 5. Map libraries back to catalog 
+This is not as trivial as I had initial hoped. 
+
+Issues: 
+
+1) only 25% of reads map back to catalog
+
+- try to map read files (1 file) to both the 50% clustered catalog and the 90% clustered catalog. If diffent read mapping, this indiciates a sensitivity issue in the mapping results. 
+
+
+This script will try multiple mapping appraoches including the one described above. Also interested to see if the mapping sucess varies depending on mappers. 
 ```bash
-split -l 200000 -a 3 -d orfs_rep_seqs.fa input_file.chunk
-# generate all the commands that should be distributed in the cluster
-for i in *chunk*; do  python2 ./../emapper.py -i $i -m diamond --no_annot --no_file_comments --cpu 24 -o $i; done
+#!/bin/bash
+#
+#$ -cwd
+#$ -j y
+#$ -S /bin/bash
+#$ -pe smp 48
+#$ -V
+#$ -q main.q
+#
+#Template script to map libraries to gene catalog
+#notes: the libraries being mapped have not been error corrected with spades and are NOT kmer normalized, hence the nn director name (for no normalization)
+echo "job started: " 
+echo "job ID: $JOB_ID"
+date
+hostname
+echo "shell: $SHELL"
+
+mkdir /scratch/sogin/tmp.$JOB_ID/ -p; 
+rsync -a /opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/gene_catalog/catalog/maps/ref_genes/prodigal/mmseqs/ /scratch/sogin/tmp.$JOB_ID/
+cd /scratch/sogin/tmp.$JOB_ID/
+#
+echo "map to catalog";
+#
+lib=3847_A;
+cp /opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/$lib/qc/"$lib"_q2_ktrimmed.fq.gz ./;
+reformat.sh in="$lib"_q2_ktrimmed.fq.gz out=test_reads.fq.gz reads=1000000
+
+mkdir /scratch/sogin/tmp.$JOB_ID/bbmap/
+cd /scratch/sogin/tmp.$JOB_ID/bbmap/
+
+bbmap.sh in=../test_reads.fq.gz ref=../genes_50_rep_seqs.fa covstats=test_covstats_50 scafstats=test_scafstats_50.txt statsfile=test_stderr_50;
+bbmap.sh in=../test_reads.fq.gz ref=../genes_90_rep_seqs.fa covstats=test_covstats_90 scafstats=test_scafstats_90.txt statsfile=test_stderr_90;
+
+mkdir /scratch/sogin/tmp.$JOB_ID/bowtie/
+cd /scratch/sogin/tmp.$JOB_ID/bowtie/
+
+bowtie2-build ../genes_50_rep_seqs.fa genes_50_index
+bowtie2 -x genes_50_index -U ../test_reads.fq.gz -S test_50.sam --sensitive 
+samtools view -bS -o test_50.bam test_50.sam
+samtools sort -o test_50_sorted.bam test_50.bam
+samtools view -F 0x4 test_50_sorted.bam | cut -f 1 | sort | uniq | wc -l 
+
+mkdir /scratch/sogin/tmp.$JOB_ID/bwa/
+cd /scratch/sogin/tmp.$JOB_ID/bwa/
+
+bwa index -a bwtsw ../genes_50_rep_seqs.fa 
+bwa mem ../genes_50_rep_seqs.fa ../test_reads.fq.gz > test_50_bwa.sam
+samtools view -bS -o test_50_bwa.bam test_50_bwa.sam
+samtools sort -o test_50_sorted_bwa.bam test_50_bwa.bam
+samtools view -F 0x4 test_50_sorted_bwa.bam | cut -f 1 | sort | uniq | wc -l 
+
+#
+mkdir /opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/gene_catalog/catalog/mapping_test/
+rsync -a /scratch/sogin/tmp.$JOB_ID/ /opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/gene_catalog/catalog/maps/"$lib"/;
+rm /scratch/sogin/tmp.$JOB_ID -R;
+echo "job finished: "
+date
+```
 
 
-cat *.chunk_*.emapper.seed_orthologs > input_file.emapper.seed_orthologs
-emapper.py --annotate_hits_table input.emapper.seed_orthologs --no_file_comments -o output_file --cpu 10
+
+More sensitive approaches inclued: 
+
+- Translated read mapping with DiamondX
+- hmmer searches of translated read profiles against gene catalog 
+
+If using hmmer, we have the hmmprofiles as a result of mmseqs
+
+```bash
+hmmsearch 
 ```
 
 
 
 
 
-
 ```bash
-python2 ./emapper.py -i my_proteins/orfs_rep_seqs.fa -o catalog_maNOG -m diamond --cpu 24 
+#!/bin/bash
+#
+#$ -cwd
+#$ -j y
+#$ -S /bin/bash
+#$ -pe smp 48
+#$ -V
+#$ -q main.q
+#
+#Template script to map libraries to gene catalog
+#notes: the libraries being mapped have not been error corrected with spades and are NOT kmer normalized, hence the nn director name (for no normalization)
+echo "job started: " 
+echo "job ID: $JOB_ID"
+date
+hostname
+echo "shell: $SHELL"
+#
+mkdir /scratch/sogin/tmp.$JOB_ID/ -p; 
+rsync -a /opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/gene_catalog/catalog/maps/ref_genes/ /scratch/sogin/tmp.$JOB_ID/
+cd /scratch/sogin/tmp.$JOB_ID/
+#
+echo "map to catalog";
+#
+lib=LIB;
+cp /opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/$lib/qc/"$lib"_q2_ktrimmed.fq.gz ./;
+bbmap.sh in=${lib}_q2_ktrimmed.fq.gz ref=genes_50_rep_seqs.fa covstats="$lib"_covstats out="$lib".bam scafstats="$lib"_scafstats.txt statsfile="$lib"_stderr;
+rm *fq.gz
+rm genes.fa
+rm -r ref/
+#
+mkdir /opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/gene_catalog/catalog/maps/"$lib"/
+rsync -a /scratch/sogin/tmp.$JOB_ID/ /opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/gene_catalog/catalog/maps/"$lib"/;
+rm /scratch/sogin/tmp.$JOB_ID -R;
+echo "job finished: "
+date
 ```
 
-
-
-
-###4-alt. Annotate gene catalog with emapper.py
-
-
-
-
--------
-
-*testing*
-
-while running prodigal, run the following tests on subset of gene catalog (old)
-
-4. Construct a NR gene set 
- 
-
-* cdhit
+apply to all libraries to get individual scripts
 
 ```bash
-cd-hit-est -i genes_test.fa -o nr_genes.fa -c 0.95 -T 12 -aS 0.9 -n 8 -M 0 -G 0
-```
-In my test run, took out 5 sequences for the first 16537 genes 
-CPU time of 216 (100000)
+libs=$(echo 3847_{A..I})
+for i in $libs; 
+do 
+	cat template_map_to_catalog.sh | sed "s/LIB/$i/g" > map_to_catalog_"$i".sh; 
+done
 
-* remove gene sequences with less then 100 bp
+```
+Run Feature counts
+
+need to generate an SAF file
+
 
 ```bash
-reformat.sh in=nr_genes.fa minlength=100 out=nr_genes_long.fa
+#!/bin/bash
+#
+#$ -cwd
+#$ -j y
+#$ -S /bin/bash
+#$ -pe smp 12
+#$ -V
+#$ -q main.q
+## Annotate bins with eggNOG
+echo "job started: " 
+echo "job ID: $JOB_ID"
+date
+hostname
+echo "shell: $SHELL"
+
+mkdir /scratch/sogin/tmp.$JOB_ID/ -p; 
+rsync -a /opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/gene_catalog/catalog/maps/feature_counts/ /scratch/sogin/tmp.$JOB_ID/
+
+cd /scratch/sogin/tmp.$JOB_ID/
+
+featureCounts -F 'GTF' -t 'CDS' -g 'ID' -T 12 -a coords_fixed.gff -o result 3847_A.bam
+
+rsync -a /scratch/sogin/tmp.$JOB_ID/ /opt/extern/bremen/symbiosis/sogin/Data/SedimentMG/processed_reads/libraries/library_3847/gene_catalog/catalog/maps/feature_counts;
+rm /scratch/sogin/tmp.$JOB_ID -R;
+
+echo "job finished: "
+date
 ```
-removed ~ 6 % of the genes 
-
-* get out fasta headers
-
-```bash
-grep ">" nr_genes_long.fa | sed "s/>//g" > headers
-```
-* subset protein sequences with list of fasta headers
-
-```bash
-seqkit grep -n -f headers orfs.faa > orfs_reduced.faa
-```
-
-* Annotate with emapper.  
-```bash
-python2 ./opt/extern/bremen/symbiosis/sogin/tools/eggnog-mapper/emapper.py -i orfs_reduced.faa --output orfs_maNOG -m diamond --usemem --cpu 6 ;
-
-python2 /opt/extern/bremen/symbiosis/sogin/tools/eggnog-mapper/emapper.py -i orfs_reduced.faa --output orfs_maNOG -m diamond --usemem --cpu 24;
-
-
-python2.7 /opt/extern/bremen/symbiosis/sogin/tools/eggnog-mapper/emapper.py -i test2.fa -m diamond --output test_2 --usemem --cpu 24 
-
-python2.7 ./emapper.py -i my_proteins/test.fa -o test4 -m diamond --data_dir ./data/
-
-python2 /opt/extern/bremen/symbiosis/sogin/tools/eggnog-mapper/emapper.py -i metabat.98.contigs_orfs.faa --output test_maNOG -m diamond --usemem --cpu 24;
-```
-
 
 
 

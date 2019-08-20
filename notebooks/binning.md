@@ -1,7 +1,7 @@
 # Binning Scripts
 ## EM Sogin
 ## May 4 2019
-## Updated: May 15, 2019
+## Updated: Aug 15, 2019
 
 Binning sediment metagenome coassembly using 3 different tools and combining results with DAS tool. 
 
@@ -294,4 +294,24 @@ rm /scratch/sogin/tmp.$JOB_ID -R;
 echo "job finished: "
 date
 ```
+
+Check for tRNAs in finalized bins 
+
+```bash
+
+
+for n in *.fa; do aragorn -t -fon $n  > trnas/"$n"_trnas; done
+
+grep ">" metabat.6.contigs.fa_trnas | cut -d' ' -f2 |sed 's/([a-z]*)//g'| sed 's/tRNA-//g' | sed 's/?(//g' | sed 's/)//g' | sed 's/|/\n/g' | sort -u | wc -l
+
+
+# all in one line:
+for n in *.fa; do echo $n; aragorn -t -fon $n | grep '>' | cut -d' ' -f2 |sed 's/([a-z]*)//g'| sed 's/tRNA-//g' | sed 's/?(//g' | sed 's/)//g' | sed 's/|/\n/g' | sort -u | wc -l; done > trnas_total
+
+
+awk 'NR % 2 ==0' trnas_total
+
+```
+
+
 ## END
